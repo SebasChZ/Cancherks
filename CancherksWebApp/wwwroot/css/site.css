@@ -2,9 +2,15 @@
 :root {
     --greenMain: #00A38B;
     --greenMainRGB: 0, 163, 139;
+    --greyFooter: #F1F1F1;
+    --greyFooterRGB: 241,241,241;
     --textGrey: #495057;
     --textGreyRGB: 73, 80, 87;
-    --color2: rgb(51, 161, 212);
+    --textGreen: #00A88F;
+    --textGreenRGB: 0, 163, 143;
+    --textBlack: 000000;
+    --textBlackRGB: 0, 0, 0;
+    --gradientMainGreen: linear-gradient(to right, rgba(14,171,163,1) 0%, rgba(22, 193,181,1) 100%);
     --color3: #3CBCCB;
     --color4: #8795B0;
     --color5: #CAD8F2;
@@ -75,8 +81,38 @@ img {
     background-color: rgba(var(--textGreyRGB), var(--bs-bg-opacity)) !important;
 }
 
+.txt-Green {
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--textGreyRGB), var(--bs-bg-opacity)) !important;
+}
+
+/* Header text format */
+.nav-link.active {
+    color: var(--textGrey) !important;
+    font-weight: bold !important;
+}
+
+.nav-link {
+    color: var(--textGrey) !important;
+    font-weight: lighter !important;
+}
 
 
+.nav-link:hover {
+    color: var(--textGrey) !important;
+    font-weight: bold !important;
+}
+
+/* Footer format */
+.footer {
+    background-color: var(--greyFooter) !important;
+}
+
+.footer.text-muted .container {
+    color: black; 
+    text-align: center; 
+    font-weight: lighter;
+}
 
 
 

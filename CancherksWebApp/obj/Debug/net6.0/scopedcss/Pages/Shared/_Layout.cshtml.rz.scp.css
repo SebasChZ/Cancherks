@@ -13,11 +13,12 @@ button.accept-policy[b-19ljw90nb2] {
 }
 
 .footer[b-19ljw90nb2] {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
+    color: #F1F1F1;
 }
 
 .content[b-19ljw90nb2]{
