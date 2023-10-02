@@ -1,8 +1,9 @@
 
 :root {
-    --color1Main: #181823;
-    --color1: #00A38B;
-    --color1RGB: 0, 163, 139;
+    --greenMain: #00A38B;
+    --greenMainRGB: 0, 163, 139;
+    --textGrey: #495057;
+    --textGreyRGB: 73, 80, 87;
     --color2: rgb(51, 161, 212);
     --color3: #3CBCCB;
     --color4: #8795B0;
@@ -53,68 +54,25 @@ img {
 
 
 /* This secction is for color backgrounds*/
-.bg-color1Main {
-    background-color: var(--color1Main);
-}
 
-.bg-color1 {
+.bg-greenMain {
     --bs-bg-opacity: 1;
-    background-color: rgba(var(--color1RGB), var(--bs-bg-opacity)) !important;
+    background-color: rgba(var(--greenMainRGB), var(--bs-bg-opacity)) !important;
 }
 
-.bg-color1Trans {
-    --bs-bg-opacity: 0.1;
-    background-color: rgba(var(--color1RGB), var(--bs-bg-opacity)) !important;
-}
-
-.bg-color2 {
-    background-color: var(--color2);
-}
-
-.bg-color3 {
-    background-color: var(--color3);
-}
-
-.bg-color4 {
-    background-color: var(--color4);
-}
-
-.bg-color5 {
-    background-color: var(--color5);
-}
-
-.bg-color6 {
-    background-color: var(--color6);
-}
 
 /* This secction is for color backgrounds with transparency*/
 
-.bg-color1Trans {
-    background-color: var(--color1Trans);
+.bg-greenMainTrans {
+    --bs-bg-opacity: 0.1;
+    background-color: rgba(var(--greenMainRGB), var(--bs-bg-opacity)) !important;
 }
 
-.bg-color2Trans {
-    background-color: var(--color2Trans);
-}
+/* This secction is for color for texts*/
 
-.bg-color2TransPlus {
-    background-color: var(--color2TransPlus);
-}
-
-.bg-color3Trans {
-    background-color: var(--color3Trans);
-}
-
-.bg-color4Trans {
-    background-color: var(--color4Trans);
-}
-
-.bg-color5Trans {
-    background-color: var(--color5Trans);
-}
-
-.bg-color6Trans {
-    background-color: var(--color6Trans);
+.txt-Grey {
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--textGreyRGB), var(--bs-bg-opacity)) !important;
 }
 
 
