@@ -20,12 +20,15 @@
     --gradient: linear-gradient(to right, rgba(49, 156, 214, 1) 0%, rgba(61, 192, 201, 1) 100%);
     --gradient2: linear-gradient(61deg, rgba(87, 204, 223, 1) 0%, rgba(71, 115, 217, 1) 100%);
     --font-primary: 'Roboto', sans-serif;
-    --font-secondary: 'Lato', sans-serif;
 }
 
 
 html {
-  font-size: 14px;
+    font-size: 14px;
+    height: 100%;
+    margin: 0;
+    font-family: var(--font-primary);
+    min-height: 100vh;
 }
 
 @media (min-width: 768px) {

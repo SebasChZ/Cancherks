@@ -13,14 +13,16 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-color1Trans">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">
-                    @* //This could be the link to the inicial app page *@
-                    <i class="bi bi-mortarboard-fill"></i>
-                    Cancherks
-                </a>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    
+            <div class="container-fluid align-middle">
+                <div class="align-middle">
+                    <a class="navbar-brand" asp-area="" asp-page="/Index">
+                        @* //This could be the link to the inicial app page *@
+                        <i class="bi bi-mortarboard-fill"></i>
+                        Cancherks
+                    </a>
+                </div>
+               
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">                    
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                         <li class="nav-item">
@@ -35,15 +37,38 @@
                         </li>
                     </ul>
                 </div>
+                <div class="icon-Profile bg-color2 text-center align-middle fs-3 text-white">
+                    <i class="bi bi-person"></i>
+                </div>
+
+
+
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+       
+
+    <div class="mh-100 d-flex flex-row">
+        <aside class="site-bar h-100 mh-100">
+            <ul class="d-flex flex-column gap-3 px-0 py-2">
+                <li class="py-2 inline-nav-item ">
+                    <i class="bi bi-people-fill"></i>
+                    Instalaciones
+                </li>
+                <li class="py-2 inline-nav-item-nd">
+                    <i class="bi bi-people-fill"></i>
+                    Instalaciones
+                </li>
+            </ul>
+           
+        </aside>
+        <div class="container">
+            <main role="main" class="pb-3">
 
 
-            @RenderBody()
-        </main>
+                @RenderBody()
+            </main>
+        </div>
     </div>
 
     <footer class="border-top footer text-muted">
