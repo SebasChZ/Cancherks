@@ -1,0 +1,783 @@
+
+:root {
+    --color1Main: #181823;
+    --color1: #00A38B;
+    --color1RGB: 0, 163, 139;
+    --color2: rgb(51, 161, 212);
+    --color3: #3CBCCB;
+    --color4: #8795B0;
+    --color5: #CAD8F2;
+    --color6: rgb(20, 25, 25);
+    --white: #FFFFFF;
+    --color1MainTrans: rgba(24, 24, 35, 0.2);
+    --color1Trans: rgba(10, 10, 15, 0.5);
+    --color2Trans: rgba(51, 161, 212, 0.2);
+    --color2TransPlus: rgba(51, 161, 212, 0.08);
+    --color3Trans: rgba(60, 188, 203, 0.4);
+    --color4Trans: rgba(135, 149, 176, 0.4);
+    --color5Trans: rgba(202, 216, 242, 0.4);
+    --color6Trans: rgba(60, 60, 60, 0.8);
+    --gradient: linear-gradient(to right, rgba(49, 156, 214, 1) 0%, rgba(61, 192, 201, 1) 100%);
+    --gradient2: linear-gradient(61deg, rgba(87, 204, 223, 1) 0%, rgba(71, 115, 217, 1) 100%);
+    --font-primary: 'Roboto', sans-serif;
+    --font-secondary: 'Lato', sans-serif;
+}
+
+
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+/* This secction is for color backgrounds*/
+.bg-color1Main {
+    background-color: var(--color1Main);
+}
+
+.bg-color1 {
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--color1RGB), var(--bs-bg-opacity)) !important;
+}
+
+.bg-color1Trans {
+    --bs-bg-opacity: 0.1;
+    background-color: rgba(var(--color1RGB), var(--bs-bg-opacity)) !important;
+}
+
+.bg-color2 {
+    background-color: var(--color2);
+}
+
+.bg-color3 {
+    background-color: var(--color3);
+}
+
+.bg-color4 {
+    background-color: var(--color4);
+}
+
+.bg-color5 {
+    background-color: var(--color5);
+}
+
+.bg-color6 {
+    background-color: var(--color6);
+}
+
+/* This secction is for color backgrounds with transparency*/
+
+.bg-color1Trans {
+    background-color: var(--color1Trans);
+}
+
+.bg-color2Trans {
+    background-color: var(--color2Trans);
+}
+
+.bg-color2TransPlus {
+    background-color: var(--color2TransPlus);
+}
+
+.bg-color3Trans {
+    background-color: var(--color3Trans);
+}
+
+.bg-color4Trans {
+    background-color: var(--color4Trans);
+}
+
+.bg-color5Trans {
+    background-color: var(--color5Trans);
+}
+
+.bg-color6Trans {
+    background-color: var(--color6Trans);
+}
+
+
+
+
+
+
+.ver-perfil {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+    .ver-perfil .div {
+        background-color: #ffffff;
+        overflow: hidden;
+        width: 1320px;
+        height: 864px;
+        position: relative;
+    }
+
+    .ver-perfil .overlap-group {
+        position: absolute;
+        width: 1322px;
+        height: 778px;
+        top: 86px;
+        left: -2px;
+    }
+
+    .ver-perfil .footer {
+        position: absolute;
+        width: 1322px;
+        height: 50px;
+        top: 728px;
+        left: 0;
+        background-color: #6a6a6a1a;
+    }
+
+    .ver-perfil .contacto-correo {
+        position: absolute;
+        width: 391px;
+        height: 20px;
+        top: 10px;
+        left: 466px;
+        font-family: "Roboto-Thin", Helvetica;
+        font-weight: 100;
+        color: #000000;
+        font-size: 16px;
+        text-align: center;
+        letter-spacing: 0;
+        line-height: 24px;
+        white-space: nowrap;
+    }
+
+    .ver-perfil .content-page {
+        width: 1320px;
+        align-items: center;
+        gap: 10px;
+        padding: 124px 50px;
+        position: absolute;
+        top: 0;
+        left: 2px;
+        background-color: #f6f6f6;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .ver-perfil .container {
+        display: flex;
+        flex-direction: column;
+        width: 1125px;
+        height: 487px;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 0px 10px;
+        position: relative;
+    }
+
+    .ver-perfil .text-wrapper {
+        position: relative;
+        width: 961px;
+        height: 38px;
+        margin-top: -1px;
+        font-family: "Roboto-Bold", Helvetica;
+        font-weight: 700;
+        color: #212529;
+        font-size: 32px;
+        letter-spacing: 0;
+        line-height: 38.4px;
+        white-space: nowrap;
+    }
+
+    .ver-perfil .frame {
+        display: flex;
+        width: 1115px;
+        height: 305px;
+        align-items: flex-start;
+        padding: 10px 1px;
+        position: relative;
+        margin-right: -10px;
+    }
+
+    .ver-perfil .card {
+        width: 683px;
+        height: 282px;
+        align-items: flex-start;
+        padding: 10px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        overflow: hidden;
+        border: 0px none;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        border-color: var(--componentscardborder);
+    }
+
+    .ver-perfil .wrapper {
+        display: flex;
+        align-items: flex-start;
+        align-self: stretch;
+        width: 100%;
+        margin-bottom: -10px;
+        border-radius: 20px;
+        position: relative;
+        flex: 0 0 auto;
+    }
+
+    .ver-perfil .image {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: relative;
+        align-self: stretch;
+        flex: 0 0 auto;
+        border-radius: 10px;
+    }
+
+    .ver-perfil .image-2 {
+        display: flex;
+        width: 100%;
+        overflow: hidden;
+        flex-direction: column;
+        align-items: flex-start;
+        position: relative;
+        align-self: stretch;
+        flex: 0 0 auto;
+        border-radius: 10px;
+    }
+
+    .ver-perfil .aspect-ratio-keeper {
+        display: flex;
+        height: 260px;
+        align-items: flex-start;
+        position: relative;
+        align-self: stretch;
+        width: 100%;
+        transform: rotate(-45deg);
+    }
+
+    .ver-perfil .aspect-ratio-keeper-2 {
+        position: relative;
+        align-self: stretch;
+        flex: 0 0 auto;
+        margin-top: -1px;
+        margin-bottom: -1px;
+        transform: rotate(24.47deg);
+    }
+
+    .ver-perfil .image-placeholder {
+        position: absolute;
+        width: 260px;
+        height: 260px;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+    }
+
+    .ver-perfil .size-adjuster {
+        display: inline-flex;
+        align-items: center;
+        gap: 260px;
+        position: relative;
+        flex: 0 0 auto;
+    }
+
+    .ver-perfil .ignore {
+        position: relative;
+        width: 1px;
+        height: 1px;
+    }
+
+    .ver-perfil .ignore-2 {
+        margin-right: -1px;
+        position: relative;
+        width: 1px;
+        height: 1px;
+    }
+
+    .ver-perfil .content {
+        align-items: flex-start;
+        position: relative;
+        flex: 1;
+        flex-grow: 1;
+        background-color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .ver-perfil .card-body {
+        align-items: flex-start;
+        gap: 1px;
+        padding: 16px;
+        align-self: stretch;
+        width: 100%;
+        flex: 0 0 auto;
+        background-color: #ffffff00;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+
+    .ver-perfil .div-wrapper {
+        align-items: flex-start;
+        justify-content: center;
+        padding: 0px 0px 8px;
+        align-self: stretch;
+        width: 100%;
+        flex: 0 0 auto;
+        background-color: #ffffff00;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+
+    .ver-perfil .text {
+        position: relative;
+        align-self: stretch;
+        margin-top: -1px;
+        font-family: "Roboto-Medium", Helvetica;
+        font-weight: 500;
+        color: #212529;
+        font-size: 16px;
+        letter-spacing: 0;
+        line-height: 24px;
+    }
+
+    .ver-perfil .text-2 {
+        position: relative;
+        align-self: stretch;
+        margin-top: -1px;
+        font-family: "Helvetica Neue-65Medium", Helvetica;
+        font-weight: 500;
+        color: #6c757d;
+        font-size: 16px;
+        letter-spacing: 0;
+        line-height: 19.2px;
+    }
+
+    .ver-perfil .card-text {
+        align-items: flex-start;
+        padding: 0px 0px 6px;
+        align-self: stretch;
+        width: 100%;
+        flex: 0 0 auto;
+        background-color: #ffffff00;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+
+    .ver-perfil .text-3 {
+        position: relative;
+        align-self: stretch;
+        margin-top: -1px;
+        font-family: "Roboto-Light", Helvetica;
+        font-weight: 300;
+        color: #212529;
+        font-size: 15px;
+        letter-spacing: 0;
+        line-height: 22.5px;
+    }
+
+    .ver-perfil .min-width-change {
+        display: inline-flex;
+        align-items: center;
+        gap: 400px;
+        position: relative;
+        flex: 0 0 auto;
+        margin-bottom: -1px;
+        margin-right: -29px;
+        overflow: hidden;
+    }
+
+    .ver-perfil .layout-blocks {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 16px;
+        padding: 0px 0px 5px;
+        position: relative;
+        align-self: stretch;
+        width: 100%;
+        flex: 0 0 auto;
+    }
+
+    .ver-perfil .div-wrapper-2 {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        position: relative;
+        flex: 0 0 auto;
+        background-color: #ffffff00;
+    }
+
+    .ver-perfil .wrapper-2 {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        position: relative;
+        flex: 0 0 auto;
+    }
+
+    .ver-perfil .icon-left {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        flex: 0 0 auto;
+        background-color: #ffffff00;
+    }
+
+    .ver-perfil .width-change-size {
+        display: inline-flex;
+        align-items: center;
+        gap: 16px;
+        position: relative;
+        flex: 0 0 auto;
+        overflow: hidden;
+    }
+
+    .ver-perfil .icon-wrapper-h {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        flex: 0 0 auto;
+        position: relative;
+        align-self: stretch;
+    }
+
+    .ver-perfil .height-change-size {
+        display: inline-flex;
+        align-items: center;
+        gap: 16px;
+        position: relative;
+        flex: 0 0 auto;
+        margin-left: -8px;
+        overflow: hidden;
+        transform: rotate(-90deg);
+    }
+
+    .ver-perfil .icon-wrapper {
+        position: relative;
+        flex: 1;
+        align-self: stretch;
+        flex-grow: 1;
+    }
+
+    .ver-perfil .union {
+        position: absolute;
+        width: 16px;
+        height: 12px;
+        top: 2px;
+        left: 0;
+    }
+
+    .ver-perfil .text-4 {
+        position: relative;
+        width: fit-content;
+        margin-top: -1px;
+        font-family: "Roboto-Medium", Helvetica;
+        font-weight: 500;
+        color: #00a88f;
+        font-size: 16px;
+        letter-spacing: 0;
+        line-height: 24px;
+        white-space: nowrap;
+    }
+
+    .ver-perfil .icon-wrapper-h-2 {
+        background-color: #ffffff;
+        display: flex;
+        align-items: center;
+        position: relative;
+        align-self: stretch;
+        width: 100%;
+        flex: 0 0 auto;
+    }
+
+    .ver-perfil .icon-wrapper-2 {
+        flex: 1;
+        flex-grow: 1;
+        background-image: url(./img/image.svg);
+        background-size: 100% 100%;
+        position: relative;
+        align-self: stretch;
+    }
+
+    .ver-perfil .button-list {
+        align-items: center;
+        gap: 8px;
+        padding: 35px 0px;
+        align-self: stretch;
+        width: 100%;
+        flex: 0 0 auto;
+        background-color: #ffffff00;
+        display: flex;
+        position: relative;
+    }
+
+    .ver-perfil .button {
+        align-items: flex-end;
+        justify-content: center;
+        gap: 10px;
+        padding: 3px 0px;
+        flex: 1;
+        flex-grow: 1;
+        border-radius: 5px;
+        overflow: hidden;
+        background: linear-gradient(180deg, rgb(4, 141, 140) 0%, rgb(22, 193, 181) 100%);
+        display: flex;
+        position: relative;
+        all: unset;
+        box-sizing: border-box;
+    }
+
+    .ver-perfil .text-5 {
+        position: relative;
+        width: fit-content;
+        margin-top: -1px;
+        font-family: "Roboto-Regular", Helvetica;
+        font-weight: 400;
+        color: #ffffff;
+        font-size: 16px;
+        letter-spacing: 0;
+        line-height: 24px;
+        white-space: nowrap;
+    }
+
+    .ver-perfil .grid-installations {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 13px 10px;
+        padding: 0px 10px;
+        position: relative;
+        flex: 1;
+        flex-grow: 1;
+    }
+
+    .ver-perfil .card-2 {
+        width: 180px;
+        height: 130px;
+        align-items: flex-start;
+        padding: 5px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        overflow: hidden;
+        border: 0px none;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        border-color: var(--componentscardborder);
+    }
+
+    .ver-perfil .wrapper-3 {
+        display: flex;
+        align-items: flex-start;
+        align-self: stretch;
+        width: 100%;
+        margin-bottom: -5px;
+        border-radius: 20px;
+        position: relative;
+        flex: 0 0 auto;
+    }
+
+    .ver-perfil .card-body-2 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1px;
+        padding: 16px;
+        position: relative;
+        align-self: stretch;
+        width: 100%;
+        flex: 0 0 auto;
+        background-color: #ffffff00;
+    }
+
+    .ver-perfil .card-title {
+        align-items: center;
+        justify-content: center;
+        padding: 0px 0px 8px;
+        align-self: stretch;
+        width: 100%;
+        flex: 0 0 auto;
+        background-color: #ffffff00;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+
+    .ver-perfil .text-6 {
+        position: relative;
+        align-self: stretch;
+        margin-top: -1px;
+        font-family: "Roboto-Medium", Helvetica;
+        font-weight: 500;
+        color: #212529;
+        font-size: 40px;
+        letter-spacing: 0;
+        line-height: 60px;
+    }
+
+    .ver-perfil .min-width-change-2 {
+        display: inline-flex;
+        align-items: center;
+        gap: 400px;
+        position: relative;
+        flex: 0 0 auto;
+        margin-bottom: -1px;
+        margin-right: -262px;
+        overflow: hidden;
+    }
+
+    .ver-perfil .p {
+        position: relative;
+        width: 987px;
+        height: 44px;
+        font-family: "Helvetica Neue-Light", Helvetica;
+        font-weight: 300;
+        color: #000000;
+        font-size: 16px;
+        text-align: center;
+        letter-spacing: 0;
+        line-height: 24px;
+    }
+
+    .ver-perfil .header {
+        position: absolute;
+        width: 1320px;
+        height: 86px;
+        top: 0;
+        left: 0;
+        background-color: transparent;
+    }
+
+    .ver-perfil .navbar-default {
+        display: flex;
+        width: 1320px;
+        height: 86px;
+        align-items: center;
+        padding: 8px 20px;
+        position: relative;
+        background-color: #00a88f1a;
+    }
+
+    .ver-perfil .app-logo {
+        position: relative;
+        width: 64px;
+        height: 64px;
+        background-image: url(./img/app-logo.svg);
+        background-size: 100% 100%;
+    }
+
+    .ver-perfil .components-navbar {
+        display: flex;
+        align-items: center;
+        position: relative;
+        flex: 1;
+        flex-grow: 1;
+        background-color: #ffffff00;
+    }
+
+    .ver-perfil .avatar {
+        display: flex;
+        flex-direction: column;
+        width: 64px;
+        height: 64px;
+        align-items: flex-end;
+        position: relative;
+        background-color: var(--gray-500);
+        border-radius: 999px;
+    }
+
+    .ver-perfil .width-change-size-2 {
+        gap: 64px;
+        display: inline-flex;
+        align-items: center;
+        position: relative;
+        flex: 0 0 auto;
+        overflow: hidden;
+    }
+
+    .ver-perfil .icon-wrapper-h-3 {
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        position: relative;
+        align-self: stretch;
+        width: 100%;
+        flex: 0 0 auto;
+    }
+
+    .ver-perfil .height-change-size-2 {
+        gap: 64px;
+        display: inline-flex;
+        align-items: center;
+        position: relative;
+        flex: 0 0 auto;
+        margin-left: -16px;
+        overflow: hidden;
+        transform: rotate(-90deg);
+    }
+
+    .ver-perfil .icon-wrapper-3 {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        flex: 0 0 auto;
+        background-color: var(--hitbox);
+    }
+
+    .ver-perfil .width-change-size-3 {
+        gap: 32px;
+        display: inline-flex;
+        align-items: center;
+        position: relative;
+        flex: 0 0 auto;
+        overflow: hidden;
+    }
+
+    .ver-perfil .height-change-size-3 {
+        gap: 32px;
+        display: inline-flex;
+        align-items: center;
+        position: relative;
+        flex: 0 0 auto;
+        margin-left: -16px;
+        overflow: hidden;
+        transform: rotate(-90deg);
+    }
+
+    .ver-perfil .img {
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        top: 4px;
+        left: 4px;
+    }
