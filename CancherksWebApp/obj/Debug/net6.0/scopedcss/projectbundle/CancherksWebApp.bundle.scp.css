@@ -2,30 +2,21 @@
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
-.icon-Profile[b-19ljw90nb2]{
+.icon-Profile[b-19ljw90nb2] {
     width: 50px;
     height: 50px;
     clip-path: circle(50% at 50% 50%);
+    background-color: #ACB4BC;
 }
 
-button.accept-policy[b-19ljw90nb2] {
-  font-size: 1rem;
-  line-height: inherit;
+.navbar[b-19ljw90nb2] {
+    max-height: var(--navMaxHeight);
+    height: var(--navMaxHeight);
 }
-
-.footer[b-19ljw90nb2] {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    white-space: nowrap;
-    line-height: 60px;
-    color: #F1F1F1;
+.page[b-19ljw90nb2] {
+    height: calc(100% - var(--navMaxHeight) - var(--footerMaxHeigth));
+    overflow: hidden;
 }
-
-.content[b-19ljw90nb2]{
-
-}
-
 .site-bar[b-19ljw90nb2] {
     border-radius: 0px 10px 10px 0px;
     border-top-width: 2px;
@@ -34,8 +25,13 @@ button.accept-policy[b-19ljw90nb2] {
     border-right-style: solid;
     border-bottom-width: 2px;
     border-bottom-style: solid;
-    border-color: lightgray;
+    border-color: var(--greenMainTrans);
 }
+
+.content-page[b-19ljw90nb2] {
+    overflow-y: auto; /* Scrollable content */
+}
+
 
 .inline-nav-item[b-19ljw90nb2] {
     display: flex;
@@ -51,9 +47,6 @@ button.accept-policy[b-19ljw90nb2] {
     border-color: #00a88f;
 }
 
-
-
-
 .inline-nav-item-nd[b-19ljw90nb2] {
     display: flex;
     width: 234px;
@@ -63,4 +56,13 @@ button.accept-policy[b-19ljw90nb2] {
     position: relative;
     flex: 0 0 auto;
     background-color: #ffffff00;
+}
+
+.footer[b-19ljw90nb2] {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--greyFooter);
+    height:100%;
+    max-height: var(--footerMaxHeigth);
 }
