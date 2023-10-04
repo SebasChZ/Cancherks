@@ -8,24 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\user\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\picherks\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user\\Documents\\TEC\\Diseño\\Cancherks\\CancherksWebApp\\CancherksWebApp.csproj",
+      "projectUniqueName": "D:\\TEC\\VI SEMESTRE\\Diseño\\Proyecto Chancherks\\Cancherks\\CancherksWebApp\\CancherksWebApp.csproj",
       "projectName": "CancherksWebApp",
-      "projectPath": "C:\\Users\\user\\Documents\\TEC\\Diseño\\Cancherks\\CancherksWebApp\\CancherksWebApp.csproj",
-      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user\\Documents\\TEC\\Diseño\\Cancherks\\CancherksWebApp\\obj\\",
+      "projectPath": "D:\\TEC\\VI SEMESTRE\\Diseño\\Proyecto Chancherks\\Cancherks\\CancherksWebApp\\CancherksWebApp.csproj",
+      "packagesPath": "C:\\Users\\picherks\\.nuget\\packages\\",
+      "outputPath": "D:\\TEC\\VI SEMESTRE\\Diseño\\Proyecto Chancherks\\Cancherks\\CancherksWebApp\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\picherks\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
