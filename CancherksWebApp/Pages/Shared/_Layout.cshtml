@@ -12,7 +12,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-greenMainTrans">
+        <nav class="navbar navbar-expand-lg navbar-light bg-colorMainTrans">
             <div class="container-fluid align-middle">
                 <div class="align-middle">
                     <a class="navbar-brand" asp-area="" asp-page="/Index">
@@ -22,18 +22,22 @@
                     </a>
                 </div>
                
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">                    
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    @{
+                        var option1IsActive = Context.Request.Path.Value.Contains("/Option1");
+                        var option2IsActive = Context.Request.Path.Value.Contains("/Option2");
+                        var option3IsActive = Context.Request.Path.Value.Contains("/Option3");
+                    }
 
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" asp-area="" asp-page="/Option1">Option1</a> @*Modify the page Option 1 *@
+                            <a class="nav-link @(option1IsActive ? "active" : "")" asp-area="" asp-page="/Option1">Option1</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-page="/Option2">Option2</a> @*Modify the page Option 1 *@
+                            <a class="nav-link @(option2IsActive ? "active" : "")" asp-area="" asp-page="/Option2">Option2</a>
                         </li>
-                        
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-page="/Option3">Option3</a> @*Modify the page Option 1 *@
+                            <a class="nav-link @(option3IsActive ? "active" : "")" asp-area="" asp-page="/Option3">Option3</a>
                         </li>
                     </ul>
                 </div>
@@ -81,6 +85,7 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
+  
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

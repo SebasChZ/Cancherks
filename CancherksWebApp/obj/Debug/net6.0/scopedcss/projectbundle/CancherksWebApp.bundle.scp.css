@@ -25,7 +25,7 @@ for details on configuring this project to bundle and minify static web assets. 
     border-right-style: solid;
     border-bottom-width: 2px;
     border-bottom-style: solid;
-    border-color: var(--greenMainTrans);
+    border-color: var(--colorMainTrans);
 }
 
 .content-page[b-19ljw90nb2] {
@@ -44,7 +44,7 @@ for details on configuring this project to bundle and minify static web assets. 
     background-color: #e7f1ff;
     border-right-width: 3px;
     border-right-style: solid;
-    border-color: #00a88f;
+    border-color: var(--colorMain);
 }
 
 .inline-nav-item-nd[b-19ljw90nb2] {

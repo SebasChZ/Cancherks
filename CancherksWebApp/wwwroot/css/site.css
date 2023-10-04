@@ -1,18 +1,18 @@
 
 :root {
-    --greenMain: #00A38B;
-    --greenMainRGB: 0, 163, 139;
-    --greenMainTrans: rgba(0, 163, 139, 0.1);
+    --colorMain: #00A38B;
+    --colorMainRGB: 0, 163, 139;
+    --colorMainTrans: rgba(0, 163, 139, 0.1);
     --greyFooter: #F1F1F1;
     --whiteContranst: #F6F6F6;
     --greyFooterRGB: 241,241,241;
     --textGrey: #495057;
     --textGreyRGB: 73, 80, 87;
-    --textGreen: #00A88F;
-    --textGreenRGB: 0, 163, 143;
+    --textcolor: #00A88F;
+    --textcolorRGB: 0, 163, 143;
     --textBlack: 000000;
     --textBlackRGB: 0, 0, 0;
-    --gradientMainGreen: linear-gradient(to right, rgba(14,171,163,1) 0%, rgba(22, 193,181,1) 100%);
+    --gradientMaincolor: linear-gradient(to right, rgba(14,171,163,1) 0%, rgba(22, 193,181,1) 100%);
     --color3: #3CBCCB;
     --color4: #8795B0;
     --color5: #CAD8F2;
@@ -66,17 +66,17 @@ img {
 
 /* This secction is for color backgrounds*/
 
-.bg-greenMain {
+.bg-colorMain {
     --bs-bg-opacity: 1;
-    background-color: rgba(var(--greenMainRGB), var(--bs-bg-opacity));
+    background-color: rgba(var(--colorMainRGB), var(--bs-bg-opacity));
 }
 
 
 /* This secction is for color backgrounds with transparency*/
 
-.bg-greenMainTrans {
+.bg-colorMainTrans {
     --bs-bg-opacity: 0.1;
-    background-color: rgba(var(--greenMainRGB), var(--bs-bg-opacity));
+    background-color: rgba(var(--colorMainRGB), var(--bs-bg-opacity));
 }
 
 .bg-grayContrast{
@@ -94,7 +94,7 @@ img {
     background-color: rgba(var(--textGreyRGB), var(--bs-bg-opacity));
 }
 
-.txt-Green {
+.txt-color {
     --bs-bg-opacity: 1;
     background-color: rgba(var(--textGreyRGB), var(--bs-bg-opacity));
 }
