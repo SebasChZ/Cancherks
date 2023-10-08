@@ -7,7 +7,7 @@
     <h3 style="margin-bottom: 2rem;">Reportes</h3>
     <div class="d-flex align-items-center py-3">
        
-        <dropdown class="dropdown me-3">
+        <dropdown class="dropdown">
             
             <button class="btn btn-secondary dropdown-toggle custom-dropdown-button" type="button" id="dropdownInstallations" data-bs-toggle="dropdown" aria-expanded="false">
                 Instalaciones
@@ -19,6 +19,7 @@
             </ul>
         </dropdown>
 
+        <div style="display: flex; justify-content: center; flex-grow: 1;">
         <form class="row me-3">
             <div class="col-12">
                 <div class="input-group date" id="datepickerInicio-container">
@@ -33,7 +34,7 @@
             </div>
         </form>
 
-        <form class="row me-3">
+        <form class="row">
             <div class="col-12">
                 <div class="input-group date" id="datepickerFinal-container">
                     <input type="text" class="form-control" id="datepickerFinal-input" placeholder="Fecha Final" />
@@ -46,6 +47,7 @@
 
             </div>
         </form>
+        </div>
 
         <button type="button" class="btn btn-primary button-gradient">Generar</button>
 
