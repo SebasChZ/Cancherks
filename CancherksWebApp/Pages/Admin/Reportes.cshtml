@@ -49,7 +49,8 @@
         </form>
         </div>
 
-        <button type="button" class="btn btn-primary button-gradient">Generar</button>
+        <button type="button" class="btn btn-primary button-gradient" data-bs-toggle="modal" data-bs-target="#reporte">Generar</button>
+
 
     </div>
 
@@ -118,4 +119,19 @@
     </table>
 
 </section>
+
+<div class="modal" tabindex="-1" id="reporte">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Atención</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>El reporte se generó exitosamente.</p>
+            </div>
+            
+        </div>
+    </div>
+</div>
 
