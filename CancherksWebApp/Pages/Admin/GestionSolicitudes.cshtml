@@ -47,7 +47,25 @@
                 <td>12:00 pm</td>
                 <td>Correr</td>
                 <td>
-                    <i class="bi bi-check-circle-fill custom-success"></i>
+                    <i class="bi bi-check-circle-fill custom-success" style="cursor:pointer;"></i>
+
+                    <i class="bi bi-trash-fill custom-danger" style="cursor:pointer;"></i>
+                </td>
+
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="select1" value="1"></td>
+                <td>María Fernanda</td>
+                <td>Murillo</td>
+                <td>Mena</td>
+                <td>2021077803</td>
+                <td>fermurillo04@estudiantec.cr</td>
+                <td>10/04/2023</td>
+                <td>10:00 am</td>
+                <td>12:00 pm</td>
+                <td>Correr</td>
+                <td>
+                    <i class=" bi bi-check-circle-fill custom-success"></i>
                     <i class="bi bi-trash-fill custom-danger"></i>
                 </td>
 
@@ -64,24 +82,7 @@
                 <td>12:00 pm</td>
                 <td>Correr</td>
                 <td>
-                    <i class="bi bi-check-circle-fill custom-success"></i>
-                    <i class="bi bi-trash-fill custom-danger"></i>
-                </td>
-
-            </tr>
-            <tr>
-                <td><input type="checkbox" name="select1" value="1"></td>
-                <td>María Fernanda</td>
-                <td>Murillo</td>
-                <td>Mena</td>
-                <td>2021077803</td>
-                <td>fermurillo04@estudiantec.cr</td>
-                <td>10/04/2023</td>
-                <td>10:00 am</td>
-                <td>12:00 pm</td>
-                <td>Correr</td>
-                <td>
-                    <i class="bi bi-check-circle-fill custom-success"></i>
+                    <i class=" bi bi-check-circle-fill custom-success"></i>
                     <i class="bi bi-trash-fill custom-danger"></i>
                 </td>
 
@@ -89,5 +90,164 @@
 
         </tbody>
     </table>
+
+
     
 </section>
+
+<div class="modal" tabindex="-1" id="aceptar">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">ATENCIÓN!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>¿Confirma que desea aprobar esta solicitud?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary button-color" data-bs-dismiss="modal" id="btnAceptar">Aceptar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" tabindex="-1" id="notificar">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">ATENCIÓN!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Se ha notificado al estudiante.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal" tabindex="-1" id="rechazar">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">ATENCIÓN!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>¿Confirma que desea rechazar esta solicitud?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary button-color" data-bs-dismiss="modal" id="btnRechazarAceptar">Aceptar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" tabindex="-1" id="justificar">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">ATENCIÓN!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Ingrese el mensaje de justificación.</p>
+                <input type="text" class="form-control" id="justificacionInput" placeholder="Escriba la justificación">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary button-color" data-bs-dismiss="modal" id="btnEnviar">Enviar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Alert before acepting request -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var successIcons = document.querySelectorAll('.custom-success');
+
+        successIcons.forEach(function (icon) {
+            icon.addEventListener('click', function () {
+                var aceptarModal = new bootstrap.Modal(document.getElementById('aceptar'));
+                aceptarModal.show();
+            });
+        });
+    });
+</script>
+
+<!-- Alert before rejecting  request -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var successIcons = document.querySelectorAll('.custom-danger');
+
+        successIcons.forEach(function (icon) {
+            icon.addEventListener('click', function () {
+                var aceptarModal = new bootstrap.Modal(document.getElementById('rechazar'));
+                aceptarModal.show();
+            });
+        });
+    });
+</script>
+
+<!-- Notify after acepting the request -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var btnAceptar = document.getElementById('btnAceptar');
+       
+        btnAceptar.addEventListener('click', function () {
+            
+            var aceptarModal = new bootstrap.Modal(document.getElementById('aceptar'));
+            
+            aceptarModal.hide();
+            setTimeout(function () {
+                var notificarModal = new bootstrap.Modal(document.getElementById('notificar'));
+                notificarModal.show();
+            }, 200); 
+        });
+    });
+</script>
+
+<!-- Justify after rejecting the request -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var btnRechazarAceptar = document.getElementById('btnRechazarAceptar');
+
+        btnRechazarAceptar.addEventListener('click', function () {
+           
+            var rechazarModal = new bootstrap.Modal(document.getElementById('rechazar'));
+            
+            rechazarModal.hide();
+
+            setTimeout(function () {
+                var justificarModal = new bootstrap.Modal(document.getElementById('justificar'));
+                justificarModal.show();
+            }, 200); 
+        });
+    });
+</script>
+
+<!-- Notify after sending justification message -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var btnEnviar = document.getElementById('btnEnviar');
+
+        btnEnviar.addEventListener('click', function () {
+            
+            var justificarModal = new bootstrap.Modal(document.getElementById('justificar'));
+          
+            justificarModal.hide();
+
+            setTimeout(function () {
+                var notificarModal = new bootstrap.Modal(document.getElementById('notificar'));
+                notificarModal.show();
+            }, 200); 
+        });
+    });
+</script>
+
+
+

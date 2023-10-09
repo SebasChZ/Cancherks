@@ -203,20 +203,25 @@ img {
 
 /* Modal button format */
 
-#reporte .modal-footer .button-color {
+#aceptar .modal-footer .button-color {
     background-color: var(--colorMain) !important;
-   
+}
+
+#rechazar .modal-footer .button-color {
+    background-color: var(--colorMain) !important;
+}
+#justificar .modal-footer .button-color {
+    background-color: var(--colorMain) !important;
 }
 
 /* tables icons format */
 
-/* En tu hoja de estilos CSS */
 .custom-success {
-    color: #0F5132; /* Color de éxito personalizado */
+    color: #0F5132; 
 }
 
 .custom-danger {
-    color: #DC3545; /* Color de peligro personalizado */
+    color: #DC3545; 
 }
 
 
