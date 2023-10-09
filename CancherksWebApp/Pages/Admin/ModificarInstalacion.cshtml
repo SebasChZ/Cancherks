@@ -1,0 +1,298 @@
+﻿@page
+@model CancherksWebApp.Pages.Admin.ModificarInstalacionModel
+@{
+}
+
+<section class="container px-5 py-3">
+    <h3 style="margin-bottom: 2rem;">Modificar Instalación</h3>
+
+    <div class="row">
+        <div class="col-md-6">
+            <formulario>
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="inputName" placeholder="Ingrese el nombre.">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Ubicación</label>
+                        <input type="text" class="form-control" id="inputlocation" placeholder="Ingrese la ubicación.">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Cantidad Máxima Personas</label>
+                        <input type="text" class="form-control" id="inputCantPeople" placeholder="Ingrese la cantidad máxima permitida en la instalación.">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Tiempo máximo por reservación</label>
+                        <input type="text" class="form-control" id="inputTimeSplitReservation" placeholder="Ingrese el tiempo máximo por reservación permitido.">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Descripción</label>
+                        <textarea class="form-control" id="inputDescription" placeholder="Ingrese la descripción." style="height: 100px;"></textarea>
+
+                    </div>
+
+                    <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+                    <label class="form-label">Foto</label>
+                    <div class="file-upload mb-3">
+
+                        <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Agregue una imagen</button>
+
+                        <div class="image-upload-wrap">
+                            <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
+                            <div class="drag-text">
+                                <h3>Presione click o arraste la imagen que desea subir.</h3>
+                            </div>
+                        </div>
+                        <div class="file-upload-content">
+                            <img class="file-upload-image" src="#" alt="your image" />
+                            <div class="image-title-wrap">
+                                <button type="button" onclick="removeUpload()" class="remove-image">Remover <span class="image-title">Uploaded Image</span></button>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary button-gradient full-width">Submit</button>
+
+                </form>
+
+            </formulario>
+        </div>
+        <div class="col-md-6">
+            <label class="mb-3">Disponibilidad</label>
+            <accordion class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Lunes
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <label class="form-check-label label-bold"> Inicio</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="WeeklyStart" value="option1">
+                                <label class="form-check-label" for="inlineCheckbox1">7:00 am </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="WeekendsStart" value="option2">
+                                <label class="form-check-label" for="inlineCheckbox2">8:00 am</label>
+                            </div>
+                            <label class="form-check-label label-bold"> Final</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="WeeklyStart" value="option1">
+                                <label class="form-check-label" for="inlineCheckbox1">11:00 pm </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="WeekendsStart" value="option2">
+                                <label class="form-check-label" for="inlineCheckbox2">3:00 pm</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Martes
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <label class="form-check-label label-bold"> Inicio</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="WeeklyStart" value="option1">
+                                <label class="form-check-label" for="inlineCheckbox1">7:00 am </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="WeekendsStart" value="option2">
+                                <label class="form-check-label" for="inlineCheckbox2">8:00 am</label>
+                            </div>
+                            <label class="form-check-label label-bold"> Final</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="WeeklyStart" value="option1">
+                                <label class="form-check-label" for="inlineCheckbox1">11:00 pm </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="WeekendsStart" value="option2">
+                                <label class="form-check-label" for="inlineCheckbox2">3:00 pm</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Miércoles
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <label class="form-check-label label-bold"> Inicio</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="WeeklyStart" value="option1">
+                                <label class="form-check-label" for="inlineCheckbox1">7:00 am </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="WeekendsStart" value="option2">
+                                <label class="form-check-label" for="inlineCheckbox2">8:00 am</label>
+                            </div>
+                            <label class="form-check-label label-bold"> Final</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="WeeklyStart" value="option1">
+                                <label class="form-check-label" for="inlineCheckbox1">11:00 pm </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="WeekendsStart" value="option2">
+                                <label class="form-check-label" for="inlineCheckbox2">3:00 pm</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
+                            Jueves
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <label class="form-check-label label-bold"> Inicio</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="WeeklyStart" value="option1">
+                                <label class="form-check-label" for="inlineCheckbox1">7:00 am </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="WeekendsStart" value="option2">
+                                <label class="form-check-label" for="inlineCheckbox2">8:00 am</label>
+                            </div>
+                            <label class="form-check-label label-bold"> Final</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="WeeklyStart" value="option1">
+                                <label class="form-check-label" for="inlineCheckbox1">11:00 pm </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="WeekendsStart" value="option2">
+                                <label class="form-check-label" for="inlineCheckbox2">3:00 pm</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsefive" aria-expanded="false" aria-controls="collapseThree">
+                            Viernes
+                        </button>
+                    </h2>
+                    <div id="collapsefive" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <label class="form-check-label label-bold"> Inicio</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="WeeklyStart" value="option1">
+                                <label class="form-check-label" for="inlineCheckbox1">7:00 am </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="WeekendsStart" value="option2">
+                                <label class="form-check-label" for="inlineCheckbox2">8:00 am</label>
+                            </div>
+                            <label class="form-check-label label-bold"> Final</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="WeeklyStart" value="option1">
+                                <label class="form-check-label" for="inlineCheckbox1">11:00 pm </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="WeekendsStart" value="option2">
+                                <label class="form-check-label" for="inlineCheckbox2">3:00 pm</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseThree">
+                            Sábado
+                        </button>
+                    </h2>
+                    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <label class="form-check-label label-bold"> Inicio</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="WeeklyStart" value="option1">
+                                <label class="form-check-label" for="inlineCheckbox1">7:00 am </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="WeekendsStart" value="option2">
+                                <label class="form-check-label" for="inlineCheckbox2">8:00 am</label>
+                            </div>
+                            <label class="form-check-label label-bold"> Final</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="WeeklyStart" value="option1">
+                                <label class="form-check-label" for="inlineCheckbox1">11:00 pm </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="WeekendsStart" value="option2">
+                                <label class="form-check-label" for="inlineCheckbox2">3:00 pm</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseThree">
+                            Domingo
+                        </button>
+                    </h2>
+                    <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <label class="form-check-label label-bold"> Inicio</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="WeeklyStart" value="option1">
+                                <label class="form-check-label" for="inlineCheckbox1">7:00 am </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="WeekendsStart" value="option2">
+                                <label class="form-check-label" for="inlineCheckbox2">8:00 am</label>
+                            </div>
+                            <label class="form-check-label label-bold"> Final</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="WeeklyStart" value="option1">
+                                <label class="form-check-label" for="inlineCheckbox1">11:00 pm </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="WeekendsStart" value="option2">
+                                <label class="form-check-label" for="inlineCheckbox2">3:00 pm</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </accordion>
+        </div>
+    </div>
+
+</section>
+
+<modalAdd class="modal" tabindex="-1" id="addInstallation">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">ATENCIÓN!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Se agregó la instalación correctamente.</p>
+            </div>
+
+        </div>
+    </div>
+</modalAdd>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var form = document.querySelector('form');
+        var addInstallationModal = new bootstrap.Modal(document.getElementById('addInstallation'));
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            // Aquí puedes agregar código para enviar tus datos de formulario por AJAX, si lo necesitas.
+            addInstallationModal.show();
+        });
+    });
+</script>
