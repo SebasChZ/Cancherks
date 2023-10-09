@@ -29,7 +29,16 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Actividades</label>
-                        <button type="button" id="btnActivity" class="btn btn-primary button-gradient full-width">Agregar actividades</button>
+                        <div class="checkbox-container full-width">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                <label class="form-check-label" for="inlineCheckbox1">Fútbol</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                <label class="form-check-label" for="inlineCheckbox2">Correr</label>
+                            </div>
+                        </div>
                     </div>
 
                     <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
@@ -52,7 +61,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary button-gradient full-width">Agregar</button>
+                    <button type="submit" class="btn btn-primary button-gradient full-width">Modificar Instalacion</button>
 
                 </form>
 
@@ -270,7 +279,7 @@
 
 </section>
 
-<modalAdd class="modal" tabindex="-1" id="addInstallation">
+<modalModify class="modal" tabindex="-1" id="modifyInstallation">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -278,58 +287,21 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>Se agregó la instalación correctamente.</p>
+                <p>Se modificó la instalación correctamente.</p>
             </div>
 
         </div>
     </div>
-</modalAdd>
-
-<modalActivity class="modal" tabindex="-1" id="modalActivity">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">ATENCIÓN!</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>Seleccione los deportes.</p>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                    <label class="form-check-label" for="inlineCheckbox1">Fútbol</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                    <label class="form-check-label" for="inlineCheckbox2">Correr</label>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary button-gradient" data-bs-dismiss="modal">Aceptar</button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-            </div>
-        </div>
-    </div>
-</modalActivity>
+</modalModify>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         var form = document.querySelector('form');
-        var addInstallationModal = new bootstrap.Modal(document.getElementById('addInstallation'));
+        var addInstallationModal = new bootstrap.Modal(document.getElementById('modifyInstallation'));
 
         form.addEventListener('submit', function (event) {
             event.preventDefault();
             addInstallationModal.show();
-        });
-    });
-</script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var btnActivity = document.getElementById('btnActivity');
-        var modalActivity = new bootstrap.Modal(document.getElementById('modalActivity'));
-
-        btnActivity.addEventListener('click', function () {
-            modalActivity.show();
         });
     });
 </script>

@@ -345,16 +345,18 @@ img {
 }
 
 .form-label {
-    display: block; /* Hace que el label se muestre como un bloque, ocupando toda la anchura */
-    margin-bottom: 5px; /* Añade un pequeño margen debajo del label para separarlo de los checkboxes */
+    display: block; 
+    margin-bottom: 5px; 
 }
 
+/* activity checkbox width */
+
 .checkbox-container {
-    background-color: white; /* Fondo blanco */
-    padding: 10px; /* Espacio interno */
-    border: 1px solid #ddd; /* Borde del contenedor (opcional) */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra alrededor del contenedor (opcional) */
-    border-radius: 5px; /* Bordes redondeados del contenedor (opcional) */
-    display: inline-block; /* Hace que el contenedor se ajuste al tamaño del contenido */
+    background-color: white; 
+    padding: 10px; 
+    border: 1px solid #ddd; 
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px; 
+    display: inline-block; 
 }
 
