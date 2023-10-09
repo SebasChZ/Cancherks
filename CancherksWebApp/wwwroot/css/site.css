@@ -145,4 +145,85 @@ img {
 }
 
 
+/* Datepicker inicio format */
+
+.ui-datepickerInicio {
+    border: 1px solid var(--colorMain); 
+}
+
+#datepickerInicio-icon .input-group-text {
+    color: var(--colorMain); 
+    border-color: var(--colorMain); 
+}
+
+#datepickerInicio-input {
+    border: 1px solid var(--colorMain);
+    background-color: transparent;
+}
+
+#datepickerInicio-input::placeholder {
+        color: var(--colorMain); 
+}
+
+#datepickerInicio-input {
+    color: var(--colorMain); 
+}
+
+/* Datepicker final format */
+
+.ui-datepickerFinal {
+    border: 1px solid var(--colorMain);
+}
+
+#datepickerFinal-icon .input-group-text {
+    color: var(--colorMain);
+    border-color: var(--colorMain);
+}
+
+#datepickerFinal-input {
+    border: 1px solid var(--colorMain);
+    background-color: transparent;
+}
+
+#datepickerFinal-input::placeholder {
+    color: var(--colorMain);
+}
+
+#datepickerFinal-input {
+    color: var(--colorMain);
+}
+
+/* Button final format */
+
+.button-gradient {
+    background: var(--gradientMaincolor);
+    border: none; 
+    color: white; 
+}
+
+/* Modal button format */
+
+#aceptar .modal-footer .button-color {
+    background-color: var(--colorMain) !important;
+}
+
+#rechazar .modal-footer .button-color {
+    background-color: var(--colorMain) !important;
+}
+#justificar .modal-footer .button-color {
+    background-color: var(--colorMain) !important;
+}
+
+/* tables icons format */
+
+.custom-success {
+    color: #0F5132; 
+}
+
+.custom-danger {
+    color: #DC3545; 
+}
+
+
+
 
