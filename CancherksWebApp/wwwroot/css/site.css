@@ -201,10 +201,11 @@ img {
     color: white; 
 }
 
-/* Estilo para el checkbox personalizado */
+/* Modal button format */
+
 #reporte .modal-footer .button-color {
     background-color: var(--colorMain) !important;
-    /* Otros estilos si es necesario */
+   
 }
 
 
