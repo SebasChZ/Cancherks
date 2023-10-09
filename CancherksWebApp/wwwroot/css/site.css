@@ -208,6 +208,17 @@ img {
    
 }
 
+/* tables icons format */
+
+/* En tu hoja de estilos CSS */
+.custom-success {
+    color: #0F5132; /* Color de éxito personalizado */
+}
+
+.custom-danger {
+    color: #DC3545; /* Color de peligro personalizado */
+}
+
 
 
 
