@@ -51,14 +51,15 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary button-gradient">Submit</button>
+                    <button type="submit" class="btn btn-primary button-gradient full-width">Submit</button>
+
                 </form>
 
             </formulario>
         </div>
         <div class="col-md-6">
             <label class="mb-3">Disponibilidad</label>
-            <div class="accordion" id="accordionExample">
+            <accordion class="accordion" id="accordionExample">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingOne">
                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -262,12 +263,39 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </accordion>
         </div>
     </div>
 
 </section>
 
+<modalAdd class="modal" tabindex="-1" id="addInstallation">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">ATENCIÓN!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Se agregó la instalación correctamente.</p>
+            </div>
+
+        </div>
+    </div>
+</modalAdd>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var form = document.querySelector('form');
+        var addInstallationModal = new bootstrap.Modal(document.getElementById('addInstallation'));
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            // Aquí puedes agregar código para enviar tus datos de formulario por AJAX, si lo necesitas.
+            addInstallationModal.show();
+        });
+    });
+</script>
 
 
 

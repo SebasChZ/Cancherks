@@ -203,14 +203,14 @@ img {
 
 /* Modal button format */
 
-#aceptar .modal-footer .button-color {
+#acept .modal-footer .button-color {
     background-color: var(--colorMain) !important;
 }
 
-#rechazar .modal-footer .button-color {
+#reject .modal-footer .button-color {
     background-color: var(--colorMain) !important;
 }
-#justificar .modal-footer .button-color {
+#justify .modal-footer .button-color {
     background-color: var(--colorMain) !important;
 }
 
@@ -331,8 +331,15 @@ img {
         transition: all .2s ease;
 }
 
+/* Accordion body */
+
 .label-bold {
     font-weight: bold;
 }
 
+/* button width */
 
+.full-width {
+    width: 100%;
+    display: block; 
+}

@@ -95,7 +95,7 @@
     
 </section>
 
-<modalAceptar class="modal" tabindex="-1" id="aceptar">
+<modalAcept class="modal" tabindex="-1" id="acept">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -111,9 +111,9 @@
             </div>
         </div>
     </div>
-</modalAceptar>
+</modalAcept>
 
-<modalNotificar class="modal" tabindex="-1" id="notificar">
+<modalNotify class="modal" tabindex="-1" id="notify">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -125,10 +125,10 @@
             </div>
         </div>
     </div>
-</modalNotificar>
+</modalNotify>
 
 
-<modalRechazar class="modal" tabindex="-1" id="rechazar">
+<modalReject class="modal" tabindex="-1" id="reject">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -144,9 +144,9 @@
             </div>
         </div>
     </div>
-</modalRechazar>
+</modalReject>
 
-<modalJustificar class="modal" tabindex="-1" id="justificar">
+<modalJustify class="modal" tabindex="-1" id="justify">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -162,7 +162,7 @@
             </div>
         </div>
     </div>
-</modalJustificar>
+</modalJustify>
 
 
 <!-- Alert before acepting request -->
@@ -172,7 +172,7 @@
 
         successIcons.forEach(function (icon) {
             icon.addEventListener('click', function () {
-                var aceptarModal = new bootstrap.Modal(document.getElementById('aceptar'));
+                var aceptarModal = new bootstrap.Modal(document.getElementById('acept'));
                 aceptarModal.show();
             });
         });
@@ -186,7 +186,7 @@
 
         successIcons.forEach(function (icon) {
             icon.addEventListener('click', function () {
-                var aceptarModal = new bootstrap.Modal(document.getElementById('rechazar'));
+                var aceptarModal = new bootstrap.Modal(document.getElementById('reject'));
                 aceptarModal.show();
             });
         });
@@ -200,11 +200,11 @@
        
         btnAceptar.addEventListener('click', function () {
             
-            var aceptarModal = new bootstrap.Modal(document.getElementById('aceptar'));
+            var aceptarModal = new bootstrap.Modal(document.getElementById('acept'));
             
             aceptarModal.hide();
             setTimeout(function () {
-                var notificarModal = new bootstrap.Modal(document.getElementById('notificar'));
+                var notificarModal = new bootstrap.Modal(document.getElementById('notify'));
                 notificarModal.show();
             }, 200); 
         });
@@ -218,12 +218,12 @@
 
         btnRechazarAceptar.addEventListener('click', function () {
            
-            var rechazarModal = new bootstrap.Modal(document.getElementById('rechazar'));
+            var rechazarModal = new bootstrap.Modal(document.getElementById('reject'));
             
             rechazarModal.hide();
 
             setTimeout(function () {
-                var justificarModal = new bootstrap.Modal(document.getElementById('justificar'));
+                var justificarModal = new bootstrap.Modal(document.getElementById('justify'));
                 justificarModal.show();
             }, 200); 
         });
@@ -237,12 +237,12 @@
 
         btnEnviar.addEventListener('click', function () {
             
-            var justificarModal = new bootstrap.Modal(document.getElementById('justificar'));
+            var justificarModal = new bootstrap.Modal(document.getElementById('justify'));
           
             justificarModal.hide();
 
             setTimeout(function () {
-                var notificarModal = new bootstrap.Modal(document.getElementById('notificar'));
+                var notificarModal = new bootstrap.Modal(document.getElementById('notify'));
                 notificarModal.show();
             }, 200); 
         });
