@@ -92,3 +92,35 @@ C:\Users\user\Documents\TEC\Diseño\Cancherks\CancherksWebApp\obj\Debug\net6.0\r
 C:\Users\user\Documents\TEC\Diseño\Cancherks\CancherksWebApp\obj\Debug\net6.0\CancherksWebApp.pdb
 C:\Users\user\Documents\TEC\Diseño\Cancherks\CancherksWebApp\obj\Debug\net6.0\CancherksWebApp.genruntimeconfig.cache
 C:\Users\user\Documents\TEC\Diseño\Cancherks\CancherksWebApp\obj\Debug\net6.0\ref\CancherksWebApp.dll
+C:\Users\Fernanda Murillo\Downloads\Cancherks\CancherksWebApp\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\Fernanda Murillo\Downloads\Cancherks\CancherksWebApp\bin\Debug\net6.0\appsettings.json
+C:\Users\Fernanda Murillo\Downloads\Cancherks\CancherksWebApp\bin\Debug\net6.0\libman.json
+C:\Users\Fernanda Murillo\Downloads\Cancherks\CancherksWebApp\bin\Debug\net6.0\CancherksWebApp.staticwebassets.runtime.json
+C:\Users\Fernanda Murillo\Downloads\Cancherks\CancherksWebApp\bin\Debug\net6.0\CancherksWebApp.exe
+C:\Users\Fernanda Murillo\Downloads\Cancherks\CancherksWebApp\bin\Debug\net6.0\CancherksWebApp.deps.json
+C:\Users\Fernanda Murillo\Downloads\Cancherks\CancherksWebApp\bin\Debug\net6.0\CancherksWebApp.runtimeconfig.json
+C:\Users\Fernanda Murillo\Downloads\Cancherks\CancherksWebApp\bin\Debug\net6.0\CancherksWebApp.dll
+C:\Users\Fernanda Murillo\Downloads\Cancherks\CancherksWebApp\bin\Debug\net6.0\CancherksWebApp.pdb
+C:\Users\Fernanda Murillo\Downloads\Cancherks\CancherksWebApp\obj\Debug\net6.0\CancherksWebApp.csproj.AssemblyReference.cache
+C:\Users\Fernanda Murillo\Downloads\Cancherks\CancherksWebApp\obj\Debug\net6.0\CancherksWebApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Fernanda Murillo\Downloads\Cancherks\CancherksWebApp\obj\Debug\net6.0\CancherksWebApp.AssemblyInfoInputs.cache
+C:\Users\Fernanda Murillo\Downloads\Cancherks\CancherksWebApp\obj\Debug\net6.0\CancherksWebApp.AssemblyInfo.cs
+C:\Users\Fernanda Murillo\Downloads\Cancherks\CancherksWebApp\obj\Debug\net6.0\CancherksWebApp.csproj.CoreCompileInputs.cache
+C:\Users\Fernanda Murillo\Downloads\Cancherks\CancherksWebApp\obj\Debug\net6.0\CancherksWebApp.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Fernanda Murillo\Downloads\Cancherks\CancherksWebApp\obj\Debug\net6.0\CancherksWebApp.RazorAssemblyInfo.cache
+C:\Users\Fernanda Murillo\Downloads\Cancherks\CancherksWebApp\obj\Debug\net6.0\CancherksWebApp.RazorAssemblyInfo.cs
+C:\Users\Fernanda Murillo\Downloads\Cancherks\CancherksWebApp\obj\Debug\net6.0\staticwebassets\msbuild.CancherksWebApp.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\Fernanda Murillo\Downloads\Cancherks\CancherksWebApp\obj\Debug\net6.0\staticwebassets\msbuild.build.CancherksWebApp.props
+C:\Users\Fernanda Murillo\Downloads\Cancherks\CancherksWebApp\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.CancherksWebApp.props
+C:\Users\Fernanda Murillo\Downloads\Cancherks\CancherksWebApp\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.CancherksWebApp.props
+C:\Users\Fernanda Murillo\Downloads\Cancherks\CancherksWebApp\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Users\Fernanda Murillo\Downloads\Cancherks\CancherksWebApp\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\Fernanda Murillo\Downloads\Cancherks\CancherksWebApp\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\Fernanda Murillo\Downloads\Cancherks\CancherksWebApp\obj\Debug\net6.0\scopedcss\Pages\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\Fernanda Murillo\Downloads\Cancherks\CancherksWebApp\obj\Debug\net6.0\scopedcss\bundle\CancherksWebApp.styles.css
+C:\Users\Fernanda Murillo\Downloads\Cancherks\CancherksWebApp\obj\Debug\net6.0\scopedcss\projectbundle\CancherksWebApp.bundle.scp.css
+C:\Users\Fernanda Murillo\Downloads\Cancherks\CancherksWebApp\obj\Debug\net6.0\CancherksWebApp.dll
+C:\Users\Fernanda Murillo\Downloads\Cancherks\CancherksWebApp\obj\Debug\net6.0\refint\CancherksWebApp.dll
+C:\Users\Fernanda Murillo\Downloads\Cancherks\CancherksWebApp\obj\Debug\net6.0\CancherksWebApp.pdb
+C:\Users\Fernanda Murillo\Downloads\Cancherks\CancherksWebApp\obj\Debug\net6.0\CancherksWebApp.genruntimeconfig.cache
+C:\Users\Fernanda Murillo\Downloads\Cancherks\CancherksWebApp\obj\Debug\net6.0\ref\CancherksWebApp.dll

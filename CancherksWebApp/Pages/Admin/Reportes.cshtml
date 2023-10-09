@@ -5,7 +5,7 @@
 
 <section class="container px-5 py-3">
     <h3 style="margin-bottom: 2rem;">Reportes</h3>
-    <div class="d-flex align-items-center py-3">
+    <filters class="d-flex align-items-center py-3">
        
         <dropdown class="dropdown">
             
@@ -19,40 +19,40 @@
             </ul>
         </dropdown>
 
-        <div style="display: flex; justify-content: center; flex-grow: 1;">
+        <datepickers style="display: flex; justify-content: center; flex-grow: 1;">
         <form class="row me-3">
             <div class="col-12">
-                <div class="input-group date" id="datepickerInicio-container">
+                <inputDate class="input-group date" id="datepickerInicio-container">
                     <input type="text" class="form-control" id="datepickerInicio-input" placeholder="Fecha Inicio" />
                     <span class="input-group-append" id="datepickerInicio-icon">
                         <span class="input-group-text bg-light d-block">
                             <i class="bi bi-calendar-check"></i>
                         </span>
                     </span>
-                </div>
+                </inputDate>
 
             </div>
         </form>
 
         <form class="row">
             <div class="col-12">
-                <div class="input-group date" id="datepickerFinal-container">
+                <inputDate class="input-group date" id="datepickerFinal-container">
                     <input type="text" class="form-control" id="datepickerFinal-input" placeholder="Fecha Final" />
                     <span class="input-group-append" id="datepickerFinal-icon">
                         <span class="input-group-text bg-light d-block">
                             <i class="bi bi-calendar-check"></i>
                         </span>
                     </span>
-                </div>
+                </inputDate>
 
             </div>
         </form>
-        </div>
+        </datepickers>
 
-        <button type="button" class="btn btn-primary button-gradient" data-bs-toggle="modal" data-bs-target="#reporte">Generar</button>
+        <button type="button" class="btn btn-primary button-gradient" data-bs-toggle="modal" data-bs-target="#report">Generar</button>
 
 
-    </div>
+    </filters>
 
 
     <table class="table" style="margin-top: 1rem;">
@@ -120,7 +120,7 @@
 
 </section>
 
-<div class="modal" tabindex="-1" id="reporte">
+<modalReport class="modal" tabindex="-1" id="report">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -133,5 +133,5 @@
             
         </div>
     </div>
-</div>
+</modalReport>
 
