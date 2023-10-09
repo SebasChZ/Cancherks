@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Universidad\\6 - Sexto Semestre\\Diseño de Software\\Proyecto\\Cancherks\\CancherksWebApp\\CancherksWebApp.csproj": {}
+    "C:\\Users\\Fernanda Murillo\\Downloads\\Cancherks\\CancherksWebApp\\CancherksWebApp.csproj": {}
   },
   "projects": {
-    "D:\\Universidad\\6 - Sexto Semestre\\Diseño de Software\\Proyecto\\Cancherks\\CancherksWebApp\\CancherksWebApp.csproj": {
+    "C:\\Users\\Fernanda Murillo\\Downloads\\Cancherks\\CancherksWebApp\\CancherksWebApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Universidad\\6 - Sexto Semestre\\Diseño de Software\\Proyecto\\Cancherks\\CancherksWebApp\\CancherksWebApp.csproj",
+        "projectUniqueName": "C:\\Users\\Fernanda Murillo\\Downloads\\Cancherks\\CancherksWebApp\\CancherksWebApp.csproj",
         "projectName": "CancherksWebApp",
-        "projectPath": "D:\\Universidad\\6 - Sexto Semestre\\Diseño de Software\\Proyecto\\Cancherks\\CancherksWebApp\\CancherksWebApp.csproj",
+        "projectPath": "C:\\Users\\Fernanda Murillo\\Downloads\\Cancherks\\CancherksWebApp\\CancherksWebApp.csproj",
         "packagesPath": "C:\\Users\\Fernanda Murillo\\.nuget\\packages\\",
-        "outputPath": "D:\\Universidad\\6 - Sexto Semestre\\Diseño de Software\\Proyecto\\Cancherks\\CancherksWebApp\\obj\\",
+        "outputPath": "C:\\Users\\Fernanda Murillo\\Downloads\\Cancherks\\CancherksWebApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Fernanda Murillo\\AppData\\Roaming\\NuGet\\NuGet.Config",

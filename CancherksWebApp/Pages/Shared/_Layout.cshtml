@@ -34,7 +34,7 @@
                         var option3IsActive = Context.Request.Path.Value.Contains("/Option3");
                         var requestManagementIsActive = Context.Request.Path.Value.Contains("/Admin/GestionSolicitudes");
                         var reportManagementIsActive = Context.Request.Path.Value.Contains("/Admin/Reportes");
-
+                        var addInstallationManagementIsActive = Context.Request.Path.Value.Contains("/Admin/AgregarInstalacion");
 
                     }
 
@@ -53,6 +53,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link @(reportManagementIsActive ? "active" : "")" asp-area="" asp-page="/Admin/Reportes">Reportes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(addInstallationManagementIsActive ? "active" : "")" asp-area="" asp-page="/Admin/AgregarInstalacion">Agregar Instalacion</a>
                         </li>
                     </ul>
                 </div>
