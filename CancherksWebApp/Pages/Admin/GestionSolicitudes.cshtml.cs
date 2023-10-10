@@ -15,10 +15,13 @@ namespace CancherksWebApp.Pages.Admin
         }
 
         public List<Installation> Installations { get; set; }
+        public List<Request> Requests { get; set; } // Añade esta línea
+
 
         public void OnGet()
         {
             Installations = _context.Installation.ToList();
+            Requests = _context.Request.Where(r => r.IdState == 1).ToList(); // Filtrar por idState == 1
         }
     }
 }

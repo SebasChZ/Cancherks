@@ -10,5 +10,6 @@ namespace CancherksWebApp.Data
 
         }
         public DbSet<Installation> Installation { get; set; }
+        public DbSet<Request> Request { get; set; }
     }
 }
