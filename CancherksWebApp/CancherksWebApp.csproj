@@ -6,4 +6,17 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="NewFolder\**" />
+    <Content Remove="NewFolder\**" />
+    <EmbeddedResource Remove="NewFolder\**" />
+    <None Remove="NewFolder\**" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <None Include="wwwroot\img\sintetica.jpg" />
+    <None Include="wwwroot\img\sintetica2.jpg" />
+  </ItemGroup>
+
 </Project>

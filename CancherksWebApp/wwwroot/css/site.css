@@ -3,6 +3,7 @@
     --colorMain: #00A38B;
     --colorMainRGB: 0, 163, 139;
     --colorMainTrans: rgba(0, 163, 139, 0.1);
+    --colorDisable: #ACB4BC;
     --greyFooter: #F1F1F1;
     --whiteContranst: #F6F6F6;
     --greyFooterRGB: 241,241,241;
@@ -12,22 +13,13 @@
     --textcolorRGB: 0, 163, 143;
     --textBlack: 000000;
     --textBlackRGB: 0, 0, 0;
-    --gradientMaincolor: linear-gradient(to right, rgba(14,171,163,1) 0%, rgba(22, 193,181,1) 100%);
+    --gradientMaincolor: linear-gradient(to right, #00A38B, #16c1b5);
+    --gradientMaincolorTrans: linear-gradient(to right, rgba(0, 163, 139, 0.6), rgba(22, 193, 181,0.6));
     --color3: #3CBCCB;
     --color4: #8795B0;
     --color5: #CAD8F2;
     --color6: rgb(20, 25, 25);
     --white: #FFFFFF;
-    --color1MainTrans: rgba(24, 24, 35, 0.2);
-    --color1Trans: rgba(10, 10, 15, 0.5);
-    --color2Trans: rgba(51, 161, 212, 0.2);
-    --color2TransPlus: rgba(51, 161, 212, 0.08);
-    --color3Trans: rgba(60, 188, 203, 0.4);
-    --color4Trans: rgba(135, 149, 176, 0.4);
-    --color5Trans: rgba(202, 216, 242, 0.4);
-    --color6Trans: rgba(60, 60, 60, 0.8);
-    --gradient: linear-gradient(to right, rgba(49, 156, 214, 1) 0%, rgba(61, 192, 201, 1) 100%);
-    --gradient2: linear-gradient(61deg, rgba(87, 204, 223, 1) 0%, rgba(71, 115, 217, 1) 100%);
     --font-primary: 'Roboto', sans-serif;
     --navMaxHeight: 85px;
     --footerMaxHeigth: 50px;
@@ -71,6 +63,12 @@ img {
     background-color: rgba(var(--colorMainRGB), var(--bs-bg-opacity));
 }
 
+.bg-gradient {
+    background: var(--gradientMaincolor) !important;
+    color:white;
+}
+
+
 
 /* This secction is for color backgrounds with transparency*/
 
@@ -96,16 +94,51 @@ img {
 
 .txt-color {
     --bs-bg-opacity: 1;
+    
     background-color: rgba(var(--textGreyRGB), var(--bs-bg-opacity));
 }
 
+/* This secction set the color of boostrap valriables*/
+.text-primary{
+    color: var(--colorMain) !important;
+}
+
+.btn-primary{
+    color: var(--colorMain);
+    border-color: var(--colorMain);
+}
+
+.btn-outline-primary {
+    color: var(--colorMain);
+    border-color: var(--colorMain);
+}
+
+.btn-outline-primary:hover {
+    color: var(--colorMain);
+    background-color: var(--colorMainTrans);
+    border-color: var(--colorMain);
+}
+
+.active{
+    background-color: var(--colorMain) !important;
+    border: 0px;
+}
+
+.list-group-item:hover{
+    background-color: var(--colorMainTrans);
+}
+
+
+.disable {
+    background-color: var(--colorDisable) !important;
+}
 /* Header text format */
 .nav-link {
     color: var(--textGrey) !important; /* This important would be unnecessary, but if we remove doesn't work, Why ? I don't know but I don't care*/
     font-weight: lighter;
 }
 
-.active {
+.activeNav {
     font-weight: bold;
 }
 
@@ -200,6 +233,12 @@ img {
     border: none; 
     color: white; 
 }
+
+    .button-gradient:hover {
+        background: var(--gradientMaincolorTrans);
+        border: none;
+        color: white;
+    }
 
 /* Modal button format */
 

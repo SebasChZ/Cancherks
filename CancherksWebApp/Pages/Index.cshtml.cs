@@ -7,6 +7,7 @@ namespace CancherksWebApp.Pages
     {
         private readonly ILogger<IndexModel> _logger;
 
+        public string Message { get; set; }
         public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
@@ -14,7 +15,7 @@ namespace CancherksWebApp.Pages
 
         public void OnGet()
         {
-
+            Message = "Hello World!";
         }
     }
 }

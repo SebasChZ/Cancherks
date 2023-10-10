@@ -1,0 +1,167 @@
+﻿@page
+@model CancherksWebApp.Pages.RequesterUser.ReservationModel
+@{
+}
+<section class="container-fluid px-5 py-3">
+    <h3 style="margin-bottom: 2rem;">Solicitudes</h3>
+    <dropdown class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle custom-dropdown-button" type="button" id="dropdownInstallations" data-bs-toggle="dropdown" aria-expanded="false">
+            Instalaciones
+        </button>
+        <ul class="dropdown-menu custom-dropdown-options" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item custom-dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item custom-dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item custom-dropdown-item" href="#">Something else here</a></li>
+        </ul>
+
+    </dropdown>
+
+    <div class="py-5">
+        <div class="row gy-3">
+
+            <div class="col-6 gx-3">
+                <div class="card mb-3">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="~/img/sintetica.jpg" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title font-weight-bold ">Sintetica</h5>
+                                <p class="card-text mb-0">Cancha sintética para partivdos 6vs6 de fútbol</p>
+                                <p class="card-text mb-1 text-primary"><i class="bi bi-geo-fill"></i> Lado sur</p>
+                                <button type="button" class="btn btn-outline-primary ">Consultar</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 gx-3">
+                <div class="card mb-3">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="~/img/sintetica.jpg" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title font-weight-bold ">Sintetica</h5>
+                                <p class="card-text mb-0">Cancha sintética para partivdos 6vs6 de fútbol</p>
+                                <p class="card-text mb-1 text-primary"><i class="bi bi-geo-fill"></i> Lado sur</p>
+                                <button type="button" class="btn btn-outline-primary">Consultar</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row gy-3">
+
+            <div class="col-6 gx-3">
+                <div class="card mb-3">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="~/img/sintetica.jpg" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title font-weight-bold ">Sintetica</h5>
+                                <p class="card-text mb-0">Cancha sintética para partivdos 6vs6 de fútbol</p>
+                                <p class="card-text mb-1 text-primary"><i class="bi bi-geo-fill"></i> Lado sur</p>
+                                <button type="button" class="btn btn-outline-primary">Consultar</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 gx-3">
+                <div class="card mb-3">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="~/img/sintetica.jpg" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title font-weight-bold ">Sintetica</h5>
+                                <p class="card-text mb-0">Cancha sintética para partivdos 6vs6 de fútbol</p>
+                                <p class="card-text mb-1 text-primary"><i class="bi bi-geo-fill"></i> Lado sur</p>
+                                <button type="button" class="btn btn-outline-primary">Consultar</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container-fluid px-5 py-3">
+    <h3 style="margin-bottom: 2rem;">Reserva</h3>
+    <div class="d-flex gx-3">
+        <Schedule class="row">
+            <datepicker class="px-0" style="display: flex; justify-content: center; flex-grow: 1;">
+                <form class="w-100">
+                    <div class="col-12">
+                        <inputDate class="input-group date" id="datepickerInicio-container">
+                            <input type="text" class="form-control" id="datepickerInicio-input" placeholder="Fecha Inicio" />
+                            <span class="input-group-append" id="datepickerInicio-icon">
+                                <span class="input-group-text bg-light d-block">
+                                    <i class="bi bi-calendar-check"></i>
+                                </span>
+                            </span>
+                        </inputDate>
+
+                    </div>
+                </form>
+
+            </datepicker>
+            <div class="list-group w-100 px-0">
+                <button type="button" class="list-group-item list-group-item-action active" aria-current="true">
+                    The current button
+                </button>
+                <button type="button" class="list-group-item list-group-item-action">A second item</button>
+                <button type="button" class="list-group-item list-group-item-action">A third button item</button>
+                <button type="button" class="list-group-item list-group-item-action">A fourth button item</button>
+                <button type="button" class="list-group-item list-group-item-action disable" disabled>A disabled button item</button>
+            </div>
+        </Schedule>
+        <ReservationSumary class="ps-4">
+            <div class="card mb-3" style="max-width: 700px;">
+                <div class="card-header bg-gradient">
+                    Resumen de Reserva
+                </div>
+              
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="~/img/sintetica.jpg" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title font-weight-bold ">Sintetica</h5>
+                            <p class="card-text mb-0">Cancha sintética para partivdos 6vs6 de fútbol</p>
+
+                            <p class="card-text mb-0">
+                                <i class="bi bi-geo-fill"></i>
+                                <span class="text-primary">Lado sur</span>
+                            </p>
+                            <p class="card-text mb-1">
+                                <i class="bi bi-calendar-event" aria-hidden="true"></i>
+                                <span class="text-primary">22 agosto 2023</span>
+                            </p>
+
+                            <p class="card-text mb-1">
+                                <i class="bi bi-alarm-fill" aria-label="Alarm icon"></i>
+                                <span class="text-primary">20:00 - 22:00</span>
+                            </p>
+                            <button type="button" class="btn btn-primary button-gradient">Consultar</button>
+                        </div>
+                    </div>
+                </div>               
+            </div>
+        </ReservationSumary>
+
+    </div>
+</section>
