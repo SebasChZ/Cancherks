@@ -230,24 +230,27 @@ img {
     color: white; 
 }
 
-    .button-gradient:hover {
+.button-gradient:hover {
         background: var(--gradientMaincolorTrans);
         border: none;
         color: white;
-    }
+}
 
 /* Modal button format */
 
 #acept .modal-footer .button-color {
     background-color: var(--colorMain) !important;
+    color: white;
 }
 
 #reject .modal-footer .button-color {
     background-color: var(--colorMain) !important;
+    color: white;
 }
 
 #justify .modal-footer .button-color {
     background-color: var(--colorMain) !important;
+    color: white;
 }
 
 /* tables icons format */
