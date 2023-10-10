@@ -1,7 +1,0 @@
-D:\TEC\VI SEMESTRE\Diseño\Proyecto Chancherks\Cancherks\CancherksWebApp\obj\Release\net6.0\PubTmp\Out\CancherksWebApp.exe
-D:\TEC\VI SEMESTRE\Diseño\Proyecto Chancherks\Cancherks\CancherksWebApp\obj\Release\net6.0\PubTmp\Out\appsettings.Development.json
-D:\TEC\VI SEMESTRE\Diseño\Proyecto Chancherks\Cancherks\CancherksWebApp\obj\Release\net6.0\PubTmp\Out\appsettings.json
-D:\TEC\VI SEMESTRE\Diseño\Proyecto Chancherks\Cancherks\CancherksWebApp\obj\Release\net6.0\PubTmp\Out\CancherksWebApp.dll
-D:\TEC\VI SEMESTRE\Diseño\Proyecto Chancherks\Cancherks\CancherksWebApp\obj\Release\net6.0\PubTmp\Out\CancherksWebApp.deps.json
-D:\TEC\VI SEMESTRE\Diseño\Proyecto Chancherks\Cancherks\CancherksWebApp\obj\Release\net6.0\PubTmp\Out\CancherksWebApp.runtimeconfig.json
-D:\TEC\VI SEMESTRE\Diseño\Proyecto Chancherks\Cancherks\CancherksWebApp\obj\Release\net6.0\PubTmp\Out\CancherksWebApp.pdb
