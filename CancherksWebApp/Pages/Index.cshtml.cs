@@ -1,21 +1,25 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CancherksWebApp.Data;
+using CancherksWebApp.Model;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace CancherksWebApp.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
 
-        public string Message { get; set; }
-        public IndexModel(ILogger<IndexModel> logger)
+        public IEnumerable<Installation> Installations { get; set; }
+        private readonly ApplicationDbContext _db;
+        public IndexModel(ApplicationDbContext db)
         {
-            _logger = logger;
+            _db= db;
         }
+
 
         public void OnGet()
         {
-            Message = "Hello World!";
+            Installations = _db.Installation;
+
         }
     }
 }
