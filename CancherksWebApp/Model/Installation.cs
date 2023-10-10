@@ -21,4 +21,7 @@ namespace CancherksWebApp.Model
         [Required]
         public double TimeSplitReservation { get; set; }
     }
+
+   
+
 }
