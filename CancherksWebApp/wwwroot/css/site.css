@@ -127,11 +127,82 @@ img {
 .list-group-item:hover{
     background-color: var(--colorMainTrans);
 }
-
-
 .disable {
     background-color: var(--colorDisable) !important;
 }
+
+/*---------- Layout modifications*/
+
+
+.icon-Profile {
+    width: 50px;
+    height: 50px;
+    clip-path: circle(50% at 50% 50%);
+    background-color: #ACB4BC;
+}
+
+.navbar {
+    max-height: var(--navMaxHeight);
+    height: var(--navMaxHeight);
+}
+
+.page {
+    height: calc(100% - var(--navMaxHeight) - var(--footerMaxHeigth));
+    overflow: hidden;
+}
+
+.site-bar {
+    border-radius: 0px 10px 10px 0px;
+    border-top-width: 2px;
+    border-top-style: solid;
+    border-right-width: 2px;
+    border-right-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: var(--colorMainTrans);
+}
+
+.content-page {
+    overflow-y: auto; /* Scrollable content */
+}
+
+
+.inline-nav-item {
+    display: flex;
+    width: 234px;
+    align-items: center;
+    gap: 24px;
+    padding: 0px 0px 0px 30px;
+    position: relative;
+    flex: 0 0 auto;
+    background-color: #e7f1ff;
+    border-right-width: 3px;
+    border-right-style: solid;
+    border-color: var(--colorMain);
+}
+
+.inline-nav-item-nd {
+    display: flex;
+    width: 234px;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 24px 8px 30px;
+    position: relative;
+    flex: 0 0 auto;
+    background-color: #ffffff00;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--greyFooter);
+    height: 100%;
+    max-height: var(--footerMaxHeigth);
+}
+
+
+
 /* Header text format */
 .nav-link {
     color: var(--textGrey) !important; /* This important would be unnecessary, but if we remove doesn't work, Why ? I don't know but I don't care*/

@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -30,6 +31,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                     @{
+                       
                         var option1IsActive = Context.Request.Path.Value.Contains("/Option1");
                         var option2IsActive = Context.Request.Path.Value.Contains("/Option2");
                         var option3IsActive = Context.Request.Path.Value.Contains("/Option3");
@@ -42,7 +44,7 @@
 
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link @(option1IsActive ? "activeNav" : "")" asp-area="" asp-page="/Option1">Option1</a>
+                            <a class="nav-link @(option1IsActive ? "activeNav" : "")" asp-area="" asp-page="/Option1">Optasdfasdfion1</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link @(option2IsActive ? "activeNav" : "")" asp-area="" asp-page="/Option2">Option2</a>
@@ -107,14 +109,9 @@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script> 
+    <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> <!-- For the datepicker -->
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> <!-- For the datepicker -->
-    
-
-    
-
-
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

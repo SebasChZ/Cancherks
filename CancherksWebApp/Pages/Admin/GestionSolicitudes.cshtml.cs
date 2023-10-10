@@ -15,7 +15,7 @@ namespace CancherksWebApp.Pages.Admin
         }
 
         public List<Installation> Installations { get; set; }
-        public List<Request> Requests { get; set; } // Añade esta línea
+        public List<Request> Requests { get; set; } // Aï¿½ade esta lï¿½nea
 
 
         public void OnGet()
