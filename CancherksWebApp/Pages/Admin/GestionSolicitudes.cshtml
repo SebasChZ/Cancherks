@@ -11,10 +11,12 @@
             Instalaciones
         </button>
         <ul class="dropdown-menu custom-dropdown-options" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item custom-dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item custom-dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item custom-dropdown-item" href="#">Something else here</a></li>
+            @foreach (var installation in Model.Installations)
+            {
+                <li><a class="dropdown-item custom-dropdown-item" href="#">@installation.Name</a></li>
+            }
         </ul>
+
 
     </dropdown>
     
