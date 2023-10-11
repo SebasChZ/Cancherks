@@ -15,10 +15,6 @@
     --textBlackRGB: 0, 0, 0;
     --gradientMaincolor: linear-gradient(to right, #00A38B, #16c1b5);
     --gradientMaincolorTrans: linear-gradient(to right, rgba(0, 163, 139, 0.6), rgba(22, 193, 181,0.6));
-    --color3: #3CBCCB;
-    --color4: #8795B0;
-    --color5: #CAD8F2;
-    --color6: rgb(20, 25, 25);
     --white: #FFFFFF;
     --font-primary: 'Roboto', sans-serif;
     --navMaxHeight: 85px;
@@ -234,23 +230,27 @@ img {
     color: white; 
 }
 
-    .button-gradient:hover {
+.button-gradient:hover {
         background: var(--gradientMaincolorTrans);
         border: none;
         color: white;
-    }
+}
 
 /* Modal button format */
 
 #acept .modal-footer .button-color {
     background-color: var(--colorMain) !important;
+    color: white;
 }
 
 #reject .modal-footer .button-color {
     background-color: var(--colorMain) !important;
+    color: white;
 }
+
 #justify .modal-footer .button-color {
     background-color: var(--colorMain) !important;
+    color: white;
 }
 
 /* tables icons format */
@@ -275,9 +275,9 @@ img {
 .file-upload-btn {
     width: 100%;
     margin: 0;
-    color: #fff;
-    background: var(--gradientMaincolor);
-    border: none;
+    color: var(--textGrey);
+    background: white;
+    border: 1px solid var(--colorMain);
     padding: 10px;
     border-radius: 4px;
     transition: all .2s ease;
