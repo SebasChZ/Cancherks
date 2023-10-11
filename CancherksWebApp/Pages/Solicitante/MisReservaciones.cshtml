@@ -1,0 +1,36 @@
+﻿@page
+@model CancherksWebApp.Pages.Solicitante.MisReservacionesModel
+@{
+    var userRole = @Model.role;
+    Layout = userRole == "7415" ? "_RequesterLayout" : "_ErrorLayout";
+
+    if (userRole != "7415") Response.Redirect("/ErrorPage");
+
+}
+
+<section class="container px-5 py-3">
+
+    <h3 style="margin-bottom: 2rem;">Mis Reservaciones</h3>
+
+
+
+
+    <table class="table" style="margin-top: 1rem;">
+        <thead>
+            <tr>
+                <th scope="col">Correo</th>
+                <th scope="col">Instalación</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Hora Inicio</th>
+                <th scope="col">Hora Final</th>
+                <th scope="col">Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+        </tbody>
+
+    </table>
+
+</section>
