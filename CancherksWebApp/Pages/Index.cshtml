@@ -4,6 +4,11 @@
     ViewData["Title"] = "Home page";
 }
 
-<div>
-    fer
-</div>
+<h2>Application Role</h2>
+ <pre>@Model.RawJsonData</pre>
+
+
+<p>Session Value: @Model.SessionValue</p>
+<p>Id: @Model.ApplicationRole.Id</p>
+<p>Application Id: @Model.ApplicationRole.ApplicationId</p>
+<p>Role Name: @Model.ApplicationRole.ApplicationRoleName</p>

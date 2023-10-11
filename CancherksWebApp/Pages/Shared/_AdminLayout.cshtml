@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]  Administración Cancherks</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="~/lib/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/CancherksWebApp.styles.css" asp-append-version="true" />
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> <!-- For the datepicker -->
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-colorMainTrans">
+            <div class="container-fluid align-middle">
+                <div class="align-middle">
+                    <a class="navbar-brand" asp-area="" asp-page="/Index">
+                        @* //This could be the link to the inicial app page *@
+                        <i class="bi bi-mortarboard-fill"></i>
+
+                        Cancherks
+                    </a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                    @{
+                        
+                        var requestArea = false;
+                        var reportArea = false;
+                        var adminArea = false;
+
+                        var request1Active = Context.Request.Path.Value.Contains("/Admin/GestionSolicitudes");
+                        var report1Active = Context.Request.Path.Value.Contains("/Admin/Reportes");
+                        var admin1Active = Context.Request.Path.Value.Contains("/Admin/AgregarInstalacion");
+                        var admin2Active = Context.Request.Path.Value.Contains("/Admin/ModificarInstalacion");
+
+                        if (request1Active)
+                        {
+                            requestArea = true;
+                        }
+                        else if(report1Active)
+                        {
+                            reportArea = true;
+                        }
+                        else if (admin1Active || admin2Active)
+                        {
+                            adminArea = true;
+                        }
+                        
+                    }
+
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link @(requestArea ? "activeNav" : "")" asp-area="Admin" asp-page="GestionSolicitudes">Solicitudes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(reportArea ? "activeNav" : "")" asp-area="Admin" asp-page="Reportes">Reportes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(adminArea ? "activeNav" : "")" asp-area="Admin" asp-page="AgregarInstalacion">Administración</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="icon-Profile bg-footer text-center align-middle fs-3 text-white">
+                    <i class="bi bi-person"></i>
+                </div>
+
+
+
+            </div>
+        </nav>
+    </header>
+
+
+    <div class="page d-flex flex-row bg-grayContrast">
+
+        <aside class="site-bar bg-white">
+
+            <ul class="d-flex flex-column gap-3 px-0 py-2">
+                @* //Aside section for Admin Gestion solicitudes *@
+                @if (requestArea)
+                {
+                    <li class="py-2  @(request1Active ? "inline-active" : "inline-nav-item")">
+                        <a class="aside-link" asp-area="Admin" asp-page="GestionSolicitudes">
+                            <i class="bi bi-card-checklist"></i> 
+                            Gestión Solicitudes
+                        </a>
+                    </li>
+
+                }
+                else if (reportArea)
+                {
+                    <li class="py-2 inline-nav-item @(report1Active ? "inline-active" : "inline-nav-item") ">
+                        <a class="aside-link" asp-area="Admin" asp-page="Reportes">
+                            <i class="bi bi-card-checklist"></i>
+                            Crear Reporte
+                        </a>                        
+                    </li>
+                }
+                else if (adminArea)
+                {
+                    <li class="py-2 @(admin1Active ? "inline-active" : "inline-nav-item") ">
+                        <a class="aside-link" asp-area="Admin" asp-page="AgregarInstalacion">
+                            <i class="bi bi-card-checklist"></i>
+                            Agregar Installación
+                        </a>
+                    </li>
+                    <li class="py-2 @(admin2Active ? "inline-active" : "inline-nav-item") ">
+                        <a class="aside-link" asp-area="Admin" asp-page="ModificarInstalacion">
+                            <i class="bi bi-brush-fill"></i>
+                            Modificar Installación
+                        </a>
+                    </li>
+                }
+            </ul>
+
+        </aside>
+        <div class="content-page w-100">
+            <main role="main" class="pb-3">
+
+
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+
+    <footer class="border-top footer text-muted ">
+        <div class="container">
+            Correo: example@itcr.ac.cr Teléfono: 2020-2020
+
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> <!-- For the datepicker -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> <!-- For the datepicker -->
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
