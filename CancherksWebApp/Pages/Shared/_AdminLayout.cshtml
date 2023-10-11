@@ -30,22 +30,40 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                     @{
+                        
+                        var requestArea = false;
+                        var reportArea = false;
+                        var adminArea = false;
 
-                        var requestManagementIsActive = Context.Request.Path.Value.Contains("/Admin/GestionSolicitudes");
-                        var reportIsActive = Context.Request.Path.Value.Contains("/Admin/Reportes");
-                        var adminInstallation = Context.Request.Path.Value.Contains("/Admin/AgregarInstalacion");
+                        var request1Active = Context.Request.Path.Value.Contains("/Admin/GestionSolicitudes");
+                        var report1Active = Context.Request.Path.Value.Contains("/Admin/Reportes");
+                        var admin1Active = Context.Request.Path.Value.Contains("/Admin/AgregarInstalacion");
+                        var admin2Active = Context.Request.Path.Value.Contains("/Admin/ModificarInstalacion");
 
+                        if (request1Active)
+                        {
+                            requestArea = true;
+                        }
+                        else if(report1Active)
+                        {
+                            reportArea = true;
+                        }
+                        else if (admin1Active || admin2Active)
+                        {
+                            adminArea = true;
+                        }
+                        
                     }
 
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link @(requestManagementIsActive ? "activeNav" : "")" asp-area="Admin" asp-page="GestionSolicitudes">Gestión Solicitudes</a>
+                            <a class="nav-link @(requestArea ? "activeNav" : "")" asp-area="Admin" asp-page="GestionSolicitudes">Solicitudes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @(reportIsActive ? "activeNav" : "")" asp-area="Admin" asp-page="Reportes">Reportes</a>
+                            <a class="nav-link @(reportArea ? "activeNav" : "")" asp-area="Admin" asp-page="Reportes">Reportes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @(adminInstallation ? "activeNav" : "")" asp-area="Admin" asp-page="AgregarInstalacion">Agregar Instalación</a>
+                            <a class="nav-link @(adminArea ? "activeNav" : "")" asp-area="Admin" asp-page="AgregarInstalacion">Administración</a>
                         </li>
                     </ul>
                 </div>
@@ -63,32 +81,41 @@
     <div class="page d-flex flex-row bg-grayContrast">
 
         <aside class="site-bar bg-white">
+
             <ul class="d-flex flex-column gap-3 px-0 py-2">
                 @* //Aside section for Admin Gestion solicitudes *@
-                @if (requestManagementIsActive)
+                @if (requestArea)
                 {
-                    <li class="py-2 inline-nav-item">
-                        <i class="bi bi-people-fill"></i>
-                        Gestion Solicitudes
+                    <li class="py-2  @(request1Active ? "inline-active" : "inline-nav-item")">
+                        <a class="aside-link" asp-area="Admin" asp-page="GestionSolicitudes">
+                            <i class="bi bi-card-checklist"></i> 
+                            Gestión Solicitudes
+                        </a>
                     </li>
 
                 }
-                else if (reportIsActive)
+                else if (reportArea)
                 {
-                    <li class="py-2 inline-nav-item ">
-                        <i class="bi bi-people-fill"></i>
-                        Crear Reporte
+                    <li class="py-2 inline-nav-item @(report1Active ? "inline-active" : "inline-nav-item") ">
+                        <a class="aside-link" asp-area="Admin" asp-page="Reportes">
+                            <i class="bi bi-card-checklist"></i>
+                            Crear Reporte
+                        </a>                        
                     </li>
                 }
-                else if (adminInstallation)
+                else if (adminArea)
                 {
-                    <li class="py-2 inline-nav-item ">
-                        <i class="bi bi-people-fill"></i>
-                        Agregar Installación
+                    <li class="py-2 @(admin1Active ? "inline-active" : "inline-nav-item") ">
+                        <a class="aside-link" asp-area="Admin" asp-page="AgregarInstalacion">
+                            <i class="bi bi-card-checklist"></i>
+                            Agregar Installación
+                        </a>
                     </li>
-                    <li class="py-2 inline-nav-item-nd ">
-                        <i class="bi bi-people-fill"></i>
-                        Modificar Installación
+                    <li class="py-2 @(admin2Active ? "inline-active" : "inline-nav-item") ">
+                        <a class="aside-link" asp-area="Admin" asp-page="ModificarInstalacion">
+                            <i class="bi bi-brush-fill"></i>
+                            Modificar Installación
+                        </a>
                     </li>
                 }
             </ul>
