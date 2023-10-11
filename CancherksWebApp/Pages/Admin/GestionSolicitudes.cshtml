@@ -14,7 +14,9 @@
         <button class="btn btn-secondary dropdown-toggle custom-dropdown-button" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
             Instalaciones
         </button>
+
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <li><a class="dropdown-item custom-dropdown-item" data-id="0" href="#">Todas</a></li>
             @foreach (var installation in Model.Installations)
             {
                 <li><a class="dropdown-item custom-dropdown-item" data-id="@installation.Id" href="#">@installation.Name</a></li>
@@ -217,19 +219,19 @@
 <script>
     document.querySelectorAll('.custom-dropdown-item').forEach(item => {
         item.addEventListener('click', function () {
-            var installationId = this.getAttribute('data-id'); 
-            filterTable(installationId); 
+            var installationId = this.getAttribute('data-id');
+            filterTable(installationId);
         });
     });
 
     function filterTable(installationId) {
-        var tableRows = document.querySelectorAll('.table tbody tr'); 
+        var tableRows = document.querySelectorAll('.table tbody tr');
         tableRows.forEach(row => {
-            var rowInstallationId = row.getAttribute('data-installation-id'); 
-            if (rowInstallationId != installationId) {
-                row.style.display = 'none'; 
+            var rowInstallationId = row.getAttribute('data-installation-id');
+            if (installationId === "0" || rowInstallationId === installationId) {
+                row.style.display = '';  // Mostrar todas las filas si se selecciona "Todas las instalaciones" o si coincide con la instalación seleccionada
             } else {
-                row.style.display = '';
+                row.style.display = 'none';
             }
         });
     }
