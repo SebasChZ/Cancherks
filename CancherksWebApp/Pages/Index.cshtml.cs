@@ -1,4 +1,5 @@
-﻿using CancherksWebApp.Data;
+﻿using Azure;
+using CancherksWebApp.Data;
 using CancherksWebApp.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -53,7 +54,7 @@ namespace CancherksWebApp.Pages
                 Rol = 2569  // Invented data
             };
 
-            userLoggeed = user1; // Copying user1 to user3
+            userLoggeed = user2; // Copying user1 to user3
 
 
             // You can perform synchronous operations here as well
@@ -96,6 +97,15 @@ namespace CancherksWebApp.Pages
             {
                 // Log or output the unsuccessful status code
                 RawJsonData = $"Error: {response.StatusCode}";
+            }
+
+            if (HttpContext.Session.GetString("role") == "7415")
+            {
+                Response.Redirect("/Solicitante/Reservacion");
+            }
+            else if (HttpContext.Session.GetString("role") == "2569")
+            {
+                Response.Redirect("/Admin/GestionSolicitudes");
             }
         }
     }

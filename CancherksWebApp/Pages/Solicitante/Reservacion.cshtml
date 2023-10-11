@@ -2,7 +2,9 @@
 @model CancherksWebApp.Pages.RequesterUser.ReservationModel
 @{
     var userRole = @Model.role;
-    Layout = userRole == "7415" ? "_RequesterLayout" : "_Layout";
+    Layout = userRole == "7415" ? "_RequesterLayout" : "_ErrorLayout";
+
+    if (userRole != "7415") Response.Redirect("/ErrorPage");
     
 }
 <section class="container-fluid px-5 py-3">

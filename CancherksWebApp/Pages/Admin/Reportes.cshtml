@@ -1,6 +1,10 @@
 ﻿@page
 @model CancherksWebApp.Pages.Admin.ReportesModel
 @{
+    var userRole = @Model.role;
+    Layout = userRole == "2569" ? "_AdminLayout" : "_ErrorLayout";
+
+    if (userRole != "2569") Response.Redirect("/ErrorPage");
 }
 
 <section class="container px-5 py-3">

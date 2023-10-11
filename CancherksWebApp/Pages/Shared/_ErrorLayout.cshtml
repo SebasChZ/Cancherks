@@ -1,5 +1,4 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -31,38 +30,22 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                     @{
-                       
                         var option1IsActive = Context.Request.Path.Value.Contains("/Option1");
                         var option2IsActive = Context.Request.Path.Value.Contains("/Option2");
                         var option3IsActive = Context.Request.Path.Value.Contains("/Option3");
-                        var requestManagementIsActive = Context.Request.Path.Value.Contains("/Admin/GestionSolicitudes");
-                        var reportManagementIsActive = Context.Request.Path.Value.Contains("/Admin/Reportes");
-                        var addInstallationManagementIsActive = Context.Request.Path.Value.Contains("/Admin/AgregarInstalacion");
-                        var modifyInstallationManagementIsActive = Context.Request.Path.Value.Contains("/Admin/ModificarInstalacion");
+
 
                     }
 
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link @(option1IsActive ? "activeNav" : "")" asp-area="" asp-page="/Option1">estoy en el layaout the requester</a>
+                            <a class="nav-link @(option1IsActive ? "activeNav" : "")" asp-area="" asp-page="/">Estoy en errorOption1</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @(option2IsActive ? "activeNav" : "")" asp-area="" asp-page="/Option2">Option2</a>
+                            <a class="nav-link @(option2IsActive ? "activeNav" : "")" asp-area="" asp-page="/">Option2</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @(option3IsActive ? "activeNav" : "")" asp-area="" asp-page="/Option3">Option3</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link @(requestManagementIsActive ? "activeNav" : "")" asp-area="" asp-page="/Admin/GestionSolicitudes">Gestion Solicitudes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link @(reportManagementIsActive ? "activeNav" : "")" asp-area="" asp-page="/Admin/Reportes">Reportes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link @(addInstallationManagementIsActive ? "activeNav" : "")" asp-area="" asp-page="/Admin/AgregarInstalacion">Agregar Instalacion</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link @(modifyInstallationManagementIsActive ? "activeNav" : "")" asp-area="" asp-page="/Admin/ModificarInstalacion">Modificar Instalacion</a>
+                            <a class="nav-link @(option3IsActive ? "activeNav" : "")" asp-area="" asp-page="/">Option3</a>
                         </li>
                     </ul>
                 </div>

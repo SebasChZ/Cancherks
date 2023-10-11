@@ -4,7 +4,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 namespace CancherksWebApp.Pages.RequesterUser
 {
     public class ReservationModel : PageModel
-    {   public string role { get; set; }
+    {
+        public string role { get; set; }
         public void OnGet()
         {
 
