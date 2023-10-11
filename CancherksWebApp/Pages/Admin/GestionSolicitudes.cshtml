@@ -9,18 +9,21 @@
 
 <section class="container px-5 py-3" >
 
-    <h3 style="margin-bottom: 2rem;">Solicitudes</h3>
+    <h3 style="margin-bottom: 2rem;">Solicitudes @Model.Message</h3>
+
     <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle custom-dropdown-button" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
             Instalaciones
         </button>
 
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
             <li><a class="dropdown-item custom-dropdown-item" data-id="0" href="#">Todas</a></li>
             @foreach (var installation in Model.Installations)
             {
                 <li><a class="dropdown-item custom-dropdown-item" data-id="@installation.Id" href="#">@installation.Name</a></li>
-            }
+            }       
+
         </ul>
     </div>
 
@@ -29,7 +32,6 @@
     <table class="table" style="margin-top: 1rem;">
         <thead>
             <tr>
-                <th scope="col">Elegir</th>
                 <th scope="col">Correo</th>
                 <th scope="col">Instalación</th>
                 <th scope="col">Fecha</th>
@@ -39,17 +41,17 @@
             </tr>
         </thead>
         <tbody>
+
             @foreach (var request in Model.Requests)
             {
                 <tr data-installation-id="@request.IdInstallation">
-                    <td><input type="checkbox" class="custom-checkbox" name="select1" value="@request.Id"></td>
                     <td>@request.EmailRequester</td>
                     <td>@Model.Installations.FirstOrDefault(i => i.Id == request.IdInstallation)?.Name</td>
                     <td>@request.DateRequest.ToShortDateString()</td>
                     <td>@request.StartTime.ToString()</td>
                     <td>@request.EndTime.ToString()</td>
                     <td>
-                        <i class="bi bi-check-circle-fill custom-success" style="cursor:pointer;"></i>
+                        <i class="bi bi-check-circle-fill custom-success" data-id="@request.Id" style="cursor:pointer;"></i>
                         <i class="bi bi-trash-fill custom-danger" style="cursor:pointer;"></i>
                     </td>
                 </tr>
@@ -71,8 +73,11 @@
                 <p>¿Confirma que desea aprobar esta solicitud?</p>
             </div>
             <div class="modal-footer">
-                
-                <form method="post"><button type="button" class="btn btn-primary button-color" data-bs-dismiss="modal" id="btnAceptar">Aceptar</button></form>
+
+                <form method="post">
+                    <input type="hidden" id="idSolicitud" name="idSolicitud" value="" />
+                    <button type="submit" class="btn btn-primary button-color" data-bs-dismiss="modal" id="btnAceptar">Aceptar</button>
+                </form>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
             </div>
         </div>
@@ -138,6 +143,8 @@
 
         successIcons.forEach(function (icon) {
             icon.addEventListener('click', function () {
+                var requestId = this.getAttribute('data-id');
+                document.getElementById('idSolicitud').value = requestId;
                 var aceptarModal = new bootstrap.Modal(document.getElementById('acept'));
                 aceptarModal.show();
             });
@@ -165,7 +172,7 @@
         var btnAceptar = document.getElementById('btnAceptar');
        
         btnAceptar.addEventListener('click', function () {
-            
+            var idRequest = document.getElementById('idSolicitud').value;
             var aceptarModal = new bootstrap.Modal(document.getElementById('acept'));
             
             aceptarModal.hide();
