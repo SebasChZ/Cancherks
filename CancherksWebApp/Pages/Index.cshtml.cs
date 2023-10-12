@@ -54,7 +54,7 @@ namespace CancherksWebApp.Pages
                 Rol = 2569  // Invented data
             };
 
-            userLoggeed = user1; // Copying user1 to user3
+            userLoggeed = user2; // Copying user1 to user3
 
 
             // You can perform synchronous operations here as well
