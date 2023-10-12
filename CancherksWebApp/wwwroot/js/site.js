@@ -5,11 +5,11 @@
 
 
 $(document).ready(function () {
-    $('#datepickerInicio-input').datepicker();
+    $('.datepickerInput').datepicker();
 
     // Desencadenar el datepicker al hacer clic en el ícono
-    $('#datepickerInicio-icon').click(function () {
-        $('#datepickerInicio-input').focus();
+    $('.datepickerIcon').click(function () {
+        $('.datepickerInput').focus();
     });
 });
 

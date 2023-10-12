@@ -13,11 +13,15 @@ namespace CancherksWebApp.Data
         public DbSet<Request> Request { get; set; }
         public DbSet<InstallationSportViewModel> InstallationSportViewModels { get; set; }
 
+        //public DbSet<Day> Day { get; set; }
+        public DbSet<InstallationScheduleViewModel> InstallationScheduleViewModels { get; set; }
+
         public DbSet<Sport> Sport { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<InstallationSportViewModel>().HasNoKey().ToView(null);
+            modelBuilder.Entity<InstallationScheduleViewModel>().HasNoKey().ToView(null);
         }
     }
 }
