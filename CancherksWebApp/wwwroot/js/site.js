@@ -62,13 +62,22 @@ $(document).ready(function () {
     $('#datepickerInicio-input').datepicker().on('change', function () {
         var originalDate = $(this).val();
         var convertedDate = convertToDbDateFormat(originalDate);
-        
     });
 
     $('#datepickerInicio-icon').click(function () {
         $('#datepickerInicio-input').focus();
-    });
+    });  
 });
+
+
+$(document).ready(function () {
+    $('.datepickerInput').datepicker();
+
+    $('.datepickerIcon').click(function () {
+        $('.datepickerInput').focus();
+    });  // Cierre agregado aquí
+});
+
 
 $(document).ready(function () {
     $('#datepickerFinal-input').datepicker().on('change', function () {
@@ -115,5 +124,3 @@ $('.image-upload-wrap').bind('dragover', function () {
 $('.image-upload-wrap').bind('dragleave', function () {
     $('.image-upload-wrap').removeClass('image-dropping');
 });
-
-

@@ -7,6 +7,11 @@
     if (userRole != "7415") Response.Redirect("/ErrorPage");
     
 }
+
+@section Scripts
+{
+    <script src="@Url.Content("~/js/Requester/Reservation.js")"></script>
+}
 <section class="container-fluid px-5 py-3">
 
     <h3 style="margin-bottom: 2rem;">Solicitudes </h3>
@@ -14,7 +19,7 @@
         <button class="btn btn-secondary dropdown-toggle custom-dropdown-button" type="button" id="dropdownInstallations" data-bs-toggle="dropdown" aria-expanded="false">
             Selecione un Deporte
         </button>
-        <ul class="dropdown-menu custom-dropdown-options" aria-labelledby="dropdownMenuButton1">
+        <ul class="dropdown-menu custom-dropdown-options" aria-labelledby="dropdownInstallations">
 
             <li><a class="dropdown-item custom-dropdown-item" data-id="0" href="#" onclick="loadData(0)">Todos</a></li>
             @foreach (var i in Model.sports)
@@ -26,24 +31,27 @@
     </dropdown>
 
     <div id="gridDiv" class="py-5 d-flex flex-wrap gap-3">
-        <div class="col-6" style="max-width: 640px;">
-            <div class="card mb-3">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="~/img/sintetica.jpg" class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title font-weight-bold ">Sintetica</h5>
-                            <p class="card-text mb-0">Cancha sintética para partivdos 6vs6 de fútbol</p>
-                            <p class="card-text mb-1 text-primary"><i class="bi bi-geo-fill"></i> Lado sur</p>
-                            <button type="button" class="btn btn-outline-primary">Consultar</button>
+    @{
+            // <div class="col-6" style="max-width: 640px;">
+            //     <div class="card mb-3">
+            //         <div class="row g-0">
+            //             <div class="col-md-4">
+            //                 <img src="~/img/sintetica.jpg" class="img-fluid rounded-start" alt="...">
+            //             </div>
+            //             <div class="col-md-8">
+            //                 <div class="card-body">
+            //                     <h5 class="card-title font-weight-bold ">Sintetica</h5>
+            //                     <p class="card-text mb-0">Cancha sintética para partivdos 6vs6 de fútbol</p>
+            //                     <p class="card-text mb-1 text-primary"><i class="bi bi-geo-fill"></i> Lado sur</p>
+            //                     <button type="button" class="btn btn-outline-primary">Consultar</button>
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+            //                 </div>
+            //             </div>
+            //         </div>
+            //     </div>
+            // </div>
+    }
+
        
     </div>
 </section>
@@ -51,26 +59,29 @@
 <section class="container-fluid px-5 py-3">
     <h3 style="margin-bottom: 2rem;">Reserva</h3>
     <div class="d-flex gx-3">
-    <form id="ReservationSummary">
+
         <Schedule class="row">
             <datepicker class="px-0" style="display: flex; justify-content: center; flex-grow: 1;">
                 <div class="w-100">
                     <div class="col-12">
-                        <inputDate class="input-group date" id="datepickerInicio-container">
-                            <input type="text" class="form-control" id="datepickerInicio-input" placeholder="Fecha Inicio" />
-                            <span class="input-group-append" id="datepickerInicio-icon">
+                        <inputDate class="input-group date datepicker-container">
+                            <input type="text" class="form-control datepickerInput" id="datepickerQuery" placeholder="Fecha a consultar" />
+                            <span class="input-group-append datepickerIcon">
                                 <span class="input-group-text bg-light d-block">
                                     <i class="bi bi-calendar-check"></i>
                                 </span>
                             </span>
                         </inputDate>
 
+                        <button type="button" onClick="asdf()" >
+                        asdf
+                        </button>
                     </div>
 
                 </div>
 
             </datepicker>
-            <div id="ListSchedule" class="list-group w-100 px-0">
+            <div id="listSchedule" class="list-group w-100 px-0 visible-nd">
                 <button type="button" class="list-group-item list-group-item-action active" aria-current="true">
                     The current button
                 </button>
@@ -81,134 +92,39 @@
             </div>
         </Schedule>
         <ReservationSumary class="ps-4">
-            <div class="card mb-3" style="max-width: 700px;">
+            <div id="reservationCard" class="card mb-3 visible-nd" style="max-width: 700px;">
                 <div class="card-header bg-gradient">
                     Resumen de Reserva
                 </div>
               
                 <div class="row g-0">
                     <div class="col-md-4">
-                        <img src="~/img/sintetica.jpg" class="img-fluid rounded-start" alt="...">
+                        <img id="picture" src=".." class="img-fluid rounded-start" alt="...">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title font-weight-bold ">Sintetica</h5>
-                            <p class="card-text mb-0">Cancha sintética para partivdos 6vs6 de fútbol</p>
+                            <h5 id="installationName" class="card-title font-weight-bold "></h5>
+                            <p id="description" class="card-text mb-0"></p>
 
                             <p class="card-text mb-0">
                                 <i class="bi bi-geo-fill"></i>
-                                <span class="text-primary">Lado sur</span>
+                                <span id="location" class="text-primary"></span>
                             </p>
                             <p class="card-text mb-1">
                                 <i class="bi bi-calendar-event" aria-hidden="true"></i>
-                                <span class="text-primary">22 agosto 2023</span>
+                                <span id="date" class="text-primary">22 agosto 2023</span>
                             </p>
 
                             <p class="card-text mb-1">
                                 <i class="bi bi-alarm-fill" aria-label="Alarm icon"></i>
-                                <span class="text-primary">20:00 - 22:00</span>
+                                <span id="time" class="text-primary">20:00 - 22:00</span>
                             </p>
-                            <button type="submit" class="btn btn-primary button-gradient">Consultar</button>
+                            <button type="submit" class="btn btn-primary button-gradient">Reservar</button>
                         </div>
                     </div>
                 </div>               
             </div>
         </ReservationSumary>
-        </form>
+
     </div>
 </section>
-
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var buttonConsult = document.querySelectorAll('.consult');
-
-        buttonConsult.forEach(function (icon) {
-            btn.addEventListener('click', function () {
-                console.log("has clicked")
-                var installation = this.getAttribute('data-id');
-                document.getElementById('idSolicitud').value = requestId;
-                var aceptarModal = new bootstrap.Modal(document.getElementById('acept'));
-                aceptarModal.show();
-            });
-        });
-    });
-</script>
-
-<script>
-    function loadData(idSport) {
-        $.ajax({
-            url: '/Solicitante/Reservacion?handler=LoadData',
-            type: 'GET',
-            data: { idSport: idSport },
-            success: function (data) {
-                console.log(data);
-                // Clear existing cards
-                $('#gridDiv').empty();
-
-                // Loop through the returned data and create cards
-                data.forEach(function (item) {
-                    console.log(item)
-                    var card = `
-                         <div class="col-6" style="max-width: 640px;">
-                            <div class="card mb-3">
-                                <div class="row g-0">
-                                        <div class="col-md-4">
-                                                <img src="/img/${item.picture}" class="img-fluid rounded-start" alt="...">
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="card-body">
-                                                    <h5 class="card-title font-weight-bold ">${item.installationName}</h5>
-                                                <p class="card-text mb-0">${item.description}</p>
-                                                <p class="card-text mb-1 text-primary"><i class="bi bi-geo-fill"></i> ${item.location}</p>
-                                                   <!-- Hidden Inputs -->
-                                                    
-                                                <input type="hidden" id="maxCantPeople_${item.idInstallation}" value="${item.maxCantPeople}">
-                                                <input type="hidden" id="timeSplitReservation_${item.idInstallation}" value="${item.timeSplitReservation}">
-                                                <input type="hidden" id="idSport_${item.idInstallation}" value="${item.idSport}">
-                                                 <button type="button" data-id="${item.idInstallation}" class="consult btn btn-outline-primary">Consultar</button>
-                                            </div>
-                                        </div>
-                                </div>
-                            </div>
-                        </div>
-                        `;
-                    $('#gridDiv').append(card);
-                });
-            },
-            error: function (error) {
-                console.log(error);
-            }
-        });
-    }
-    loadData(0)
-</script>
-<!-- Alert before acepting request -->
-<script>
-    function loadReservation(idinstallation) {
-        $.ajax({
-            url: '/Solicitante/Reservacion?handler=LoadReservationInfo',
-            type: 'GET',
-            data: { idSport: idSport },
-            success: function (data) {
-                console.log(data);
-
-                // Loop through the returned data and create cards
-                data.forEach(function (item) {
-                    console.log(item)
-                    var buttonList = `
-                            <button type="button" class="list-group-item list-group-item-action">A second item</button>
-                        `;
-                    $('#ListSchedule').append(buttonList);
-                });
-            },
-            error: function (error) {
-                console.log(error);
-            }
-        });
-    }
-
-
-</script>
-<!-- Compare this snippet from Pages/Shared/_Layout.cshtml: -->
-

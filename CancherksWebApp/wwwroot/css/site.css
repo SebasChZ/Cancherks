@@ -272,27 +272,31 @@ img {
 }
 
 
-/* Datepicker inicio format */
-
-.ui-datepickerInicio {
-    border: 1px solid var(--colorMain); 
+/* Datepicker format */
+.datepicker-container{
+    color: var(--colorMain);
 }
 
-#datepickerInicio-icon .input-group-text {
+.ui-datepicker {
+    border: 1px solid var(--colorMain);
+}
+
+.datepickerIcon .input-group-text {
     color: var(--colorMain); 
     border-color: var(--colorMain); 
 }
 
-#datepickerInicio-input {
+.datepickerInput {
     border: 1px solid var(--colorMain);
     background-color: transparent;
+    color: var(--colorMain);
 }
 
-#datepickerInicio-input::placeholder {
+.datepickerInput::placeholder {
         color: var(--colorMain); 
 }
 
-#datepickerInicio-input {
+.datepickerInicio-input {
     color: var(--colorMain); 
 }
 
@@ -507,4 +511,12 @@ img {
 
 .colorPending{
     color: #FFC107;
+}
+
+.visible-nd{
+    visibility: hidden;
+}
+
+.visible{
+visibility: visible;
 }
