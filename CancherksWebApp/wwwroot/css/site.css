@@ -296,37 +296,6 @@ img {
         color: var(--colorMain); 
 }
 
-.datepickerInicio-input {
-    color: var(--colorMain); 
-}
-
-.datepickerInicio-input {
-    color: var(--colorMain);
-}
-
-/* Datepicker final format */
-
-.ui-datepickerFinal {
-    border: 1px solid var(--colorMain);
-}
-
-#datepickerFinal-icon .input-group-text {
-    color: var(--colorMain);
-    border-color: var(--colorMain);
-}
-
-#datepickerFinal-input {
-    border: 1px solid var(--colorMain);
-    background-color: transparent;
-}
-
-#datepickerFinal-input::placeholder {
-    color: var(--colorMain);
-}
-
-#datepickerFinal-input {
-    color: var(--colorMain);
-}
 
 /* Button final format */
 
