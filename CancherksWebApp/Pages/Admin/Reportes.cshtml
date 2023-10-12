@@ -26,35 +26,34 @@
         </dropdown>
 
 
-        <datepickers style="display: flex; justify-content: center; flex-grow: 1;">
-        <form class="row me-3">
-            <div class="col-12">
-                <inputDate class="input-group date" id="datepickerInicio-container">
-                    <input type="text" class="form-control" id="datepickerInicio-input" placeholder="Fecha Inicio" />
-                    <span class="input-group-append" id="datepickerInicio-icon">
-                        <span class="input-group-text bg-light d-block">
-                            <i class="bi bi-calendar-check"></i>
+        <div style="display: flex; justify-content: center; flex-grow: 1;">
+            <form class="row me-3">
+                <div class="col-12">
+                    <div class="input-group date" id="datepickerInicio-container">
+                        <input type="text" class="form-control datepickerInput" id="datepickerInicio-input" placeholder="Fecha Inicio" />
+                        <span class="input-group-append datepickerIcon" id="datepickerInicio-icon">
+                            <span class="input-group-text bg-light d-block">
+                                <i class="bi bi-calendar-check"></i>
+                            </span>
                         </span>
-                    </span>
-                </inputDate>
+                    </div>
+                </div>
+            </form>
 
-            </div>
-        </form>
-
-        <form class="row">
-            <div class="col-12">
-                <inputDate class="input-group date" id="datepickerFinal-container">
-                    <input type="text" class="form-control" id="datepickerFinal-input" placeholder="Fecha Final" />
-                    <span class="input-group-append" id="datepickerFinal-icon">
-                        <span class="input-group-text bg-light d-block">
-                            <i class="bi bi-calendar-check"></i>
+            <form class="row">
+                <div class="col-12">
+                    <div class="input-group date" id="datepickerFinal-container">
+                        <input type="text" class="form-control datepickerInput" id="datepickerFinal-input" placeholder="Fecha Final" />
+                        <span class="input-group-append datepickerIcon" id="datepickerFinal-icon">
+                            <span class="input-group-text bg-light d-block">
+                                <i class="bi bi-calendar-check"></i>
+                            </span>
                         </span>
-                    </span>
-                </inputDate>
+                    </div>
+                </div>
+            </form>
+        </div>
 
-            </div>
-        </form>
-        </datepickers>
 
         <button type="button" class="btn btn-primary button-gradient" data-bs-toggle="modal" data-bs-target="#report">Generar</button>
 

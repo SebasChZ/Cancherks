@@ -300,6 +300,10 @@ img {
     color: var(--colorMain); 
 }
 
+.datepickerInicio-input {
+    color: var(--colorMain);
+}
+
 /* Datepicker final format */
 
 .ui-datepickerFinal {
