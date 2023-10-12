@@ -56,4 +56,22 @@ $('.image-upload-wrap').bind('dragleave', function () {
 });
 
 
+document.getElementById('datepickerInicio-input').addEventListener('changeDate', filterByDate);
+document.getElementById('datepickerFinal-input').addEventListener('changeDate', filterByDate);
+
+function convertDatepickerToDate(dateStr) {
+    // Formato del datepicker: mm/dd/yyyy
+    const [month, day, year] = dateStr.split('/').map(Number);
+    return new Date(year, month - 1, day); // month - 1 porque los meses en JavaScript son 0-indexados
+}
+
+function convertTableDateToDate(dateStr) {
+    // Formato en la tabla: dd-mm-yyyy
+    const [day, month, year] = dateStr.split('-').map(Number);
+    return new Date(year, month - 1, day);
+}
+
+
+
+
 

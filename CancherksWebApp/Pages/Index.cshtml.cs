@@ -54,7 +54,7 @@ namespace CancherksWebApp.Pages
                 Rol = 2569  // Invented data
             };
 
-            userLoggeed = user1; // Copying user1 to user3
+            userLoggeed = user2; // Copying user1 to user3
 
 
             // You can perform synchronous operations here as well
@@ -68,9 +68,6 @@ namespace CancherksWebApp.Pages
             HttpContext.Session.SetString("lastName", userLoggeed.LastName.ToString());
             HttpContext.Session.SetString("lastName2", userLoggeed.LastName2.ToString());
             HttpContext.Session.SetString("role", userLoggeed.Rol.ToString());
-
-
-
 
             // Now make the asynchronous call to the external API
             var client = _clientFactory.CreateClient();

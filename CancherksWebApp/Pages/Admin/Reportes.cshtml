@@ -123,3 +123,33 @@
     </div>
 </modalReport>
 
+
+<script>
+    // Añadir un controlador de eventos a cada opción de dropdown
+    document.querySelectorAll('.custom-dropdown-item').forEach(item => {
+        item.addEventListener('click', function (event) {
+            // Evitar que el navegador siga el enlace (en caso de que sea un enlace)
+            event.preventDefault();
+
+            // Obtener el ID de instalación de la opción seleccionada
+            var installationId = this.getAttribute('data-id');
+
+            // Filtrar las filas de la tabla basado en el ID de instalación
+            filterTable(installationId);
+        });
+    });
+
+    function filterTable(installationId) {
+        var tableRows = document.querySelectorAll('.table tbody tr');
+        tableRows.forEach(row => {
+            var rowInstallationId = row.getAttribute('data-installation-id');
+            if (installationId === "0" || rowInstallationId === installationId) {
+                row.style.display = '';  // Mostrar la fila si se selecciona "Todas las instalaciones" o si coincide con la instalación seleccionada
+            } else {
+                row.style.display = 'none';  // Ocultar la fila si no coincide
+            }
+        });
+    }
+</script>
+
+
