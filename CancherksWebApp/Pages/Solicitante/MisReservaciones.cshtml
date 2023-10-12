@@ -46,18 +46,18 @@
                         @{
                             if (request.IdState == 2)
                             {
-                                <i class="bi bi-check-circle-fill custom-success  colorApproved ">Aprobado</i>
+                                <i class="bi bi-check-circle-fill custom-success  colorApproved "> @Model.States.FirstOrDefault(i => i.Id == request.IdState)?.Name</i>
                             }
                             else if (request.IdState == 1)
                             {
-                                <i class="bi bi-alarm-fill colorPending" style="cursor:pointer;"> Pendiente</i>
+                                <i class="bi bi-alarm-fill colorPending" style="cursor:pointer;"> @Model.States.FirstOrDefault(i => i.Id == request.IdState)?.Name</i>
                             }
                             else if (request.IdState == 3)
                             {
-                                <i class="bi bi-x-circle-fill colorRejected" style="cursor:pointer;">Denegado</i>
+                                <i class="bi bi-x-circle-fill colorRejected" style="cursor:pointer;"> @Model.States.FirstOrDefault(i => i.Id == request.IdState)?.Name</i>
                             }
 
-                    }
+                        }
                     </td>
                 </tr>
                 }
