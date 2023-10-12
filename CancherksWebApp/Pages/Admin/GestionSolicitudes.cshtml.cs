@@ -18,7 +18,7 @@ namespace CancherksWebApp.Pages.Admin
         }
 
         public List<Installation> Installations { get; set; }
-        public List<Request> Requests { get; set; } // A�ade esta l�nea
+        public List<Request> Requests { get; set; } 
 
 
         public async Task OnGet()
@@ -31,39 +31,60 @@ namespace CancherksWebApp.Pages.Admin
 
         }
 
-        public async Task<IActionResult> OnPostAsync(string idSolicitud)
+        public async Task<IActionResult> OnPostAsync(string idSolicitud, string idSolicitudReject)
         {
-            
-            var idRequest = Convert.ToInt32(idSolicitud);   
-            var modifyRequest = await _context.Request.FindAsync(idRequest);
+            int? idRequest = null;
 
-            if (modifyRequest == null)
+            if (!string.IsNullOrEmpty(idSolicitud))
             {
-                Message = "Request not found";
-                Response.Redirect("/Admin/GestionSolicitudes");
+                idRequest = Convert.ToInt32(idSolicitud);
+            }
+            else if (!string.IsNullOrEmpty(idSolicitudReject))
+            {
+                idRequest = Convert.ToInt32(idSolicitudReject);
             }
 
-            modifyRequest.IdState = 2;
-
-            try
+            if (idRequest.HasValue)
             {
-                await _context.SaveChangesAsync();
-                Message = "Request state has been updated";
+                var requestToUpdate = await _context.Request.FindAsync(idRequest.Value);
+
+                if (requestToUpdate == null)
+                {
+                    Message = "Request not found";
+                    return RedirectToPage("/Admin/GestionSolicitudes");
+                }
+
+                if (!string.IsNullOrEmpty(idSolicitud))
+                {
+                    requestToUpdate.IdState = 2;
+                    Message = "Request state has been updated";
+                }
+                else
+                {
+                    requestToUpdate.IdState = 3;
+                    Message = "Request has been rejected";
+                }
+
+                try
+                {
+                    await _context.SaveChangesAsync();
+                }
+                catch (Exception ex)
+                {
+                    Message = "Error while updating the request: " + ex.Message;
+                }
             }
-            catch (Exception ex)
+            else
             {
-                Message = "Error while updating the request: " + ex.Message;
+                Message = "No valid request ID provided.";
             }
 
-            // Inicializa las listas después de actualizar
+            // Refresh the data
             Installations = _context.Installation.ToList();
-            Requests = _context.Request.Where(r => r.IdState == 1).ToList(); // Filtrar por idState == 1
+            Requests = _context.Request.Where(r => r.IdState == 1).ToList();
 
-            // Redirige a la misma página
             return RedirectToPage("/Admin/GestionSolicitudes");
         }
-
-
 
 
     }
