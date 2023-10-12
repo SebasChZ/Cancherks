@@ -4,8 +4,18 @@
 // Write your JavaScript code.
 
 
+function convertToDbDateFormat(dateString) {
+    var parts = dateString.split('/');
+    return `${parts[1]}/${parts[0]}/${parts[2]}`;
+}
+
 $(document).ready(function () {
-    $('#datepickerInicio-input').datepicker();
+    $('#datepickerInicio-input').datepicker().on('change', function () {
+        var originalDate = $(this).val();
+        var convertedDate = convertToDbDateFormat(originalDate);
+        console.log("agarra el inicio"); 
+        console.log(convertedDate);  // Esto imprimirá la fecha en el formato "yyyy-mm-dd"
+    });
 
     // Desencadenar el datepicker al hacer clic en el ícono
     $('#datepickerInicio-icon').click(function () {
@@ -13,14 +23,76 @@ $(document).ready(function () {
     });
 });
 
+
 $(document).ready(function () {
-    $('#datepickerFinal-input').datepicker();
+    $('#datepickerFinal-input').datepicker().on('change', function () {
+        var originalDate = $(this).val();
+        var convertedDate = convertToDbDateFormat(originalDate);
+        console.log("agarra el fin");
+        console.log(convertedDate);  // Esto imprimirá la fecha en el formato "yyyy-mm-dd"
+    });
 
     // Desencadenar el datepicker al hacer clic en el ícono
     $('#datepickerFinal-icon').click(function () {
         $('#datepickerFinal-input').focus();
     });
 });
+
+function filterTableIfBothDatesSet() {
+    var startDate = $('#datepickerInicio-input').data('converted');
+    var endDate = $('#datepickerFinal-input').data('converted');
+
+    // Verifica si ambas fechas están establecidas
+    if (startDate && endDate) {
+        filterTableByDates(startDate, endDate);
+    }
+}
+
+$(document).ready(function () {
+    $('#datepickerInicio-input').datepicker().on('change', function () {
+        var originalDate = $(this).val();
+        var convertedDate = convertToDbDateFormat(originalDate);
+
+        // Guarda la fecha convertida usando jQuery data
+        $(this).data('converted', convertedDate);
+
+
+        // Filtra la tabla si ambas fechas están establecidas
+        filterTableIfBothDatesSet();
+    });
+
+    $('#datepickerFinal-input').datepicker().on('change', function () {
+        var originalDate = $(this).val();
+        var convertedDate = convertToDbDateFormat(originalDate);
+
+        // Guarda la fecha convertida usando jQuery data
+        $(this).data('converted', convertedDate);
+
+        // Filtra la tabla si ambas fechas están establecidas
+        filterTableIfBothDatesSet();
+    });
+});
+
+function filterTableByDates(startDate, endDate) {
+    var tableRows = document.querySelectorAll('.table tbody tr');
+    
+    // Convertimos las fechas a un formato comparable
+    var comparableStartDate = convertToDbDateFormat(startDate);
+    var comparableEndDate = convertToDbDateFormat(endDate);
+
+    tableRows.forEach(row => {
+        var rowDateText = row.querySelector('td:nth-child(3)').innerText;
+        var comparableRowDate = convertToDbDateFormat(rowDateText);
+        
+        console.log("fechas tabla:", comparableRowDate)
+        
+        if (comparableRowDate >= comparableStartDate && comparableRowDate <= comparableEndDate) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+}
 
 function readURL(input) {
     if (input.files && input.files[0]) {
@@ -54,24 +126,5 @@ $('.image-upload-wrap').bind('dragover', function () {
 $('.image-upload-wrap').bind('dragleave', function () {
     $('.image-upload-wrap').removeClass('image-dropping');
 });
-
-
-document.getElementById('datepickerInicio-input').addEventListener('changeDate', filterByDate);
-document.getElementById('datepickerFinal-input').addEventListener('changeDate', filterByDate);
-
-function convertDatepickerToDate(dateStr) {
-    // Formato del datepicker: mm/dd/yyyy
-    const [month, day, year] = dateStr.split('/').map(Number);
-    return new Date(year, month - 1, day); // month - 1 porque los meses en JavaScript son 0-indexados
-}
-
-function convertTableDateToDate(dateStr) {
-    // Formato en la tabla: dd-mm-yyyy
-    const [day, month, year] = dateStr.split('-').map(Number);
-    return new Date(year, month - 1, day);
-}
-
-
-
 
 
