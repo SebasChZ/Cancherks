@@ -136,7 +136,6 @@ img {
 }
 /*---------- Layout modifications*/
 
-
 .icon-Profile {
     width: 50px;
     height: 50px;
@@ -270,7 +269,6 @@ img {
 .custom-dropdown-item:hover {
     color: #00A38B !important; 
 }
-
 
 /* Datepicker format */
 .datepicker-container{
