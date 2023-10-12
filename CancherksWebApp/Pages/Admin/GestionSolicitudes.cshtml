@@ -27,8 +27,6 @@
         </ul>
     </div>
 
-
-
     <table class="table" style="margin-top: 1rem;">
         <thead>
             <tr>
@@ -52,7 +50,7 @@
                     <td>@request.EndTime.ToString()</td>
                     <td>
                         <i class="bi bi-check-circle-fill custom-success" data-id="@request.Id" style="cursor:pointer;"></i>
-                        <i class="bi bi-trash-fill custom-danger" style="cursor:pointer;"></i>
+                        <i class="bi bi-trash-fill custom-danger" data-id="@request.Id" style="cursor:pointer;"></i>
                     </td>
                 </tr>
             }
@@ -110,7 +108,10 @@
                 <p>¿Confirma que desea rechazar esta solicitud?</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary button-color" data-bs-dismiss="modal" id="btnRechazarAceptar">Aceptar</button>
+                <form method="post">
+                    <input type="hidden" id="idSolicitudReject" name="idSolicitudReject" value="" />
+                    <button type="submit" class="btn btn-primary button-color" data-bs-dismiss="modal" id="btnRechazarAceptar">Aceptar</button>
+                </form>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
             </div>
         </div>
@@ -140,7 +141,6 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         var successIcons = document.querySelectorAll('.custom-success');
-
         successIcons.forEach(function (icon) {
             icon.addEventListener('click', function () {
                 var requestId = this.getAttribute('data-id');
@@ -155,15 +155,17 @@
 <!-- Alert before rejecting  request -->
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        var successIcons = document.querySelectorAll('.custom-danger');
-
-        successIcons.forEach(function (icon) {
+        var rejectIcons = document.querySelectorAll('.custom-danger');
+        rejectIcons.forEach(function (icon) {
             icon.addEventListener('click', function () {
-                var aceptarModal = new bootstrap.Modal(document.getElementById('reject'));
-                aceptarModal.show();
+                var requestId = this.getAttribute('data-id');
+                document.getElementById('idSolicitudReject').value = requestId;
+                var rejectModal = new bootstrap.Modal(document.getElementById('reject'));
+                rejectModal.show();
             });
         });
     });
+
 </script>
 
 <!-- Notify after acepting the request -->
