@@ -46,11 +46,15 @@
                         @{
                             if (request.IdState == 2)
                             {
-                                <i class="bi bi-check-circle-fill custom-success" style="cursor:pointer;"> Aprobado</i>
+                                <i class="bi bi-check-circle-fill custom-success  colorApproved ">Aprobado</i>
                             }
                             else if (request.IdState == 1)
                             {
-                                <i class="bi bi-check-circle-fill custom-success" style="cursor:pointer;"> Pendiente</i>
+                                <i class="bi bi-alarm-fill colorPending" style="cursor:pointer;"> Pendiente</i>
+                            }
+                            else if (request.IdState == 3)
+                            {
+                                <i class="bi bi-x-circle-fill colorRejected" style="cursor:pointer;">Denegado</i>
                             }
 
                     }
