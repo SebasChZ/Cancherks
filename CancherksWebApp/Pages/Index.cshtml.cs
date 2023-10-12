@@ -36,7 +36,7 @@ namespace CancherksWebApp.Pages
             UserLogged user1 = new UserLogged
             {
                 Id = 2021052792,
-                Email = "chcalerks@estudiantec.cr",
+                Email = "chacalerks@estudiantec.cr ",
                 Name = "Maynor",
                 LastName = "Martínez",
                 LastName2 = "Hernández",
@@ -54,7 +54,7 @@ namespace CancherksWebApp.Pages
                 Rol = 2569  // Invented data
             };
 
-            userLoggeed = user2; // Copying user1 to user3
+            userLoggeed = user1; // Copying user1 to user3
 
 
             // You can perform synchronous operations here as well
@@ -64,6 +64,7 @@ namespace CancherksWebApp.Pages
             HttpContext.Session.SetString("SessionKey", Guid.NewGuid().ToString());
             HttpContext.Session.SetString("id", userLoggeed.Id.ToString());
             HttpContext.Session.SetString("email", userLoggeed.Email.ToString());
+            HttpContext.Session.SetString("name", userLoggeed.Name.ToString());
             HttpContext.Session.SetString("lastName", userLoggeed.LastName.ToString());
             HttpContext.Session.SetString("lastName2", userLoggeed.LastName2.ToString());
             HttpContext.Session.SetString("role", userLoggeed.Rol.ToString());

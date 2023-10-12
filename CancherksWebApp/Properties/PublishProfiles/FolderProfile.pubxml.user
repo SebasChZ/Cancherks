@@ -5,7 +5,18 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\Users\picherks\Desktop\WebAPP</_PublishTargetUrl>
-    <History>True|2023-10-02T16:45:39.5676802Z;</History>
+    <History>True|2023-10-12T01:49:43.9874562Z;True|2023-10-11T19:29:10.7229480-06:00;True|2023-10-02T10:45:39.5676802-06:00;</History>
     <LastFailureDetails />
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
   </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="ConnectionFernanda">
+      <Value>Server=cancherks.mssql.somee.com%3bDatabase=cancherks%3bUser Id=AdminCancherks%3bPassword=q44vQ74LPFAkvW%3bTrustServerCertificate=true</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="CancherksWebApp.Data.ApplicationDbContext">
+      <Value>Server=cancherks.mssql.somee.com%3bDatabase=cancherks%3bUser Id=AdminCancherks%3bPassword=q44vQ74LPFAkvW%3bTrustServerCertificate=true</Value>
+    </EFMigrations>
+  </ItemGroup>
 </Project>

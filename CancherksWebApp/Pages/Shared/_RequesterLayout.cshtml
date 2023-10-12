@@ -30,39 +30,33 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
+
                     @{
-                       
-                        var option1IsActive = Context.Request.Path.Value.Contains("/Option1");
-                        var option2IsActive = Context.Request.Path.Value.Contains("/Option2");
-                        var option3IsActive = Context.Request.Path.Value.Contains("/Option3");
-                        var requestManagementIsActive = Context.Request.Path.Value.Contains("/Admin/GestionSolicitudes");
-                        var reportManagementIsActive = Context.Request.Path.Value.Contains("/Admin/Reportes");
-                        var addInstallationManagementIsActive = Context.Request.Path.Value.Contains("/Admin/AgregarInstalacion");
-                        var modifyInstallationManagementIsActive = Context.Request.Path.Value.Contains("/Admin/ModificarInstalacion");
+
+                        var reservationArea = false;
+                        var myArea = false;
+
+                        var reservation1Active = Context.Request.Path.Value.Contains("/Solicitante/Reservacion");
+                        var reservation2Active = Context.Request.Path.Value.Contains("/Solicitante/Publico");
+                        var my1Active = Context.Request.Path.Value.Contains("/Solicitante/MisReservaciones");
+
+                        if (reservation1Active || reservation2Active)
+                        {
+                            reservationArea = true;
+                        }
+                        else if (my1Active)
+                        {
+                            myArea = true;
+                        }
 
                     }
 
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link @(option1IsActive ? "activeNav" : "")" asp-area="" asp-page="/Option1">estoy en el layaout the requester</a>
+                            <a class="nav-link @(reservationArea ? "activeNav" : "")" asp-area="Solicitante" asp-page="Reservacion">Reservar y Horarios</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @(option2IsActive ? "activeNav" : "")" asp-area="" asp-page="/Option2">Option2</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link @(option3IsActive ? "activeNav" : "")" asp-area="" asp-page="/Option3">Option3</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link @(requestManagementIsActive ? "activeNav" : "")" asp-area="" asp-page="/Admin/GestionSolicitudes">Gestion Solicitudes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link @(reportManagementIsActive ? "activeNav" : "")" asp-area="" asp-page="/Admin/Reportes">Reportes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link @(addInstallationManagementIsActive ? "activeNav" : "")" asp-area="" asp-page="/Admin/AgregarInstalacion">Agregar Instalacion</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link @(modifyInstallationManagementIsActive ? "activeNav" : "")" asp-area="" asp-page="/Admin/ModificarInstalacion">Modificar Instalacion</a>
+                            <a class="nav-link @(myArea ? "activeNav" : "")" asp-area="Solicitante" asp-page="MisReservaciones">Mis Reservaciones</a>
                         </li>
                     </ul>
                 </div>
@@ -80,14 +74,41 @@
     <div class="page d-flex flex-row bg-grayContrast">
         <aside class="site-bar bg-white">
             <ul class="d-flex flex-column gap-3 px-0 py-2">
-                <li class="py-2 inline-nav-item ">
-                    <i class="bi bi-people-fill"></i>
-                    Instalaciones
-                </li>
-                <li class="py-2 bg-footer inline-nav-item-nd">
-                    <i class="bi bi-people-fill"></i>
-                    Instalaciones
-                </li>
+                @* //Aside section for Admin Gestion solicitudes *@
+                @if (reservationArea)
+                {
+                    <li class="py-2  @(reservation1Active ? "inline-active" : "inline-nav-item")">
+                        <a class="aside-link" asp-area="Solicitante" asp-page="Reservacion">
+                            <i class="bi bi-calendar2-check-fill"></i>
+                            Reservar
+                        </a>
+                    </li>
+                    <li class="py-2  @(reservation2Active ? "inline-active" : "inline-nav-item")">
+                        <a class="aside-link" asp-area="Solicitante" asp-page="Reservacion">
+                            <i class="bi bi-people-fill"></i>
+                            Públicos
+                        </a>
+                    </li>
+
+                }
+                else if (myArea)
+                {
+                    <li class="py-2 inline-nav-item @(my1Active ? "inline-active" : "inline-nav-item") ">
+                        <a class="aside-link" asp-area="Solicitante" asp-page="MisReservaciones">
+                            <i class="bi bi-check2-all"></i>
+                            Mis Reservaciones
+                        </a>
+                    </li>
+                }else
+                {
+                    <li class="py-2 inline-nav-item @(my1Active ? "inline-active" : "inline-nav-item") ">
+                        <a class="aside-link" asp-area="Solicitante" asp-page="MisReservaciones">
+                            <i class="bi bi-check2-all"></i>
+                            Mis Reservasdfasdfasdfaciones
+                        </a>
+                    </li>
+                }
+
             </ul>
 
         </aside>

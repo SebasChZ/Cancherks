@@ -127,6 +127,13 @@ img {
     background-color: var(--colorDisable) !important;
 }
 
+.gap-3{
+    gap:1rem !important;
+}
+
+.gap-5 {
+    gap: 1rem !important;
+}
 /*---------- Layout modifications*/
 
 
