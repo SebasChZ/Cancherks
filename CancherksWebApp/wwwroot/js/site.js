@@ -4,6 +4,55 @@
 // Write your JavaScript code.
 
 
+// START For filtering by dates and installation in reports
+var selectedInstallationId = "0";
+var selectedStartDate = null;
+var selectedEndDate = null;
+
+document.querySelectorAll('.custom-dropdown-item').forEach(item => {
+    item.addEventListener('click', function (event) {
+        event.preventDefault();
+        selectedInstallationId = this.getAttribute('data-id');
+        combinedFilter();
+    });
+});
+
+function combinedFilter() {
+    var tableRows = document.querySelectorAll('.table tbody tr');
+    tableRows.forEach(row => {
+        var rowInstallationId = row.getAttribute('data-installation-id');
+        var rowDateText = row.querySelector('td:nth-child(3)').innerText;
+
+        // Filter by installation ID
+        var matchInstallation = (selectedInstallationId === "0" || rowInstallationId === selectedInstallationId);
+
+        // If both dates are established, filter by dates too
+        var matchDate = true;
+        if (selectedStartDate && selectedEndDate) {
+            matchDate = (rowDateText >= selectedStartDate && rowDateText <= selectedEndDate);
+        }
+
+        if (matchInstallation && matchDate) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+}
+$(document).ready(function () {
+    $('#datepickerInicio-input').datepicker().on('change', function () {
+        var originalDate = $(this).val();
+        selectedStartDate = convertToDbDateFormat(originalDate);
+        combinedFilter();
+    });
+
+    $('#datepickerFinal-input').datepicker().on('change', function () {
+        var originalDate = $(this).val();
+        selectedEndDate = convertToDbDateFormat(originalDate);
+        combinedFilter();
+    });
+});
+
 function convertToDbDateFormat(dateString) {
     var parts = dateString.split('/');
     return `${parts[1]}/${parts[0]}/${parts[2]}`;
@@ -13,86 +62,26 @@ $(document).ready(function () {
     $('#datepickerInicio-input').datepicker().on('change', function () {
         var originalDate = $(this).val();
         var convertedDate = convertToDbDateFormat(originalDate);
-        console.log("agarra el inicio"); 
-        console.log(convertedDate);  // Esto imprimirá la fecha en el formato "yyyy-mm-dd"
+        
     });
 
-    // Desencadenar el datepicker al hacer clic en el ícono
     $('#datepickerInicio-icon').click(function () {
         $('#datepickerInicio-input').focus();
     });
 });
 
-
 $(document).ready(function () {
     $('#datepickerFinal-input').datepicker().on('change', function () {
         var originalDate = $(this).val();
         var convertedDate = convertToDbDateFormat(originalDate);
-        console.log("agarra el fin");
-        console.log(convertedDate);  // Esto imprimirá la fecha en el formato "yyyy-mm-dd"
     });
 
-    // Desencadenar el datepicker al hacer clic en el ícono
+    
     $('#datepickerFinal-icon').click(function () {
         $('#datepickerFinal-input').focus();
     });
 });
-
-function filterTableIfBothDatesSet() {
-    var startDate = $('#datepickerInicio-input').data('converted');
-    var endDate = $('#datepickerFinal-input').data('converted');
-
-    // Verifica si ambas fechas están establecidas
-    if (startDate && endDate) {
-        filterTableByDates(startDate, endDate);
-    }
-}
-
-$(document).ready(function () {
-    $('#datepickerInicio-input').datepicker().on('change', function () {
-        var originalDate = $(this).val();
-        var convertedDate = convertToDbDateFormat(originalDate);
-
-        // Guarda la fecha convertida usando jQuery data
-        $(this).data('converted', convertedDate);
-
-
-        // Filtra la tabla si ambas fechas están establecidas
-        filterTableIfBothDatesSet();
-    });
-
-    $('#datepickerFinal-input').datepicker().on('change', function () {
-        var originalDate = $(this).val();
-        var convertedDate = convertToDbDateFormat(originalDate);
-
-        // Guarda la fecha convertida usando jQuery data
-        $(this).data('converted', convertedDate);
-
-        // Filtra la tabla si ambas fechas están establecidas
-        filterTableIfBothDatesSet();
-    });
-});
-
-function filterTableByDates(startDate, endDate) {
-    var tableRows = document.querySelectorAll('.table tbody tr');
-    
-    // Convertimos las fechas a un formato comparable
-    var comparableStartDate = convertToDbDateFormat(startDate);
-    var comparableEndDate = convertToDbDateFormat(endDate);
-
-    tableRows.forEach(row => {
-        var rowDateText = row.querySelector('td:nth-child(3)').innerText;
-        var comparableRowDate = convertToDbDateFormat(rowDateText);
-        
-        console.log("fechas tabla:", comparableRowDate)
-        
-        if (comparableRowDate >= comparableStartDate && comparableRowDate <= comparableEndDate) {
-            row.style.display = '';
-        } else {
-            row.style.display = 'none';
-        }
-    });
-}
+// END For filtering by dates and installation in reports
 
 function readURL(input) {
     if (input.files && input.files[0]) {
