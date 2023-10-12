@@ -5,6 +5,7 @@
 
 
 // START For filtering by dates and installation in reports
+
 var selectedInstallationId = "0";
 var selectedStartDate = null;
 var selectedEndDate = null;

@@ -77,211 +77,47 @@
         </div>
         <div class="col-md-6">
             <label class="mb-3">Disponibilidad</label>
-            <accordion class="accordion" id="accordionExample">
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Lunes
-                        </button>
-                    </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <label class="form-check-label label-bold"> Inicio</label>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="WeeklyStart" value="option1">
-                                <label class="form-check-label" for="inlineCheckbox1">7:00 am </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="WeekendsStart" value="option2">
-                                <label class="form-check-label" for="inlineCheckbox2">8:00 am</label>
-                            </div>
-                            <label class="form-check-label label-bold"> Final</label>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="WeeklyStart" value="option1">
-                                <label class="form-check-label" for="inlineCheckbox1">11:00 pm </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="WeekendsStart" value="option2">
-                                <label class="form-check-label" for="inlineCheckbox2">3:00 pm</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Martes
-                        </button>
-                    </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <label class="form-check-label label-bold"> Inicio</label>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="WeeklyStart" value="option1">
-                                <label class="form-check-label" for="inlineCheckbox1">7:00 am </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="WeekendsStart" value="option2">
-                                <label class="form-check-label" for="inlineCheckbox2">8:00 am</label>
-                            </div>
-                            <label class="form-check-label label-bold"> Final</label>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="WeeklyStart" value="option1">
-                                <label class="form-check-label" for="inlineCheckbox1">11:00 pm </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="WeekendsStart" value="option2">
-                                <label class="form-check-label" for="inlineCheckbox2">3:00 pm</label>
+            <div class="accordion" id="daysAccordion">
+                @{
+                    int index = 0;
+                }
+                @foreach (var day in Model.Days)
+                {
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="@($"heading-{day.NameDay}-{index}")">
+                            <button class="accordion-button @(index == 0 ? "" : "collapsed")" type="button" data-bs-toggle="collapse" data-bs-target="@($"#collapse-{day.NameDay}-{index}")" aria-expanded="@(index == 0 ? "true" : "false")" aria-controls="@($"collapse-{day.NameDay}-{index}")">
+                                @day.NameDay
+                            </button>
+                        </h2>
+                        <div id="@($"collapse-{day.NameDay}-{index}")" class="accordion-collapse collapse @(index == 0 ? "show" : "")" aria-labelledby="@($"heading-{day.NameDay}-{index}")" data-bs-parent="#daysAccordion">
+                            <div class="accordion-body">
+                                <label class="form-check-label label-bold"> Inicio</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="@($"WeeklyStart-{day.NameDay}-{index}")" value="option1">
+                                    <label class="form-check-label" for="@($"WeeklyStart-{day.NameDay}-{index}")">7:00 am </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="@($"WeekendsStart-{day.NameDay}-{index}")" value="option2">
+                                    <label class="form-check-label" for="@($"WeekendsStart-{day.NameDay}-{index}")">8:00 am</label>
+                                </div>
+                                <label class="form-check-label label-bold"> Final</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="@($"WeeklyEnd-{day.NameDay}-{index}")" value="option1">
+                                    <label class="form-check-label" for="@($"WeeklyEnd-{day.NameDay}-{index}")">11:00 pm </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="@($"WeekendsEnd-{day.NameDay}-{index}")" value="option2">
+                                    <label class="form-check-label" for="@($"WeekendsEnd-{day.NameDay}-{index}")">3:00 pm</label>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingThree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Miércoles
-                        </button>
-                    </h2>
-                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <label class="form-check-label label-bold"> Inicio</label>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="WeeklyStart" value="option1">
-                                <label class="form-check-label" for="inlineCheckbox1">7:00 am </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="WeekendsStart" value="option2">
-                                <label class="form-check-label" for="inlineCheckbox2">8:00 am</label>
-                            </div>
-                            <label class="form-check-label label-bold"> Final</label>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="WeeklyStart" value="option1">
-                                <label class="form-check-label" for="inlineCheckbox1">11:00 pm </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="WeekendsStart" value="option2">
-                                <label class="form-check-label" for="inlineCheckbox2">3:00 pm</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingThree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
-                            Jueves
-                        </button>
-                    </h2>
-                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <label class="form-check-label label-bold"> Inicio</label>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="WeeklyStart" value="option1">
-                                <label class="form-check-label" for="inlineCheckbox1">7:00 am </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="WeekendsStart" value="option2">
-                                <label class="form-check-label" for="inlineCheckbox2">8:00 am</label>
-                            </div>
-                            <label class="form-check-label label-bold"> Final</label>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="WeeklyStart" value="option1">
-                                <label class="form-check-label" for="inlineCheckbox1">11:00 pm </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="WeekendsStart" value="option2">
-                                <label class="form-check-label" for="inlineCheckbox2">3:00 pm</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingThree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsefive" aria-expanded="false" aria-controls="collapseThree">
-                            Viernes
-                        </button>
-                    </h2>
-                    <div id="collapsefive" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <label class="form-check-label label-bold"> Inicio</label>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="WeeklyStart" value="option1">
-                                <label class="form-check-label" for="inlineCheckbox1">7:00 am </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="WeekendsStart" value="option2">
-                                <label class="form-check-label" for="inlineCheckbox2">8:00 am</label>
-                            </div>
-                            <label class="form-check-label label-bold"> Final</label>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="WeeklyStart" value="option1">
-                                <label class="form-check-label" for="inlineCheckbox1">11:00 pm </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="WeekendsStart" value="option2">
-                                <label class="form-check-label" for="inlineCheckbox2">3:00 pm</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingThree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseThree">
-                            Sábado
-                        </button>
-                    </h2>
-                    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <label class="form-check-label label-bold"> Inicio</label>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="WeeklyStart" value="option1">
-                                <label class="form-check-label" for="inlineCheckbox1">7:00 am </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="WeekendsStart" value="option2">
-                                <label class="form-check-label" for="inlineCheckbox2">8:00 am</label>
-                            </div>
-                            <label class="form-check-label label-bold"> Final</label>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="WeeklyStart" value="option1">
-                                <label class="form-check-label" for="inlineCheckbox1">11:00 pm </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="WeekendsStart" value="option2">
-                                <label class="form-check-label" for="inlineCheckbox2">3:00 pm</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingThree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseThree">
-                            Domingo
-                        </button>
-                    </h2>
-                    <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <label class="form-check-label label-bold"> Inicio</label>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="WeeklyStart" value="option1">
-                                <label class="form-check-label" for="inlineCheckbox1">7:00 am </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="WeekendsStart" value="option2">
-                                <label class="form-check-label" for="inlineCheckbox2">8:00 am</label>
-                            </div>
-                            <label class="form-check-label label-bold"> Final</label>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="WeeklyStart" value="option1">
-                                <label class="form-check-label" for="inlineCheckbox1">11:00 pm </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="WeekendsStart" value="option2">
-                                <label class="form-check-label" for="inlineCheckbox2">3:00 pm</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </accordion>
+                    index++;
+                }
+            </div>
+
+           
+            
         </div>
     </div>
 

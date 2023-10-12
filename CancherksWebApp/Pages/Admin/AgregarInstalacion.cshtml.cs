@@ -18,11 +18,13 @@ namespace CancherksWebApp.Pages.Admin
         }
 
         public List<Activity> Activities { get; set; }
+        public List<Day> Days { get; set; }
 
         public void OnGet()
         {
             role = HttpContext.Session.GetString("role");
             Activities = _context.Activity.ToList();
+            Days = _context.Day.ToList();
         }
     }
 }
