@@ -16,7 +16,8 @@ namespace CancherksWebApp.Pages.Solicitante
         }
 
         public List<Installation> Installations { get; set; }
-        public List<Request> Requests { get; set; } 
+        public List<Request> Requests { get; set; }
+        public List<State> States { get; set; }
 
         public string flag { get; set; }
 
@@ -26,6 +27,7 @@ namespace CancherksWebApp.Pages.Solicitante
             var email = HttpContext.Session.GetString("email");
             Installations = _context.Installation.ToList();
             Requests = _context.Request.Where(r => r.EmailRequester == email).ToList(); // Filtrar por idState == 1
+            States = _context.State.ToList();
 
             if (Requests.Count == 0)
             {

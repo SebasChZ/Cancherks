@@ -86,6 +86,5 @@ namespace CancherksWebApp.Pages.Admin
             return RedirectToPage("/Admin/GestionSolicitudes");
         }
 
-
     }
 }
