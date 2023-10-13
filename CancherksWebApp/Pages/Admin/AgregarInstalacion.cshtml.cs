@@ -31,6 +31,8 @@ namespace CancherksWebApp.Pages.Admin
         [BindProperty]
         public int SelectedSportId { get; set; }
 
+        public int radio { get; set; }
+
         [BindProperty]
         public IFormFile Photo { get; set; }
 
@@ -44,12 +46,12 @@ namespace CancherksWebApp.Pages.Admin
             Days = _context.Day.ToList();
         }
 
-        public async Task<IActionResult> OnPost(Installation installation, Sport sport)
+        public async Task<IActionResult> OnPost(Installation installation, int radio)
         {
             try
             {
                
-                Sport selectedSport = _context.Sport.Find(SelectedSportId);
+                Sport selectedSport = _context.Sport.Find(radio);
 
                 var parameters = new SqlParameter[]
                 {
@@ -73,10 +75,8 @@ namespace CancherksWebApp.Pages.Admin
                     else
                     {
                         parameters[3].Value = uniqueFileName;
-                    }
-                    
-                }
-                
+                    }                    
+                }             
 
                 await _context.Database.ExecuteSqlRawAsync("EXEC dbo.spAddInstallationSchedule @name, @location, @description, @picture, @maxCantPeople,@timeSplitReservation,@idSport", parameters);
 
@@ -91,11 +91,12 @@ namespace CancherksWebApp.Pages.Admin
         }
         private async Task<string> ProcessUploadedFile()
         {
-
+            string uniqueFileName = null;
             if (Photo != null)
             {
-                var fileName = Path.GetRandomFileName() + Path.GetExtension(Photo.FileName); // Generate a unique file name
-                var filePath = Path.Combine(webHostEnvironment.WebRootPath, "img", fileName); // Assuming you want to save it in an 'uploads' directory
+                string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "img");
+                uniqueFileName = Path.GetRandomFileName() + Path.GetExtension(Photo.FileName); // Generate a unique file name
+                var filePath = Path.Combine(webHostEnvironment.WebRootPath, "img", uniqueFileName); // Assuming you want to save it in an 'uploads' directory
 
                 using (var fileStream = new FileStream(filePath, FileMode.Create))
                 {
@@ -103,7 +104,7 @@ namespace CancherksWebApp.Pages.Admin
                 }
 
                 // Now filePath contains the complete route of the saved file on the server
-                return fileName;
+                return uniqueFileName;
             }
 
 

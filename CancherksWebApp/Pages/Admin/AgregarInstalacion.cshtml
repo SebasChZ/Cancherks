@@ -49,11 +49,15 @@
                         <div class="checkbox-container full-width">
                             @foreach (var sport in Model.Sports)
                             {
-                                <div class="form-check form-check-inline">
-                                    <input type="radio" name="SelectedSportId" id="@("radio-" + sport.Id)" value="@sport.Id" /> @sport.Name
+     
+
+                                <div class="form-check form-check-inline radio-item">
+                                    <input type="radio" name="radio" id="@("radio-" + sport.Id)" value="@sport.Id">
+                                    <label for="@("radio-" + sport.Id)">@sport.Name</label>
                                 </div>
                             }
                         </div>
+
                     </div>
 
                     <label class="form-label">Foto</label>
