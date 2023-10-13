@@ -1,8 +1,21 @@
 
 
 .radio-item [type="radio"] {
-	display: none;
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
 }
+
+.radio-item [type="radio"]:focus + label::after {
+	/* Add a focus style, like a border or a shadow */
+	box-shadow: 0 0 0 3px rgba(82, 78, 238, 0.5); /* This is just an example, adjust as needed */
+}
+
 
 .radio-item + .radio-item {
 	margin-top: 10px;
@@ -38,9 +51,9 @@
 		background: var(--colorMain);
 		height: 17px;
 		width: 17px;
-		left: -2px;
+		left: -4px;
 		transform: scale(5);
-		top: calc(50% - 7px);
+		top: calc(50% - 8px);
 		opacity: 0;
 		visibility: hidden;
 		transition: 0.4s ease-in-out 0s;
