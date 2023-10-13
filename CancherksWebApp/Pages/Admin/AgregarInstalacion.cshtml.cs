@@ -22,6 +22,9 @@ namespace CancherksWebApp.Pages.Admin
 
         [BindProperty]
         public Installation Installation { get; set; }
+
+        [BindProperty]
+        public List<int> SelectedSports { get; set; } = new List<int>();
         public void OnGet()
         {
             role = HttpContext.Session.GetString("role");
@@ -35,7 +38,19 @@ namespace CancherksWebApp.Pages.Admin
             {
                 await _context.Installation.AddAsync(Installation);
                 await _context.SaveChangesAsync();
-                
+
+                // Guarda las asociaciones con los deportes seleccionados
+                foreach (var sportId in SelectedSports)
+                {
+                    var installationxSport = new InstallationxSport
+                    {
+                        InstallationId = Installation.Id,
+                        SportId = sportId
+                    };
+                    _context.InstallationxSports.Add(installationxSport);
+                }
+
+                await _context.SaveChangesAsync();
 
             }
             // Aquí puedes redireccionar a otra página si lo deseas o mostrar un mensaje

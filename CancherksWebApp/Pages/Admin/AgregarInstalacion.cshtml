@@ -8,8 +8,8 @@
 }
 
 @section Scripts {
-    
-    <partial name="_ValidationScriptsPartial" /> 
+    <partial name="_ValidationScriptsPartial" />
+    <script src="@Url.Content("~/js/Admin/AgregarInstalacion.js")"></script>
 }                            
 
 <section class="container px-5 py-3">
@@ -49,10 +49,7 @@
                         <div class="checkbox-container full-width">
                             @foreach (var sport in Model.Sports)
                             {
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="@($"checkbox-{sport.Id}")" value="@sport.Id">
-                                    <label class="form-check-label" for="@($"checkbox-{sport.Id}")">@sport.Name</label>
-                                </div>
+                                <input type="checkbox" name="selectedSports" value="@sport.Id" /> @sport.Name <br />
                             }
                         </div>
                     </div>
@@ -98,23 +95,14 @@
                         </h2>
                         <div id="@($"collapse-{day.NameDay}-{index}")" class="accordion-collapse collapse @(index == 0 ? "show" : "")" aria-labelledby="@($"heading-{day.NameDay}-{index}")" data-bs-parent="#daysAccordion">
                             <div class="accordion-body">
-                                <label class="form-check-label label-bold"> Inicio</label>
+                                <label class="form-check-label label-bold">Hora Inicio</label>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="@($"WeeklyStart-{day.NameDay}-{index}")" value="option1">
-                                    <label class="form-check-label" for="@($"WeeklyStart-{day.NameDay}-{index}")">7:00 am </label>
+                                    <input type="time" id="startTime" name="startTime" onchange="updateTimes()" class="custom-time-picker">
                                 </div>
+                                
+                                <label class="form-check-label label-bold">Hora Final</label>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="@($"WeekendsStart-{day.NameDay}-{index}")" value="option2">
-                                    <label class="form-check-label" for="@($"WeekendsStart-{day.NameDay}-{index}")">8:00 am</label>
-                                </div>
-                                <label class="form-check-label label-bold"> Final</label>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="@($"WeeklyEnd-{day.NameDay}-{index}")" value="option1">
-                                    <label class="form-check-label" for="@($"WeeklyEnd-{day.NameDay}-{index}")">11:00 pm </label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="@($"WeekendsEnd-{day.NameDay}-{index}")" value="option2">
-                                    <label class="form-check-label" for="@($"WeekendsEnd-{day.NameDay}-{index}")">3:00 pm</label>
+                                    <input type="time" id="endTime" name="endTime" onchange="updateTimes()" class="custom-time-picker">
                                 </div>
                             </div>
                         </div>

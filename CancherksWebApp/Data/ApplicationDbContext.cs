@@ -13,16 +13,13 @@ namespace CancherksWebApp.Data
         public DbSet<Request> Request { get; set; }
         public DbSet<InstallationSportViewModel> InstallationSportViewModels { get; set; }
 
-
         public DbSet<Activity> Activity { get; set; }
         public DbSet<State> State { get; set; }
 
         public DbSet<Day> Day { get; set; }
-
         public DbSet<InstallationScheduleViewModel> InstallationScheduleViewModels { get; set; }
-
-
         public DbSet<Sport> Sport { get; set; }
+        public DbSet<InstallationxSport> InstallationxSport { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

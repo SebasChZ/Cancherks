@@ -1,44 +1,19 @@
 ﻿
 // Asegúrate de que el DOM esté cargado antes de agregar cualquier escuchador de eventos
-document.addEventListener("DOMContentLoaded", function () {
 
-    function validateForm() {
-        // Ejemplo de validación:
-        var name = document.getElementById("Name").value;
-        if (!name) {
-            Swal.fire({
-                icon: 'error',
-                title: '¡Error!',
-                text: 'El nombre es obligatorio.',
-                allowOutsideClick: false
-            });
-            return false;
-        }
+// Obtener horas
 
-        // Agrega más validaciones según sea necesario...
-        return true;
-    }
+function updateTimes() {
+    // Obtener los valores de los inputs
+    var startTime = document.getElementById('startTime').value;
+    var endTime = document.getElementById('endTime').value;
 
-    document.getElementById("acept").addEventListener("click", function (event) {
-        // Prevenir el envío inmediato del formulario
-        event.preventDefault();
+    // Ya que los timepickers retornan el tiempo en formato HH:MM (que es en sí mismo un formato de 24 horas),
+    // no necesitas hacer una conversión adicional. Solo imprime o utiliza los valores:
+    console.log("Hora Inicio:", startTime);
+    console.log("Hora Final:", endTime);
 
-        if (validateForm()) {
-            Swal.fire({
-                icon: 'success',
-                title: '¡Todo correcto!',
-                text: 'Formulario validado con éxito.',
-                allowOutsideClick: false,
-                showCancelButton: true,   // Muestra botón de cancelar
-                confirmButtonText: 'Agregar',   // Texto del botón de confirmación
-                cancelButtonText: 'Cancelar'   // Texto del botón de cancelación
-            }).then((result) => {
-                // Si el usuario confirma (hace clic en "Enviar"), envía el formulario
-                if (result.isConfirmed) {
-                    document.getElementById("installationForm").submit();
-                }
-            });
-        }
-    });
-});
+    // Si necesitas hacer algo adicional con estos valores, puedes hacerlo aquí.
+}
 
+// No necesitas el evento 'click' en este caso, porque ya estamos usando el evento 'change' en los inputs.
