@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data;
 using CancherksWebApp.Model;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 
 namespace CancherksWebApp.Pages.Admin
 {
@@ -24,7 +26,11 @@ namespace CancherksWebApp.Pages.Admin
         public Installation Installation { get; set; }
 
         [BindProperty]
-        public List<int> SelectedSports { get; set; } = new List<int>();
+        public int SelectedSportId { get; set; }
+
+
+        public string Message { get; set; }
+        
         public void OnGet()
         {
             role = HttpContext.Session.GetString("role");
@@ -32,16 +38,34 @@ namespace CancherksWebApp.Pages.Admin
             Days = _context.Day.ToList();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPost(Installation installation, Sport sport)
         {
-            if (ModelState.IsValid)
+            try
             {
-                await _context.Installation.AddAsync(Installation);
-                await _context.SaveChangesAsync();
+                Sport selectedSport = _context.Sport.Find(SelectedSportId);
 
+                var parameters = new SqlParameter[]
+                {
+                    new SqlParameter("@name", installation.Name),
+                    new SqlParameter("@location", installation.Location),
+                    new SqlParameter("@description", installation.Description),
+                    new SqlParameter("@picture", installation.Picture),
+                    new SqlParameter("@maxCantPeople", installation.MaxCantPeople),
+                    new SqlParameter("@timeSplitReservation", installation.TimeSplitReservation),
+                    new SqlParameter("@idSport", selectedSport.Id)
+                };
+
+                await _context.Database.ExecuteSqlRawAsync("EXEC dbo.spAddInstallationSchedule @name, @location, @description, @picture, @maxCantPeople,@timeSplitReservation,@idSport", parameters);
+
+                Message = "Instalación agregada con éxito!";
             }
-            // Aquí puedes redireccionar a otra página si lo deseas o mostrar un mensaje
+            catch (Exception ex)
+            {
+                Message = "Error al agregar la instalación: " + ex.Message;
+            }
+
             return RedirectToPage("/Admin/AgregarInstalacion");
         }
+
     }
 }

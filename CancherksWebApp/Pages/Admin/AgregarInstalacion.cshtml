@@ -50,7 +50,7 @@
                             @foreach (var sport in Model.Sports)
                             {
                                 <div class="form-check form-check-inline">
-                                <input type="radio" name="selectedSports" value="@sport.Id" /> @sport.Name
+                                    <input type="radio" name="SelectedSportId" id="@("radio-" + sport.Id)" value="@sport.Id" /> @sport.Name
                                 </div>
                             }
                         </div>
