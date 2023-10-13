@@ -18,7 +18,7 @@
     <div class="row"> 
         <div class="col-md-6">
             <div>
-                <form method="post" id="installationForm">
+                <form method="post" id="installationForm" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label class="form-label">Nombre</label>
                         <input type="text" class="form-control" id="Name" asp-for="Installation.Name" placeholder="Ingrese el nombre.">
@@ -62,7 +62,7 @@
                         <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Agregue una imagen</button>
 
                         <div class="image-upload-wrap">
-                            <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
+                            <input class="file-upload-input" type='file' onchange="readURL(this);" asp-for="Photo" accept="image/*" />
                             <div class="drag-text">
                                 <h3>Presione click o arraste la imagen que desea subir.</h3>
                             </div>

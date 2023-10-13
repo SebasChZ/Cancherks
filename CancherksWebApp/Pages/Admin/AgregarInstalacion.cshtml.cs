@@ -5,6 +5,7 @@ using System.Data;
 using CancherksWebApp.Model;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Hosting;
 
 namespace CancherksWebApp.Pages.Admin
 {
@@ -12,11 +13,13 @@ namespace CancherksWebApp.Pages.Admin
     {
         private readonly ApplicationDbContext _context;
 
+        public IWebHostEnvironment webHostEnvironment { get; }
         public string role { get; set; }
 
-        public AgregarInstalacionModel(ApplicationDbContext context)
+        public AgregarInstalacionModel(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            this.webHostEnvironment = webHostEnvironment;
         }
 
         public List<Sport> Sports { get; set; }
@@ -27,6 +30,9 @@ namespace CancherksWebApp.Pages.Admin
 
         [BindProperty]
         public int SelectedSportId { get; set; }
+
+        [BindProperty]
+        public IFormFile Photo { get; set; }
 
 
         public string Message { get; set; }
@@ -42,6 +48,7 @@ namespace CancherksWebApp.Pages.Admin
         {
             try
             {
+               
                 Sport selectedSport = _context.Sport.Find(SelectedSportId);
 
                 var parameters = new SqlParameter[]
@@ -55,17 +62,54 @@ namespace CancherksWebApp.Pages.Admin
                     new SqlParameter("@idSport", selectedSport.Id)
                 };
 
+                if (Photo != null)
+                {
+                    string uniqueFileName = await ProcessUploadedFile();
+
+                    if (uniqueFileName != null)
+                    {
+                        parameters[3].Value = uniqueFileName;
+                    }
+                    else
+                    {
+                        parameters[3].Value = uniqueFileName;
+                    }
+                    
+                }
+                
+
                 await _context.Database.ExecuteSqlRawAsync("EXEC dbo.spAddInstallationSchedule @name, @location, @description, @picture, @maxCantPeople,@timeSplitReservation,@idSport", parameters);
 
-                Message = "Instalación agregada con éxito!";
+                Message = "Instalaciï¿½n agregada con ï¿½xito!";
             }
             catch (Exception ex)
             {
-                Message = "Error al agregar la instalación: " + ex.Message;
+                Message = "Error al agregar la instalaciï¿½n: " + ex.Message;
             }
 
             return RedirectToPage("/Admin/AgregarInstalacion");
         }
+        private async Task<string> ProcessUploadedFile()
+        {
 
+            if (Photo != null)
+            {
+                var fileName = Path.GetRandomFileName() + Path.GetExtension(Photo.FileName); // Generate a unique file name
+                var filePath = Path.Combine(webHostEnvironment.WebRootPath, "img", fileName); // Assuming you want to save it in an 'uploads' directory
+
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await Photo.CopyToAsync(fileStream);
+                }
+
+                // Now filePath contains the complete route of the saved file on the server
+                return fileName;
+            }
+
+
+            return null;
+        }
     }
+
+    
 }
