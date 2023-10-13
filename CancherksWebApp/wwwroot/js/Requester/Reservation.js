@@ -141,9 +141,7 @@ function clearListAviability() {
 //Load the schedule and check the aviability of the installation, also call the load reservation card when a button is clicked
 function loadDataScheduleAviable(idInstallation, idDay, date) {
     clearReservationCard()
-    var listSchedule = document.getElementById("listSchedule");
-    listSchedule.classList.remove("visible-nd");
-    listSchedule.classList.add("visible");
+    
 
     console.log("esta en la primera vez que entra")
     $.ajax({
@@ -178,6 +176,11 @@ function loadDataScheduleAviable(idInstallation, idDay, date) {
             console.log(error);
         }
     });
+
+    //load the list of aviability visibility
+    var listSchedule = document.getElementById("listSchedule");
+    listSchedule.classList.remove("visible-nd");
+    listSchedule.classList.add("visible");
 }
 
 
