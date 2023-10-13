@@ -16,17 +16,14 @@ function convertToSpanishFormat(dateString) {
 //Code for the datepicker interaction and the date format
 $(document).ready(function () {
 
-    $('.datepickerInput').datepicker().on('change', function () {
-        var originalDate = $(this).val();
-        $(this).val(convertToSpanishFormat(originalDate))
-    });;
+    $('.datepickerInput').datepicker({ dateFormat: 'dd/mm/yy' });
 
-    var icons = document.querySelectorAll('.datepickerIcon');
+    $('.datepickerIcon').each(function () {
+        $(this).on('click', function () {
 
-    icons.forEach(icon => {
-        icon.addEventListener('click', function (event) {
-            $('.datepickerInput').focus();
+            $(this).prev('.datepickerInput').focus();
         });
+    });
 
 });
 

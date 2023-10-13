@@ -1,10 +1,12 @@
-using Azure.Core;
+
+
 using CancherksWebApp.Data;
 using CancherksWebApp.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Http.Extensions;
+using System.Diagnostics;
 
 namespace CancherksWebApp.Pages.RequesterUser
 {
@@ -23,6 +25,8 @@ namespace CancherksWebApp.Pages.RequesterUser
 
         public List<Sport> sports { get; set; }
 
+        public Request request { get; set; }  
+
         public async Task OnGet()
         {
             role = HttpContext.Session.GetString("role");
@@ -31,88 +35,55 @@ namespace CancherksWebApp.Pages.RequesterUser
 
         }
 
-        public JsonResult OnGetLoadData(int idSport)
+        public JsonResult OnGetLoadInstallationbySport(int idSport)
         {
             var data = _context.InstallationSportViewModels.FromSqlRaw("EXEC spGetInstallationsbySport @idSport={0}", idSport).ToList();
             return new JsonResult(data);
         }
 
-        public JsonResult OnGetLoadDataInfo(int idInstallation, int idDay)
+        public JsonResult OnGetLoadSchudeuleAviableInfo(int idInstallation, int idDay, string date)
         {
-            var data = _context.InstallationScheduleViewModels.FromSqlRaw("EXEC spGetInstallationAviability  @idInstallation={0} , @idDay={0}", idInstallation, idDay).ToList();
+            var data = _context.InstallationAvailabilityViewModels.FromSqlRaw("EXEC sp_GetInstallationAvailability @idInstallation={0}, @idDay={1}, @date={2}", idInstallation, idDay, date).ToList();
             return new JsonResult(data);
         }
 
-        public void OnPostDownload(string idInstallation, string idSport)
-        {
-            //This is not being called <---------------------------------
-            ViewData["Message"] = "You clicked Cancel!";
-            RedirectToPage("/Admin/GestionSolicitudes");
-            //InstallationSportViewModels = _context.InstallationSportViewModels.FromSqlRaw("EXEC spGetInstallationsbySport @idSport={0}", idSport).ToList();
-        }
-        public void OnPostSave()
-        {
-            ViewData["Message"] = "You clicked Save!";
-        }
 
-        public void OnPostCancel()
+        public async Task<IActionResult> OnPostAsync(string installationId, string dateReservation, string startTimeReservation, string endTimeReservation)
         {
-            ViewData["Message"] = "You clicked Cancel!";
-        }
-
-        public async Task<IActionResult> asdfasdf(string idSolicitud, string idSolicitudReject)
-        {
-            int? idRequest = null;
-
-            int installationId = Convert.ToInt32(idSolicitud);
-            int sportId = Convert.ToInt32(idSolicitudReject);
-
-            if (!string.IsNullOrEmpty(idSolicitud))
+            int idInstallation = Convert.ToInt32(installationId);
+            string emailRequester = HttpContext.Session.GetString("email");
+            var parameters = new[]
             {
-                idRequest = Convert.ToInt32(idSolicitud);
+                        new SqlParameter("@idRequest", 0),
+                        new SqlParameter("@emailRequester", emailRequester),
+                        new SqlParameter("@date", dateReservation),
+                        new SqlParameter("@idInstallation", idInstallation),
+                        new SqlParameter("@idState", 1),
+                        new SqlParameter("@idActivity", 1),
+                        new SqlParameter("@startTime", startTimeReservation),
+                        new SqlParameter("@endTime", endTimeReservation),
+                        new SqlParameter("@operationFlag", 0)
+            };
+            try
+            {
+                //execute the sqlRaw
+                
+                //var data = _context.Installation.FromSqlRaw("EXEC spCrudRequest @idRequest, @emailRequester, @date, @idInstallation, @idState, @idActivity, @startTime, @endTime, @operationFlag", parameters).ToList();
+                var chaca =  _context.Database.ExecuteSqlRaw("EXEC dbo.spCrudRequest @idRequest={0}, @emailRequester={1}, @date={2}, @idInstallation={3}, @idState={4}, @idActivity={5}, @startTime={6}, @endTime={7}, @operationFlag={8}",
+            0, emailRequester, dateReservation, idInstallation, 1, 1, startTimeReservation, endTimeReservation, 0);
+  
+                if (chaca == 1)
+                {
+                    return RedirectToPage("/Solicitante/Reservacion");
+                }
+
             }
-            else if (!string.IsNullOrEmpty(idSolicitudReject))
+            catch (Exception ex)
             {
-                idRequest = Convert.ToInt32(idSolicitudReject);
-            }
-
-            if (idRequest.HasValue)
-            {
-                var requestToUpdate = await _context.Request.FindAsync(idRequest.Value);
-
-                if (requestToUpdate == null)
-                {
-                    Message = "Request not found";
-                    return RedirectToPage("/Admin/GestionSolicitudes");
-                }
-
-                if (!string.IsNullOrEmpty(idSolicitud))
-                {
-                    requestToUpdate.IdState = 2;
-                    Message = "Request state has been updated";
-                }
-                else
-                {
-                    requestToUpdate.IdState = 3;
-                    Message = "Request has been rejected";
-                }
-
-                try
-                {
-                    await _context.SaveChangesAsync();
-                }
-                catch (Exception ex)
-                {
-                    Message = "Error while updating the request: " + ex.Message;
-                }
-            }
-            else
-            {
-                Message = "No valid request ID provided.";
+                Message = "Error while updating the request: " + ex.Message;
             }
 
-
-            return RedirectToPage("/Admin/GestionSolicitudes");
+            return RedirectToPage("/ErrorPage");
         }
 
     }

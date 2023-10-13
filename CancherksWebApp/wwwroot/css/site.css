@@ -493,3 +493,21 @@ img {
 .visible{
 visibility: visible;
 }
+
+/*Installation view on reservation*/
+
+.installation-view {
+    border-color: var(--colorMain) !important;
+    cursor: pointer;
+    border: 1px solid ;
+    border-radius: 0.25rem;
+    background-color: white;
+}
+
+.installation-view:hover{
+    background-color: var(--colorMainTrans) !important;
+}
+
+.installationSelected {
+    background-color: var(--colorMainTrans) !important;
+}

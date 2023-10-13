@@ -13,7 +13,7 @@ namespace CancherksWebApp.Model
         [Required]
         [Column(TypeName = "Date")]
         public DateTime DateRequest { get; set; }
-        [Required]
+        [NotMapped]
         public int IdInstallation { get; set; }
         [Required]
         public int IdState { get; set; }
