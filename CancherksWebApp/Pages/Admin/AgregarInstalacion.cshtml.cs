@@ -39,19 +39,6 @@ namespace CancherksWebApp.Pages.Admin
                 await _context.Installation.AddAsync(Installation);
                 await _context.SaveChangesAsync();
 
-                // Guarda las asociaciones con los deportes seleccionados
-                foreach (var sportId in SelectedSports)
-                {
-                    var installationxSport = new InstallationxSport
-                    {
-                        InstallationId = Installation.Id,
-                        SportId = sportId
-                    };
-                    _context.InstallationxSports.Add(installationxSport);
-                }
-
-                await _context.SaveChangesAsync();
-
             }
             // Aquí puedes redireccionar a otra página si lo deseas o mostrar un mensaje
             return RedirectToPage("/Admin/AgregarInstalacion");

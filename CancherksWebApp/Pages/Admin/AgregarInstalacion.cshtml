@@ -49,7 +49,9 @@
                         <div class="checkbox-container full-width">
                             @foreach (var sport in Model.Sports)
                             {
-                                <input type="checkbox" name="selectedSports" value="@sport.Id" /> @sport.Name <br />
+                                <div class="form-check form-check-inline">
+                                <input type="radio" name="selectedSports" value="@sport.Id" /> @sport.Name
+                                </div>
                             }
                         </div>
                     </div>
