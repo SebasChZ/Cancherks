@@ -17,14 +17,29 @@ namespace CancherksWebApp.Pages.Admin
             _context = context;
         }
 
-        public List<Activity> Activities { get; set; }
+        public List<Sport> Sports { get; set; }
         public List<Day> Days { get; set; }
 
+        [BindProperty]
+        public Installation Installation { get; set; }
         public void OnGet()
         {
             role = HttpContext.Session.GetString("role");
-            Activities = _context.Activity.ToList();
+            Sports = _context.Sport.ToList();
             Days = _context.Day.ToList();
+        }
+
+        public async Task<IActionResult> OnPostAsync()
+        {
+            if (ModelState.IsValid)
+            {
+                await _context.Installation.AddAsync(Installation);
+                await _context.SaveChangesAsync();
+                
+
+            }
+            // Aquí puedes redireccionar a otra página si lo deseas o mostrar un mensaje
+            return RedirectToPage("/Admin/AgregarInstalacion");
         }
     }
 }

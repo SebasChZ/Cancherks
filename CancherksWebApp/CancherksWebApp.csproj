@@ -7,8 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\js\Requester\AgregarInstalacion.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\img\sintetica.jpg" />
     <None Include="wwwroot\img\sintetica2.jpg" />
+    <None Include="wwwroot\js\Admin\AgregarInstalacion.js" />
     <None Include="wwwroot\js\Requester\Reservation.js" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.11" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.11">

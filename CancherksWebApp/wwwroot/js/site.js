@@ -72,15 +72,6 @@ $(document).ready(function () {
 
 
 $(document).ready(function () {
-    $('.datepickerInput').datepicker();
-
-    $('.datepickerIcon').click(function () {
-        $('.datepickerInput').focus();
-    });  // Cierre agregado aquí
-});
-
-
-$(document).ready(function () {
     $('#datepickerFinal-input').datepicker().on('change', function () {
         var originalDate = $(this).val();
         var convertedDate = convertToDbDateFormat(originalDate);

@@ -7,49 +7,56 @@
     if (userRole != "2569") Response.Redirect("/ErrorPage");
 }
 
+@section Scripts {
+    
+    <partial name="_ValidationScriptsPartial" /> 
+}                            
+
 <section class="container px-5 py-3">
     <h3 style="margin-bottom: 2rem;">Agregar Instalación</h3>
 
     <div class="row"> 
         <div class="col-md-6">
-            <formulario>
-                <form>
+            <div>
+                <form method="post" id="installationForm">
                     <div class="mb-3">
                         <label class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="inputName" placeholder="Ingrese el nombre.">
+                        <input type="text" class="form-control" id="Name" asp-for="Installation.Name" placeholder="Ingrese el nombre.">
+                        <span asp-validation-for="Installation.Name" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Ubicación</label>
-                        <input type="text" class="form-control" id="inputlocation" placeholder="Ingrese la ubicación.">
+                        <input type="text" class="form-control" id="Location" asp-for="Installation.Location" placeholder="Ingrese la ubicación.">
+                        <span asp-validation-for="Installation.Location" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Cantidad Máxima Personas</label>
-                        <input type="text" class="form-control" id="inputCantPeople" placeholder="Ingrese la cantidad máxima permitida en la instalación.">
+                        <input type="text" class="form-control" id="MaxCantPeople" asp-for="Installation.MaxCantPeople" placeholder="Ingrese la cantidad máxima permitida en la instalación.">
+                        <span asp-validation-for="Installation.MaxCantPeople" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Tiempo máximo por reservación</label>
-                        <input type="text" class="form-control" id="inputTimeSplitReservation" placeholder="Ingrese el tiempo máximo por reservación permitido.">
+                        <input type="text" class="form-control" id="TimeSplitReservation" asp-for="Installation.TimeSplitReservation" placeholder="Ingrese el tiempo máximo por reservación permitido.">
+                        <span asp-validation-for="Installation.TimeSplitReservation" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Descripción</label>
-                        <textarea class="form-control" id="inputDescription" placeholder="Ingrese la descripción." style="height: 100px;"></textarea>
-             
+                        <textarea class="form-control" id="Description" asp-for="Installation.Description" placeholder="Ingrese la descripción." style="height: 100px;"></textarea>
+                        <span asp-validation-for="Installation.Description" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Actividades</label>
+                        <label class="form-label">Deportes</label>
                         <div class="checkbox-container full-width">
-                            @foreach (var activity in Model.Activities)
+                            @foreach (var sport in Model.Sports)
                             {
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="@($"checkbox-{activity.Id}")" value="@activity.Id">
-                                    <label class="form-check-label" for="@($"checkbox-{activity.Id}")">@activity.Name</label>
+                                    <input class="form-check-input" type="checkbox" id="@($"checkbox-{sport.Id}")" value="@sport.Id">
+                                    <label class="form-check-label" for="@($"checkbox-{sport.Id}")">@sport.Name</label>
                                 </div>
                             }
                         </div>
                     </div>
 
-
-                    <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
                     <label class="form-label">Foto</label>
                     <div class="file-upload mb-3">
                         
@@ -69,11 +76,11 @@
                         </div>
                     </div>
                    
-                     <button type="submit" class="btn btn-primary button-gradient full-width">Agregar Instalacion</button>
+                     <button type="submit" id="acept"class="btn btn-primary button-gradient full-width">Agregar Instalacion</button>
                    
                 </form>
 
-            </formulario>
+            </div>
         </div>
         <div class="col-md-6">
             <label class="mb-3">Disponibilidad</label>
@@ -116,9 +123,8 @@
                 }
             </div>
 
-           
-            
         </div>
+
     </div>
 
 </section>
@@ -137,24 +143,3 @@
         </div>
     </div>
 </modalAdd>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var form = document.querySelector('form');
-        var addInstallationModal = new bootstrap.Modal(document.getElementById('addInstallation'));
-
-        form.addEventListener('submit', function (event) {
-            event.preventDefault();
-            addInstallationModal.show();
-        });
-    });
-</script>
-
-
-
-
-
-
-
-
-
