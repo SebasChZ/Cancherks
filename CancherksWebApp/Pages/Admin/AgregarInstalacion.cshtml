@@ -79,8 +79,8 @@
                             </div>
                         </div>
                     </div>
-                   
-                     <button type="submit" id="acept"class="btn btn-primary button-gradient full-width">Agregar Instalacion</button>
+
+                    <button type="submit" asp-page-handler="AddInstallation" id="acept" class="btn btn-primary button-gradient full-width">Agregar Instalacion</button>
                    
                 </form>
 
@@ -88,35 +88,49 @@
         </div>
         <div class="col-md-6">
             <label class="mb-3">Disponibilidad</label>
-            <div class="accordion" id="daysAccordion">
-                @{
-                    int index = 0;
-                }
-                @foreach (var day in Model.Days)
-                {
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="@($"heading-{day.NameDay}-{index}")">
-                            <button class="accordion-button @(index == 0 ? "" : "collapsed")" type="button" data-bs-toggle="collapse" data-bs-target="@($"#collapse-{day.NameDay}-{index}")" aria-expanded="@(index == 0 ? "true" : "false")" aria-controls="@($"collapse-{day.NameDay}-{index}")">
-                                @day.NameDay
-                            </button>
-                        </h2>
-                        <div id="@($"collapse-{day.NameDay}-{index}")" class="accordion-collapse collapse @(index == 0 ? "show" : "")" aria-labelledby="@($"heading-{day.NameDay}-{index}")" data-bs-parent="#daysAccordion">
-                            <div class="accordion-body">
-                                <label class="form-check-label label-bold">Hora Inicio</label>
-                                <div class="form-check form-check-inline">
-                                    <input type="time" id="startTime" name="startTime" onchange="updateTimes()" class="custom-time-picker">
-                                </div>
+            
+            
+                <div class="accordion" id="daysAccordion">
+                    @{
+                        int index = 0;
+                    }
+                    @foreach (var day in Model.Days)
+                    
+                    {
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="@($"heading-{day.NameDay}-{index}")">
+                                <button class="accordion-button @(index == 0 ? "" : "collapsed")" type="button" data-bs-toggle="collapse" data-bs-target="@($"#collapse-{day.NameDay}-{index}")" aria-expanded="@(index == 0 ? "true" : "false")" aria-controls="@($"collapse-{day.NameDay}-{index}")">
+                                    @day.NameDay
+                                </button>
+                            </h2>
+                            <div id="@($"collapse-{day.NameDay}-{index}")" class="accordion-collapse collapse @(index == 0 ? "show" : "")" aria-labelledby="@($"heading-{day.NameDay}-{index}")" data-bs-parent="#daysAccordion">
+                                <div class="accordion-body">
+                                <form method="post">
+
+                                    <input type="hidden" asp-for="ScheduleAvailability.IdDay" value="@day.Id">
+
+                                    <label class="form-check-label label-bold">Hora Inicio</label>
+                                    <div class="form-check form-check-inline">
+                                        <input type="time" asp-for="ScheduleAvailability.StartTime" id="startTime-@day.NameDay" class="custom-time-picker">
+                                    </div>
                                 
-                                <label class="form-check-label label-bold">Hora Final</label>
-                                <div class="form-check form-check-inline">
-                                    <input type="time" id="endTime" name="endTime" onchange="updateTimes()" class="custom-time-picker">
+                                    <label class="form-check-label label-bold">Hora Final</label>
+                                    <div class="form-check form-check-inline">
+                                        <input type="time" asp-for="ScheduleAvailability.EndTime" id="endTime-@day.NameDay"  class="custom-time-picker">
+                                    </div>
+                                    
+                                    <div class="d-flex justify-content-center mt-2">
+                                        <button type="submit" asp-page-handler="AddSchedule" id="schedule" class="btn btn-primary button-gradient">Agregar</button>
+                                    </div>
+                                </form>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    index++;
-                }
-            </div>
+                        index++;
+                    }
+                </div>
+            
 
         </div>
 

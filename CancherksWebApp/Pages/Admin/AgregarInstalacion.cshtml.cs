@@ -36,7 +36,9 @@ namespace CancherksWebApp.Pages.Admin
         [BindProperty]
         public IFormFile Photo { get; set; }
 
-
+        [BindProperty]
+        public ScheduleAvailability ScheduleAvailability { get; set; }
+        [BindProperty]
         public string Message { get; set; }
         
         public void OnGet()
@@ -45,12 +47,10 @@ namespace CancherksWebApp.Pages.Admin
             Sports = _context.Sport.ToList();
             Days = _context.Day.ToList();
         }
-
-        public async Task<IActionResult> OnPost(Installation installation, int radio)
+        public async Task<IActionResult> OnPostAddInstallation(Installation installation, int radio)
         {
             try
             {
-               
                 Sport selectedSport = _context.Sport.Find(radio);
 
                 var parameters = new SqlParameter[]
@@ -61,34 +61,59 @@ namespace CancherksWebApp.Pages.Admin
                     new SqlParameter("@picture", installation.Picture),
                     new SqlParameter("@maxCantPeople", installation.MaxCantPeople),
                     new SqlParameter("@timeSplitReservation", installation.TimeSplitReservation),
-                    new SqlParameter("@idSport", selectedSport.Id)
+                    new SqlParameter("@idSport", selectedSport.Id),
+                    new SqlParameter("@newId", SqlDbType.Int) { Direction = ParameterDirection.Output }
                 };
 
                 if (Photo != null)
                 {
                     string uniqueFileName = await ProcessUploadedFile();
 
-                    if (uniqueFileName != null)
-                    {
-                        parameters[3].Value = uniqueFileName;
-                    }
-                    else
-                    {
-                        parameters[3].Value = uniqueFileName;
-                    }                    
-                }             
+                    parameters[3].Value = uniqueFileName ?? parameters[3].Value;
+                }
 
-                await _context.Database.ExecuteSqlRawAsync("EXEC dbo.spAddInstallationSchedule @name, @location, @description, @picture, @maxCantPeople,@timeSplitReservation,@idSport", parameters);
+                await _context.Database.ExecuteSqlRawAsync("EXEC dbo.spAddInstallationSchedule @name, @location, @description, @picture, @maxCantPeople, @timeSplitReservation, @idSport, @newId OUTPUT", parameters);
 
-                Message = "Instalaci�n agregada con �xito!";
+                int newInstallationId = Convert.ToInt32(parameters[7].Value);
+                TempData["NewInstallationId"] = newInstallationId;
+
+
+
+                Message = "Instalación agregada con éxito!";
             }
             catch (Exception ex)
             {
-                Message = "Error al agregar la instalaci�n: " + ex.Message;
+                Message = "Error al agregar: " + ex.Message;
             }
-
             return RedirectToPage("/Admin/AgregarInstalacion");
         }
+
+        public async Task<IActionResult> OnPostAddSchedule(ScheduleAvailability scheduleAvailabilities)
+        {
+            try
+            {
+                int newInstallationId = (int)TempData["NewInstallationId"]; // Recuperamos el id de TempData
+                
+                    var scheduleParameters = new SqlParameter[]
+                    {
+                        new SqlParameter("@startTime", ScheduleAvailability.StartTime),
+                        new SqlParameter("@endTime", ScheduleAvailability.EndTime),
+                        new SqlParameter("@idDay", ScheduleAvailability.IdDay),
+                        new SqlParameter("@idInstallation", newInstallationId) // Aquí usamos el nuevo idInstallation
+                    };
+
+                    await _context.Database.ExecuteSqlRawAsync("EXEC dbo.spAddSchedule @startTime, @endTime, @idDay, @idInstallation", scheduleParameters);
+                
+
+                Message = "Horarios agregados con éxito!";
+            }
+            catch (Exception ex)
+            {
+                Message = "Error al agregar: " + ex.Message;
+            }
+            return RedirectToPage("/Admin/AgregarInstalacion");
+        }
+        
         private async Task<string> ProcessUploadedFile()
         {
             string uniqueFileName = null;

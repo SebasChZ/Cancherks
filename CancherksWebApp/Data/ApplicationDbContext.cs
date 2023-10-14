@@ -20,6 +20,7 @@ namespace CancherksWebApp.Data
         public DbSet<InstallationScheduleViewModel> InstallationScheduleViewModels { get; set; }
         public DbSet<Sport> Sport { get; set; }
         public DbSet<InstallationxSport> InstallationxSport { get; set; }
+        public DbSet<ScheduleAvailability> ScheduleAvailability { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
