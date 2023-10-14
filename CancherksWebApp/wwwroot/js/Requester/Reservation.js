@@ -49,39 +49,42 @@ function loadInstallation(idSport) {
             listInstallations = data
             // Loop through the returned data and create cards
             data.forEach(function (item) {
-                var card = $('<div></div>')
-                    .addClass('col-6 p-0 consult installation-view')
-                    .css('max-width', '640px')
-                    .data('installation-id', item.idInstallation) // Store the idInstallation in the element's data
-                    .append(
-                        $('<div></div>').append(
-                            $('<div></div>').addClass('row g-0').append(
-                                $('<div></div>').addClass('col-md-4').append(
-                                    $('<img>')
-                                        .attr('src', '/img/' + item.picture)
-                                        .attr('alt', '...')
-                                        .addClass('img-fluid rounded-start')
-                                ),
-                                $('<div></div>').addClass('col-md-8').append(
-                                    $('<div></div>').addClass('card-body').append(
-                                        $('<h5></h5>')
-                                            .addClass('card-title font-weight-bold')
-                                            .text(item.installationName),
-                                        $('<p></p>')
-                                            .addClass('card-text mb-0')
-                                            .text(item.description),
-                                        $('<p></p>')
-                                            .addClass('card-text mb-1 text-primary')
-                                            .html('<i class="bi bi-geo-fill"></i> ' + item.location)
+                if (item.isPublic == 0) {
+                    var card = $('<div></div>')
+                        .addClass('col-6 p-0 consult installation-view')
+                        .css('max-width', '640px')
+                        .data('installation-id', item.idInstallation) // Store the idInstallation in the element's data
+                        .append(
+                            $('<div></div>').append(
+                                $('<div></div>').addClass('row g-0').append(
+                                    $('<div></div>').addClass('col-md-4').append(
+                                        $('<img>')
+                                            .attr('src', '/img/' + item.picture)
+                                            .attr('alt', '...')
+                                            .addClass('img-fluid rounded-start')
+                                    ),
+                                    $('<div></div>').addClass('col-md-8').append(
+                                        $('<div></div>').addClass('card-body').append(
+                                            $('<h5></h5>')
+                                                .addClass('card-title font-weight-bold')
+                                                .text(item.installationName),
+                                            $('<p></p>')
+                                                .addClass('card-text mb-0')
+                                                .text(item.description),
+                                            $('<p></p>')
+                                                .addClass('card-text mb-1 text-primary')
+                                                .html('<i class="bi bi-geo-fill"></i> ' + item.location)
+                                        )
                                     )
                                 )
                             )
-                        )
-                    );
+                        );
 
-                card.on('click', function () {
-                    checkAviability($(this).data('installation-id'), this);
-                });
+                    card.on('click', function () {
+                        checkAviability($(this).data('installation-id'), this);
+                    });
+                }
+                
 
                 $('#gridDiv').append(card);
             });

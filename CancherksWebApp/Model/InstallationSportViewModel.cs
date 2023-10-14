@@ -11,6 +11,7 @@
         public double TimeSplitReservation { get; set; }
         public int IdSport { get; set; }
         public string SportName { get; set; }
+        public Boolean isPublic { get; set; } 
     }
 
 }

@@ -47,7 +47,7 @@ namespace CancherksWebApp.Pages.Admin
             Sports = _context.Sport.ToList();
             Days = _context.Day.ToList();
         }
-        public async Task<IActionResult> OnPostAddInstallation(Installation installation, int radio)
+        public async Task<IActionResult> OnPostAddInstallation(Installation installation, int radio, int radioPub)
         {
             try
             {
@@ -62,6 +62,7 @@ namespace CancherksWebApp.Pages.Admin
                     new SqlParameter("@maxCantPeople", installation.MaxCantPeople),
                     new SqlParameter("@timeSplitReservation", installation.TimeSplitReservation),
                     new SqlParameter("@idSport", selectedSport.Id),
+                    new SqlParameter("@isPublic", radioPub),
                     new SqlParameter("@newId", SqlDbType.Int) { Direction = ParameterDirection.Output }
                 };
 
@@ -72,7 +73,7 @@ namespace CancherksWebApp.Pages.Admin
                     parameters[3].Value = uniqueFileName ?? parameters[3].Value;
                 }
 
-                await _context.Database.ExecuteSqlRawAsync("EXEC dbo.spAddInstallationSchedule @name, @location, @description, @picture, @maxCantPeople, @timeSplitReservation, @idSport, @newId OUTPUT", parameters);
+                await _context.Database.ExecuteSqlRawAsync("EXEC dbo.spAddInstallationSchedule @name, @location, @description, @picture, @maxCantPeople, @timeSplitReservation, @idSport, @isPublic, @newId OUTPUT", parameters);
 
                 int newInstallationId = Convert.ToInt32(parameters[7].Value);
                 TempData["NewInstallationId"] = newInstallationId;

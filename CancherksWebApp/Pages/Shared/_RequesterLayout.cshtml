@@ -37,7 +37,7 @@
                         var myArea = false;
 
                         var reservation1Active = Context.Request.Path.Value.Contains("/Solicitante/Reservacion");
-                        var reservation2Active = Context.Request.Path.Value.Contains("/Solicitante/Publico");
+                        var reservation2Active = Context.Request.Path.Value.Contains("/Solicitante/Publicas");
                         var my1Active = Context.Request.Path.Value.Contains("/Solicitante/MisReservaciones");
 
                         if (reservation1Active || reservation2Active)
@@ -84,7 +84,7 @@
                         </a>
                     </li>
                     <li class="py-2  @(reservation2Active ? "inline-active" : "inline-nav-item")">
-                        <a class="aside-link" asp-area="Solicitante" asp-page="Reservacion">
+                        <a class="aside-link" asp-area="Solicitante" asp-page="Publicas">
                             <i class="bi bi-people-fill"></i>
                             Públicos
                         </a>

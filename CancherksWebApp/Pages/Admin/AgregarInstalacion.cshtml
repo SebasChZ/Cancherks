@@ -48,13 +48,14 @@
                         <label class="form-label">Acceso</label>
                         <div class="checkbox-container full-width">
                             <div class="form-check form-check-inline radio-item">
-                                <input type="radio" name="radioPub" id="public" value="">
+                                <input type="radio" name="radioPub" id="public" value="1">
                                 <label for="public">Público</label>
                             </div>
                             <div class="form-check form-check-inline radio-item">
-                                <input type="radio" name="radioPub" id="public" value="">
-                                <label for="public">Privado</label>
+                                <input type="radio"  name="radioPub" id="private" value="0">
+                                <label for="private">Privado</label>
                             </div>
+                            <span asp-validation-for="Installation.isPublic" class="text-danger"></span>
                         </div>
                     </div>
 

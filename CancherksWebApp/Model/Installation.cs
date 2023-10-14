@@ -31,5 +31,8 @@ namespace CancherksWebApp.Model
         [Required(ErrorMessage = "El tiempo máximo por reservación es requerido")]
         [Range(0.0, 16.0, ErrorMessage = "El valor debe decimal y estar entre 0.0 y 16.0.")]
         public double TimeSplitReservation { get; set; }
+
+        [Required(ErrorMessage = "El tiempo máximo por reservación es requerido")]
+        public Boolean isPublic { get; set; }
     }
 }
