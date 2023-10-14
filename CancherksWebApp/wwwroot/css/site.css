@@ -296,37 +296,6 @@ img {
         color: var(--colorMain); 
 }
 
-.datepickerInicio-input {
-    color: var(--colorMain); 
-}
-
-.datepickerInicio-input {
-    color: var(--colorMain);
-}
-
-/* Datepicker final format */
-
-.ui-datepickerFinal {
-    border: 1px solid var(--colorMain);
-}
-
-#datepickerFinal-icon .input-group-text {
-    color: var(--colorMain);
-    border-color: var(--colorMain);
-}
-
-#datepickerFinal-input {
-    border: 1px solid var(--colorMain);
-    background-color: transparent;
-}
-
-#datepickerFinal-input::placeholder {
-    color: var(--colorMain);
-}
-
-#datepickerFinal-input {
-    color: var(--colorMain);
-}
 
 /* Button final format */
 
@@ -523,4 +492,22 @@ img {
 
 .visible{
 visibility: visible;
+}
+
+/*Installation view on reservation*/
+
+.installation-view {
+    border-color: var(--colorMain) !important;
+    cursor: pointer;
+    border: 1px solid ;
+    border-radius: 0.25rem;
+    background-color: white;
+}
+
+.installation-view:hover{
+    background-color: var(--colorMainTrans) !important;
+}
+
+.installationSelected {
+    background-color: var(--colorMainTrans) !important;
 }

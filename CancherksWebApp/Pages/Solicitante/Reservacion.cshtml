@@ -21,10 +21,10 @@
         </button>
         <ul class="dropdown-menu custom-dropdown-options" aria-labelledby="dropdownInstallations">
 
-            <li><a class="dropdown-item custom-dropdown-item" data-id="0" href="#" onclick="loadData(0)">Todos</a></li>
+            <li><a class="dropdown-item custom-dropdown-item" data-id="0" href="#" onclick="loadInstallation(0)">Todos</a></li>
             @foreach (var i in Model.sports)
             {
-                <li><a class="dropdown-item custom-dropdown-item" data-id="@i.Id" href="#" onclick="loadData(@i.Id)">@i.Name</a></li>
+                <li><a class="dropdown-item custom-dropdown-item" data-id="@i.Id" href="#" onclick="loadInstallation(@i.Id)">@i.Name</a></li>
             }
         </ul>
 
@@ -61,21 +61,18 @@
     <div class="d-flex gx-3">
 
         <Schedule class="row">
-            <datepicker class="px-0" style="display: flex; justify-content: center; flex-grow: 1;">
+            <datepicker class="px-0 mb-2" style="display: flex; justify-content: center; flex-grow: 1;">
                 <div class="w-100">
                     <div class="col-12">
-                        <inputDate class="input-group date datepicker-container">
+                        <div class="input-group date datepicker-container">
                             <input type="text" class="form-control datepickerInput" id="datepickerQuery" placeholder="Fecha a consultar" />
                             <span class="input-group-append datepickerIcon">
                                 <span class="input-group-text bg-light d-block">
                                     <i class="bi bi-calendar-check"></i>
                                 </span>
                             </span>
-                        </inputDate>
+                        </div>
 
-                        <button type="button" onClick="asdf()" >
-                        asdf
-                        </button>
                     </div>
 
                 </div>
@@ -119,7 +116,15 @@
                                 <i class="bi bi-alarm-fill" aria-label="Alarm icon"></i>
                                 <span id="time" class="text-primary">20:00 - 22:00</span>
                             </p>
-                            <button type="submit" class="btn btn-primary button-gradient">Reservar</button>
+                            <form method="post">
+                                <input type="hidden" id="emailRequester" asp-for="request.IdInstallation" name="emailRequester" value="@HttpContext.Session.GetString("email")" />
+                                <input type="hidden" id="installationId" asp-for="request.IdInstallation" name="installationId" value="0" />
+                                <input type="hidden" id="dateReservation" asp-for="request.DateRequest" name="dateReservation" value="0" />
+                                <input type="hidden" id="startTimeReservation" asp-for="request.StartTime" name="startTimeReservation" value="0" />
+                                <input type="hidden" id="endTimeReservation" asp-for="request.EndTime" name="endTimeReservation" value="0" />
+                                <button type="submit" class="btn btn-primary button-gradient">Reservar</button>
+                            </form>
+                            
                         </div>
                     </div>
                 </div>               
