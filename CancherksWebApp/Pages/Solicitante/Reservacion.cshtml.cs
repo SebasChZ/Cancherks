@@ -43,7 +43,7 @@ namespace CancherksWebApp.Pages.RequesterUser
 
         public JsonResult OnGetLoadSchudeuleAviableInfo(int idInstallation, int idDay, string date)
         {
-            var data = _context.InstallationAvailabilityViewModels.FromSqlRaw("EXEC sp_GetInstallationAvailability @idInstallation={0}, @idDay={1}, @date={2}", idInstallation, idDay, date).ToList();
+            var data = _context.InstallationAvailabilityViewModels.FromSqlRaw("EXEC spGetInstallationAvailability @idInstallation={0}, @idDay={1}, @date={2}", idInstallation, idDay, date).ToList();
             return new JsonResult(data);
         }
 

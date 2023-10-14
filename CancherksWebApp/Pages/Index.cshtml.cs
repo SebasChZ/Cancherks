@@ -30,10 +30,11 @@ namespace CancherksWebApp.Pages
         public async Task OnGetAsync()
         {
 
-
+            string manito = "chacalerks@estudiantec.cr";
+            string fenana = "fermurillo04@estudiantec.cr";
             // Now make the asynchronous call to the external API
             var client = _clientFactory.CreateClient();
-            var response = await client.GetAsync("http://sistema-tec.somee.com/api/users/chacalerks@estudiantec.cr");
+            var response = await client.GetAsync("http://sistema-tec.somee.com/api/users/"+ manito);
 
             if (response.IsSuccessStatusCode)
             {
