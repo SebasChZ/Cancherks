@@ -17,14 +17,11 @@ namespace CancherksWebApp.Data
         public DbSet<InstallationSportViewModel> InstallationSportViewModels { get; set; } // spGetInstallationsbySport storeProcedure result
         public DbSet<InstallationAvailabilityViewModel> InstallationAvailabilityViewModels { get; set; } // storeProcedure result
 
-
-
-
-        //public DbSet<Day> Day { get; set; }
-
-
-
+        public DbSet<Day> Day { get; set; }
+        public DbSet<InstallationScheduleViewModel> InstallationScheduleViewModels { get; set; }
         public DbSet<Sport> Sport { get; set; }
+        public DbSet<InstallationxSport> InstallationxSport { get; set; }
+        public DbSet<ScheduleAvailability> ScheduleAvailability { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

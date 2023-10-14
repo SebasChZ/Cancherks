@@ -136,7 +136,6 @@ img {
 }
 /*---------- Layout modifications*/
 
-
 .icon-Profile {
     width: 50px;
     height: 50px;
@@ -270,7 +269,6 @@ img {
 .custom-dropdown-item:hover {
     color: #00A38B !important; 
 }
-
 
 /* Datepicker format */
 .datepicker-container{
@@ -511,3 +509,30 @@ visibility: visible;
 .installationSelected {
     background-color: var(--colorMainTrans) !important;
 }
+/* timepickers format */
+
+input[type="time"] {
+    border: 1px solid var(--colorMain);
+}
+
+input[type="time"]:hover {
+    background: var(--colorMainTrans);
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+    
+    border: 1px solid var(--colorMain);
+    border-radius: 2px; 
+    color: var(--colorMain);
+    
+}
+
+input[type="time"]:hover::-webkit-calendar-picker-indicator {
+    background-color: var(--colorMainTrans); 
+}
+
+.custom-time-picker:focus {
+    outline: none; 
+    border-color: var(--colorMain);  
+}
+

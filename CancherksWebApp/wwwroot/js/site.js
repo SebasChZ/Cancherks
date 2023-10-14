@@ -12,7 +12,6 @@ function convertToSpanishFormat(dateString) {
     return `${parts[1]}/${parts[0]}/${parts[2]}`;
 }
 
-
 //Code for the datepicker interaction and the date format
 $(document).ready(function () {
 
@@ -61,3 +60,4 @@ $('.image-upload-wrap').bind('dragover', function () {
 $('.image-upload-wrap').bind('dragleave', function () {
     $('.image-upload-wrap').removeClass('image-dropping');
 });
+
