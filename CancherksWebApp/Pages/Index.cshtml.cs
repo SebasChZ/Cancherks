@@ -34,7 +34,7 @@ namespace CancherksWebApp.Pages
             string fenana = "fermurillo04@estudiantec.cr";
             // Now make the asynchronous call to the external API
             var client = _clientFactory.CreateClient();
-            var response = await client.GetAsync("http://sistema-tec.somee.com/api/users/"+ manito);
+            var response = await client.GetAsync("http://sistema-tec.somee.com/api/users/"+ fenana);
 
             if (response.IsSuccessStatusCode)
             {

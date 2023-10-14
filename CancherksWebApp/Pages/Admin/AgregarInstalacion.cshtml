@@ -43,7 +43,20 @@
                         <label class="form-label" asp-for="Installation.Description">Descripción</label>
                         <textarea class="form-control" asp-for="Installation.Description" style="height: 100px;"></textarea>
                         <span asp-validation-for="Installation.Description" class="text-danger"></span>
-                    </div>               
+                    </div>   
+                    <div class="mb-3">
+                        <label class="form-label">Acceso</label>
+                        <div class="checkbox-container full-width">
+                            <div class="form-check form-check-inline radio-item">
+                                <input type="radio" name="radioPub" id="public" value="">
+                                <label for="public">Público</label>
+                            </div>
+                            <div class="form-check form-check-inline radio-item">
+                                <input type="radio" name="radioPub" id="public" value="">
+                                <label for="public">Privado</label>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="mb-3">
                         <label class="form-label">Deportes</label>
