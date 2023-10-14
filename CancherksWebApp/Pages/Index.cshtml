@@ -9,6 +9,49 @@
 
 
 <p>Session Value: @Model.SessionValue</p>
-<p>Id: @Model.ApplicationRole.Id</p>
-<p>Application Id: @Model.ApplicationRole.ApplicationId</p>
-<p>Role Name: @Model.ApplicationRole.ApplicationRoleName</p>
+
+
+<h2>User aPI </h2>
+
+<p>Email: @Model.User.Email</p>
+<p>Id: @Model.User.Id</p>
+<p>Name: @Model.User.PersonName</p>
+<p>First Last Name: @Model.User.FirstLastName</p>
+<p>Second Last Name: @Model.User.SecondLastName</p>
+<p>Debt: @Model.User.Debt</p>
+
+<!-- Check if Employee is not null before displaying. Adjust based on the actual structure of Employee -->
+@if (Model.User.Employee != null)
+{
+    <p>Employee: @Model.User.Employee.ToString()</p>
+}
+
+<!-- Check if Student is not null before displaying -->
+@if (Model.User.Student != null)
+{
+    <p>Student Id: @Model.User.Student.Id</p>
+    <p>Exempt from Printing Costs: @Model.User.Student.IsExemptFromPrintingCosts</p>
+    <p>Degree Id: @Model.User.Student.DegreeId</p>
+    <p>Degree Name: @Model.User.Student.DegreeName</p>
+}
+
+<!-- List out all Departments -->
+@foreach (var department in Model.User.Departments)
+{
+    <p>Department: @department</p>
+}
+
+<!-- List out all Schools -->
+@foreach (var school in Model.User.Schools)
+{
+    <p>School: @school</p>
+}
+
+<!-- List out all ApplicationRoles -->
+@foreach (var role in Model.User.ApplicationRoles)
+{
+    <p>Role Id: @role.Id</p>
+    <p>Application Id: @role.ApplicationId</p>
+    <p>Role Name: @role.ApplicationRoleName</p>
+    <p>Application Name: @role.ApplicationName</p>
+}

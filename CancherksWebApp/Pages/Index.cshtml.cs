@@ -9,11 +9,10 @@ namespace CancherksWebApp.Pages
 {
     public class IndexModel : PageModel
     {
-        public IEnumerable<Installation> Installations { get; set; }
-        private readonly ApplicationDbContext _db;
+
         private readonly IHttpClientFactory _clientFactory;
 
-        public ApplicationRole ApplicationRole { get; set; }
+        public UserAPIModel User { get; set; }
 
 
         public UserLogged userLoggeed { get; set; }
@@ -25,64 +24,54 @@ namespace CancherksWebApp.Pages
 
         public IndexModel(ApplicationDbContext db, IHttpClientFactory clientFactory)
         {
-            _db = db;
             _clientFactory = clientFactory;
         }
 
         public async Task OnGetAsync()
         {
 
-            // Creating first UserLogged instance with provided and invented data
-            UserLogged user1 = new UserLogged
-            {
-                Id = 2021052792,
-                Email = "chacalerks@estudiantec.cr ",
-                Name = "Maynor",
-                LastName = "Martínez",
-                LastName2 = "Hernández",
-                Rol = 7415 // Invented data
-            };
-
-            // Creating second UserLogged instance with provided and invented data
-            UserLogged user2 = new UserLogged
-            {
-                Id = 202105271,
-                Email = "fmMurillo@estudiantec.cr",
-                Name = "Fernanda",
-                LastName = "Murillo",
-                LastName2 = "Mena",
-                Rol = 2569  // Invented data
-            };
-
-            userLoggeed = user1; // Copying user1 to user3
-
-
-            // You can perform synchronous operations here as well
-            Installations = _db.Installation;
-
-            // Set session value
-            HttpContext.Session.SetString("SessionKey", Guid.NewGuid().ToString());
-            HttpContext.Session.SetString("id", userLoggeed.Id.ToString());
-            HttpContext.Session.SetString("email", userLoggeed.Email.ToString());
-            HttpContext.Session.SetString("name", userLoggeed.Name.ToString());
-            HttpContext.Session.SetString("lastName", userLoggeed.LastName.ToString());
-            HttpContext.Session.SetString("lastName2", userLoggeed.LastName2.ToString());
-            HttpContext.Session.SetString("role", userLoggeed.Rol.ToString());
 
             // Now make the asynchronous call to the external API
             var client = _clientFactory.CreateClient();
-            var response = await client.GetAsync("http://sistema-tec.somee.com/api/applicationroles/10");
+            var response = await client.GetAsync("http://sistema-tec.somee.com/api/users/chacalerks@estudiantec.cr");
 
             if (response.IsSuccessStatusCode)
             {
                 // Log or output the raw JSON response
-                var data = await response.Content.ReadAsStringAsync();
-                RawJsonData = data; // Use a logging framework or another method to inspect 'data'
+              
 
                 // Attempt to deserialize the data
                 try
                 {
-                    ApplicationRole = JsonSerializer.Deserialize<ApplicationRole>(data);
+                    var data = await response.Content.ReadAsStringAsync();
+                    RawJsonData = data; // Use a logging framework or another method to inspect 'data'
+                    User = JsonSerializer.Deserialize<UserAPIModel>(data);
+
+                    HttpContext.Session.SetString("SessionKey", Guid.NewGuid().ToString());
+                    HttpContext.Session.SetString("id", User.Id.ToString());
+                    HttpContext.Session.SetString("email", User.Email.ToString());
+                    HttpContext.Session.SetString("name", User.FirstLastName.ToString());
+                    HttpContext.Session.SetString("lastName", User.FirstLastName.ToString());
+                    HttpContext.Session.SetString("lastName2", User.SecondLastName.ToString());
+
+
+                    for (int i = 0; i < User.ApplicationRoles.Count; i++)
+                    {
+                        if (User.ApplicationRoles[i].ApplicationId == 2) //this is the id of the application Cancherks in the database
+                        {
+                            if (User.ApplicationRoles[i].Id == 2)
+                            {
+                                HttpContext.Session.SetString("role", "2569"); //admin
+                                break;
+                            }
+                            else if (User.ApplicationRoles[i].Id == 12) //Estoy waiting for the value of the role
+                            {
+                                HttpContext.Session.SetString("role", "7415"); //Normal requester user
+                            }
+                        }
+                    }
+
+
                 }
                 catch (JsonException ex)
                 {

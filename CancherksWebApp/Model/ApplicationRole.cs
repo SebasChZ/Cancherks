@@ -13,6 +13,9 @@ namespace CancherksWebApp.Model
         [JsonPropertyName("applicationRoleName")]
         public string ApplicationRoleName { get; set; }
 
+        [JsonPropertyName("applicationName")]
+        public string ApplicationName { get; set; }
+
         [JsonPropertyName("parentId")]
         public int? ParentId { get; set; }
 
