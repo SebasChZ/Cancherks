@@ -15,38 +15,11 @@ function updateTimes() {
 
     // Si necesitas hacer algo adicional con estos valores, puedes hacerlo aquí.
 }
-
 $(document).ready(function () {
     $('.custom-dropdown-item').click(function (e) {
         e.preventDefault();
 
         let sportId = $(this).data('id');
-
-        $.ajax({
-            url: '/Admin/BuscarInstalacion?handler=GetInstallationsForSport',
-            type: 'GET',
-            data: { sportId: sportId },
-            success: function (data) {
-                updateTable(data);
-            }
-        });
+        loadInstallationsBySport(sportId);
     });
 });
-
-function updateTable(data) {
-    let tableBody = $("table > tbody").empty();
-
-    $.each(data, function (index, installation) {
-        let row = $("<tr data-installation-id='" + installation.Id + "'>");
-        row.append($("<td>").text(installation.Name));
-        row.append($("<td>").text(installation.Location));
-        // ... más campos ...
-
-        tableBody.append(row);
-    });
-}
-
-
-
-
-
