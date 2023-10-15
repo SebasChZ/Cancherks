@@ -9,7 +9,7 @@
 
 
 <section class="container px-5 py-3">
-    <h3 style="margin-bottom: 2rem;">Agregar Instalación</h3>
+    <h3 style="margin-bottom: 2rem;">Modificar Instalación</h3>
 
     <div class="row">
         <div class="col-md-6">
@@ -45,23 +45,36 @@
                         <label class="form-label">Acceso</label>
                         <div class="checkbox-container full-width">
                             @{
-                                var isPrivateChecked = Model.Installation.isPublic == false ? "checked" : "";
-                                var isPublicChecked = Model.Installation.isPublic == true ? "checked" : "";
+                                if (Model.Installation.isPublic)
+                                {
+                                    <div class="form-check form-check-inline radio-item">
+                                        <input type="radio" name="radioPub" id="private" value="0">
+                                        <label for="private">Privado</label>
+                                    </div>
+
+                                    <div class="form-check form-check-inline radio-item">
+                                        <input type="radio" name="radioPub" id="public" value="1" checked>
+                                        <label for="public">Público</label>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="form-check form-check-inline radio-item">
+                                        <input type="radio" name="radioPub" id="private" value="0" checked>
+                                        <label for="private">Privado</label>
+                                    </div>
+
+                                    <div class="form-check form-check-inline radio-item">
+                                        <input type="radio" name="radioPub" id="public" value="1">
+                                        <label for="public">Público</label>
+                                    </div>
+                                }
+
                             }
-
-                            <div class="form-check form-check-inline radio-item">
-                                <input type="radio" name="radioPub" id="private" value="0" asp-for="Installation.isPublic" checked="@isPrivateChecked">
-                                <label for="private">Privado</label>
-                            </div>
-
-                            <div class="form-check form-check-inline radio-item">
-                                <input type="radio" name="radioPub" id="public" value="1" asp-for="Installation.isPublic" checked="@isPublicChecked">
-                                <label for="public">Público</label>
-                            </div>
-
 
                             <span asp-validation-for="Installation.isPublic" class="text-danger"></span>
                         </div>
+
                     </div>
 
                     <div class="mb-3">
@@ -98,7 +111,7 @@
                     </div>
 
 
-                    <button type="submit" asp-page-handler="AddInstallation" id="acept" class="btn btn-primary button-gradient full-width">Agregar Instalacion</button>
+                    <button type="submit" asp-page-handler="ModifyInstallation" id="acept" class="btn btn-primary button-gradient full-width">Modificar Instalacion</button>
 
                 </form>
 
@@ -172,14 +185,3 @@
     </div>
 </modalModify>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var form = document.querySelector('form');
-        var addInstallationModal = new bootstrap.Modal(document.getElementById('modifyInstallation'));
-
-        form.addEventListener('submit', function (event) {
-            event.preventDefault();
-            addInstallationModal.show();
-        });
-    });
-</script>

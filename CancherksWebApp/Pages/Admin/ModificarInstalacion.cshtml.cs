@@ -43,6 +43,8 @@ namespace CancherksWebApp.Pages.Admin
         [BindProperty]
         public string Message { get; set; }
         public List<ScheduleAvailability> ScheduleAvailabilities { get; set; }
+        
+
 
         public void OnGet(int id)
         {
@@ -70,37 +72,33 @@ namespace CancherksWebApp.Pages.Admin
         }
 
 
-        public async Task<IActionResult> OnPostAddInstallation(Installation installation, int radio, int radioPub)
+        public async Task<IActionResult> OnPostModifyInstallation(Installation installation, int radio, int radioPub)
         {
             try
             {
                 Sport selectedSport = _context.Sport.Find(radio);
+                var installationxSportEntry = _context.InstallationxSport.FirstOrDefault(ixs => ixs.IdInstallation == Installation.Id);
+                if (installationxSportEntry != null)
+                {
+                    int idInstallationxSport = installationxSportEntry.Id;
+                }
 
                 var parameters = new SqlParameter[]
                 {
+                    new SqlParameter("@idInstallation", installationxSportEntry.IdInstallation),
                     new SqlParameter("@name", installation.Name),
-                    new SqlParameter("@location", installation.Location),
                     new SqlParameter("@description", installation.Description),
-                    new SqlParameter("@picture", installation.Picture),
                     new SqlParameter("@maxCantPeople", installation.MaxCantPeople),
                     new SqlParameter("@timeSplitReservation", installation.TimeSplitReservation),
-                    new SqlParameter("@idSport", selectedSport.Id),
                     new SqlParameter("@isPublic", radioPub),
-                    new SqlParameter("@newId", SqlDbType.Int) { Direction = ParameterDirection.Output }
+                    new SqlParameter("@idInstallationxSport", installationxSportEntry.Id),
+                    new SqlParameter("@idSport", selectedSport.Id)
                 };
 
-                if (Photo != null)
-                {
-                    string uniqueFileName = await ProcessUploadedFile();
+               
+                await _context.Database.ExecuteSqlRawAsync("EXEC dbo.spUpdateInstallation @idInstallation, @name, @description, @maxCantPeople, @timeSplitReservation, @isPublic,@idInstallationxSport, @idSport", parameters);
 
-                    parameters[3].Value = uniqueFileName ?? parameters[3].Value;
-                }
-
-                await _context.Database.ExecuteSqlRawAsync("EXEC dbo.spAddInstallationSchedule @name, @location, @description, @picture, @maxCantPeople, @timeSplitReservation, @idSport, @isPublic, @newId OUTPUT", parameters);
-
-                int newInstallationId = Convert.ToInt32(parameters[7].Value);
-                TempData["NewInstallationId"] = newInstallationId;
-
+               
                 Message = "Instalación agregada con éxito!";
             }
             catch (Exception ex)
