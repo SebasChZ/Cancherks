@@ -15,13 +15,11 @@ function updateTimes() {
 
     // Si necesitas hacer algo adicional con estos valores, puedes hacerlo aquí.
 }
-
-// No necesitas el evento 'click' en este caso, porque ya estamos usando el evento 'change' en los inputs.
-
 $(document).ready(function () {
-    $('input[type="radio"][name="radio"]').on('change', function () {
-        $('input[type="radio"][name="radio"]').not(this).prop('disabled', true);
+    $('.custom-dropdown-item').click(function (e) {
+        e.preventDefault();
+
+        let sportId = $(this).data('id');
+        loadInstallationsBySport(sportId);
     });
 });
-
-

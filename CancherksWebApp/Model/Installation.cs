@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+
 namespace CancherksWebApp.Model
 {
     public class Installation
@@ -35,4 +36,5 @@ namespace CancherksWebApp.Model
         [Required(ErrorMessage = "El tiempo máximo por reservación es requerido")]
         public Boolean isPublic { get; set; }
     }
+
 }
