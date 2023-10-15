@@ -22,71 +22,100 @@ namespace CancherksWebApp.Pages
 
         public string SessionValue { get; set; }
 
+        public string par { get; set; }
+
+		[BindProperty(SupportsGet = true)]
+		public string Id { get; set; }
+        // Define a property to hold the email parameter
+        public string Email { get; set; }
+
         public IndexModel(ApplicationDbContext db, IHttpClientFactory clientFactory)
         {
             _clientFactory = clientFactory;
         }
 
-        public async Task OnGetAsync()
-        {
+        public async Task OnGetAsync(string email)
+        {   
+            string id = HttpContext.Session.GetString("email");
 
-            string manito = "chacalerks@estudiantec.cr";
-            string fenana = "fermurillo04@estudiantec.cr";
-            // Now make the asynchronous call to the external API
-            var client = _clientFactory.CreateClient();
-            var response = await client.GetAsync("http://sistema-tec.somee.com/api/users/"+ fenana);
-
-            if (response.IsSuccessStatusCode)
+            if (string.IsNullOrEmpty(email))
             {
-                // Log or output the raw JSON response
-              
-
-                // Attempt to deserialize the data
-                try
+                //check for session
+                if (string.IsNullOrEmpty(id))
                 {
-                    var data = await response.Content.ReadAsStringAsync();
-                    RawJsonData = data; // Use a logging framework or another method to inspect 'data'
-                    User = JsonSerializer.Deserialize<UserAPIModel>(data);
-
-                    HttpContext.Session.SetString("SessionKey", Guid.NewGuid().ToString());
-                    HttpContext.Session.SetString("id", User.Id.ToString());
-                    HttpContext.Session.SetString("email", User.Email.ToString());
-                    HttpContext.Session.SetString("name", User.FirstLastName.ToString());
-                    HttpContext.Session.SetString("lastName", User.FirstLastName.ToString());
-                    HttpContext.Session.SetString("lastName2", User.SecondLastName.ToString());
-
-
-                    for (int i = 0; i < User.ApplicationRoles.Count; i++)
-                    {
-                        if (User.ApplicationRoles[i].ApplicationId == 2) //this is the id of the application Cancherks in the database
-                        {
-                            if (User.ApplicationRoles[i].Id == 2)
-                            {
-                                HttpContext.Session.SetString("role", "2569"); //admin
-                                break;
-                            }
-                            else if (User.ApplicationRoles[i].Id == 12) //Estoy waiting for the value of the role
-                            {
-                                HttpContext.Session.SetString("role", "7415"); //Normal requester user
-                            }
-                        }
-                    }
-
-
-                }
-                catch (JsonException ex)
+                    Email = "Default or Anonymous User";
+                    Response.Redirect("/ErrorPage");
+                }   
+                // Now make the asynchronous call to the external API
+                else if (HttpContext.Session.GetString("role") == "7415")
                 {
-                    // Log or output the deserialization error
-                    RawJsonData = $"Error deserializing data: {ex.Message}";
+                    Response.Redirect("/Solicitante/Reservacion");
                 }
+                else if (HttpContext.Session.GetString("role") == "2569")
+                {
+                    Response.Redirect("/Admin/GestionSolicitudes");
+                }
+
 
             }
             else
             {
-                // Log or output the unsuccessful status code
-                RawJsonData = $"Error: {response.StatusCode}";
+                Email = email;
+                var client = _clientFactory.CreateClient();
+                var response = await client.GetAsync("http://sistema-tec.somee.com/api/users/" + Email);
+
+                if (response.IsSuccessStatusCode)
+                {
+
+                    // Attempt to deserialize the data
+                    try
+                    {
+                        var data = await response.Content.ReadAsStringAsync();
+                        RawJsonData = data; // Use a logging framework or another method to inspect 'data'
+                        User = JsonSerializer.Deserialize<UserAPIModel>(data);
+
+                        HttpContext.Session.SetString("SessionKey", Guid.NewGuid().ToString());
+                        HttpContext.Session.SetString("id", User.Id.ToString());
+                        HttpContext.Session.SetString("email", User.Email.ToString());
+                        HttpContext.Session.SetString("name", User.FirstLastName.ToString());
+                        HttpContext.Session.SetString("lastName", User.FirstLastName.ToString());
+                        HttpContext.Session.SetString("lastName2", User.SecondLastName.ToString());
+
+
+                        for (int i = 0; i < User.ApplicationRoles.Count; i++)
+                        {
+                            if (User.ApplicationRoles[i].ApplicationId == 2) //this is the id of the application Cancherks in the database
+                            {
+                                if (User.ApplicationRoles[i].Id == 2)
+                                {
+                                    HttpContext.Session.SetString("role", "2569"); //admin
+                                    break;
+                                }
+                                else if (User.ApplicationRoles[i].Id == 12) //Estoy waiting for the value of the role
+                                {
+                                    HttpContext.Session.SetString("role", "7415"); //Normal requester user
+                                }
+                            }
+                        }
+
+
+                    }
+                    catch (JsonException ex)
+                    {
+                        // Log or output the deserialization error
+                        RawJsonData = $"Error deserializing data: {ex.Message}";
+                    }
+
+                }
+                else
+                {
+                    // Log or output the unsuccessful status code
+                    RawJsonData = $"Error: {response.StatusCode}";
+                }
+                
             }
 
+            // Now make the asynchronous call to the external API
             if (HttpContext.Session.GetString("role") == "7415")
             {
                 Response.Redirect("/Solicitante/Reservacion");
@@ -95,6 +124,14 @@ namespace CancherksWebApp.Pages
             {
                 Response.Redirect("/Admin/GestionSolicitudes");
             }
+            else
+            {
+                Response.Redirect("/ErrorPage");
+            }
+
+
+
+
         }
     }
 
