@@ -1,5 +1,3 @@
-
-
 using CancherksWebApp.Data;
 using CancherksWebApp.Model;
 using Microsoft.AspNetCore.Mvc;
@@ -8,7 +6,7 @@ using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
-namespace CancherksWebApp.Pages.RequesterUser
+namespace CancherksWebApp.Areas.Solicitante.Pages
 {
     public class ReservationModel : PageModel
     {
@@ -25,7 +23,7 @@ namespace CancherksWebApp.Pages.RequesterUser
 
         public List<Sport> sports { get; set; }
 
-        public Request request { get; set; }  
+        public Request request { get; set; }
 
         public async Task OnGet()
         {
@@ -67,11 +65,11 @@ namespace CancherksWebApp.Pages.RequesterUser
             try
             {
                 //execute the sqlRaw
-                
+
                 //var data = _context.Installation.FromSqlRaw("EXEC spCrudRequest @idRequest, @emailRequester, @date, @idInstallation, @idState, @idActivity, @startTime, @endTime, @operationFlag", parameters).ToList();
-                var chaca =  _context.Database.ExecuteSqlRaw("EXEC dbo.spCrudRequest @idRequest={0}, @emailRequester={1}, @date={2}, @idInstallation={3}, @idState={4}, @idActivity={5}, @startTime={6}, @endTime={7}, @operationFlag={8}",
+                var chaca = _context.Database.ExecuteSqlRaw("EXEC dbo.spCrudRequest @idRequest={0}, @emailRequester={1}, @date={2}, @idInstallation={3}, @idState={4}, @idActivity={5}, @startTime={6}, @endTime={7}, @operationFlag={8}",
             0, emailRequester, dateReservation, idInstallation, 1, 1, startTimeReservation, endTimeReservation, 0);
-  
+
                 if (chaca == 1)
                 {
                     return RedirectToPage("/Solicitante/Reservacion");

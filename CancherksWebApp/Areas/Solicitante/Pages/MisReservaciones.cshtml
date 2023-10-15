@@ -1,10 +1,10 @@
 ﻿@page
-@model CancherksWebApp.Pages.Solicitante.MisReservacionesModel
+@model CancherksWebApp.Areas.Solicitante.Pages.MisReservacionesModel
 @{
     var userRole = @Model.role;
-    Layout = userRole == "7415" ? "_RequesterLayout" : "_ErrorLayout";
+    Layout = userRole == "2569" || userRole == "7415" ? "_RequesterLayout" : "_ErrorLayout";
 
-    if (userRole != "7415") Response.Redirect("/ErrorPage");
+    if ((userRole != "7415" && userRole != "2569")) Response.Redirect("/ErrorPage");
 
 }
 

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Text.Json;
 
 
-namespace CancherksWebApp.Pages.Admin
+namespace CancherksWebApp.Areas.Admin.Pages
 {
     public class ReportesModel : PageModel
     {

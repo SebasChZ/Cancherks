@@ -1,4 +1,3 @@
-
 using CancherksWebApp.Data;
 using CancherksWebApp.Model;
 using Microsoft.AspNetCore.Mvc;
@@ -6,7 +5,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Security.Cryptography;
 using System.Text.Json;
 
-namespace CancherksWebApp.Pages.Admin
+namespace CancherksWebApp.Areas.Admin.Pages
 {
     public class GestionSolcitudesModel : PageModel
     {
@@ -22,7 +21,7 @@ namespace CancherksWebApp.Pages.Admin
         }
 
         public List<Installation> Installations { get; set; }
-        public List<Request> Requests { get; set; } 
+        public List<Request> Requests { get; set; }
 
         public Person Person { get; set; }
 
@@ -39,7 +38,7 @@ namespace CancherksWebApp.Pages.Admin
             for (int i = 0; i < Requests.Count; i++)
             {
                 UserAPIModel p = await LoadPersonData(Requests[i].EmailRequester);
-                if(p != null)
+                if (p != null)
                 {
                     Requests[i].Person = p;
                     PersonList.Add(p);
@@ -62,7 +61,7 @@ namespace CancherksWebApp.Pages.Admin
                 try
                 {
                     var data = await response.Content.ReadAsStringAsync();
-                    p =  JsonSerializer.Deserialize<UserAPIModel>(data);
+                    p = JsonSerializer.Deserialize<UserAPIModel>(data);
 
                 }
                 catch (JsonException ex)

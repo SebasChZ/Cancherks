@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace CancherksWebApp.Pages.Admin
+namespace CancherksWebApp.Areas.Admin.Pages
 {
     public class ModificarInstalacionModel : PageModel
     {

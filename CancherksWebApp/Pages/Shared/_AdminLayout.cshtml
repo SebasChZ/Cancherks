@@ -39,6 +39,7 @@
                         var report1Active = Context.Request.Path.Value.Contains("/Admin/Reportes");
                         var admin1Active = Context.Request.Path.Value.Contains("/Admin/AgregarInstalacion");
                         var admin2Active = Context.Request.Path.Value.Contains("/Admin/ModificarInstalacion");
+                        var modoSolicitante = Context.Request.Path.Value.Contains("/Solicitante/Reservacion");
 
                         if (request1Active)
                         {
@@ -57,13 +58,16 @@
 
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link @(requestArea ? "activeNav" : "")" asp-area="Admin" asp-page="GestionSolicitudes">Solicitudes</a>
+                            <a class="nav-link @(requestArea ? "activeNav" : "")" asp-area="Admin" asp-page="/GestionSolicitudes">Solicitudes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @(reportArea ? "activeNav" : "")" asp-area="Admin" asp-page="Reportes">Reportes</a>
+                            <a class="nav-link @(reportArea ? "activeNav" : "")" asp-area="Admin" asp-page="/Reportes">Reportes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @(adminArea ? "activeNav" : "")" asp-area="Admin" asp-page="AgregarInstalacion">Administración</a>
+                            <a class="nav-link @(adminArea ? "activeNav" : "")" asp-area="Admin" asp-page="/AgregarInstalacion">Administración</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(modoSolicitante ? "activeNav" : "")" asp-area="Solicitante" asp-page="/Reservacion">Modo Solicitante</a>
                         </li>
                     </ul>
                 </div>

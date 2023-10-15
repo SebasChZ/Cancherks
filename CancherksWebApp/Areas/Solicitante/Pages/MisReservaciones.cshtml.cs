@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace CancherksWebApp.Pages.Solicitante
+namespace CancherksWebApp.Areas.Solicitante.Pages
 {
     public class MisReservacionesModel : PageModel
     {
