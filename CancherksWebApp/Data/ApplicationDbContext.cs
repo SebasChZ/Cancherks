@@ -22,7 +22,7 @@ namespace CancherksWebApp.Data
         public DbSet<Sport> Sport { get; set; }
         public DbSet<InstallationxSport> InstallationxSport { get; set; }
         public DbSet<ScheduleAvailability> ScheduleAvailability { get; set; }
-
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<InstallationSportViewModel>().HasNoKey().ToView(null);

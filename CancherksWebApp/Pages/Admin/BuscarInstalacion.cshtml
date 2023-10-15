@@ -59,7 +59,9 @@
                     <td>@installation.TimeSplitReservation</td>
                     <td>@(installation.isPublic ? "Sí" : "No")</td>
                     <td style="text-align: center;">
-                        <i class="bi bi-pencil-square custom-edit" data-id="@installation.Id" style="cursor:pointer;"></i>
+                        <a asp-page="/Admin/ModificarInstalacion" asp-route-id="@installation.Id">
+                            <i class="bi bi-pencil-square custom-edit" style="cursor:pointer;"></i>
+                        </a>
                     </td>
                 </tr>
             }
