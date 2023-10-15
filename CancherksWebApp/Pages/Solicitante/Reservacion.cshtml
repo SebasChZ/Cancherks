@@ -1,0 +1,135 @@
+﻿@page
+@model CancherksWebApp.Pages.Solicitante.ReservationModel
+@{
+    var userRole = @Model.role;
+    Layout = userRole == "2569" || userRole == "7415" ? "_RequesterLayout" : "_ErrorLayout";
+
+    if ((userRole != "7415" && userRole != "2569")) Response.Redirect("/ErrorPage");
+    
+}
+
+@section Scripts
+{
+    <script src="@Url.Content("~/js/Requester/Reservation.js")"></script>
+}
+<section class="container-fluid px-5 py-3">
+
+    <h3 style="margin-bottom: 2rem;">Solicitudes </h3>
+    <dropdown class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle custom-dropdown-button" type="button" id="dropdownInstallations" data-bs-toggle="dropdown" aria-expanded="false">
+            Selecione un Deporte
+        </button>
+        <ul class="dropdown-menu custom-dropdown-options" aria-labelledby="dropdownInstallations">
+
+            <li><a class="dropdown-item custom-dropdown-item" data-id="0" href="#" onclick="loadInstallation(0)">Todos</a></li>
+            @foreach (var i in Model.sports)
+            {
+                <li><a class="dropdown-item custom-dropdown-item" data-id="@i.Id" href="#" onclick="loadInstallation(@i.Id)">@i.Name</a></li>
+            }
+        </ul>
+
+    </dropdown>
+
+    <div id="gridDiv" class="py-5 d-flex flex-wrap gap-3">
+    @{
+            // <div class="col-6" style="max-width: 640px;">
+            //     <div class="card mb-3">
+            //         <div class="row g-0">
+            //             <div class="col-md-4">
+            //                 <img src="~/img/sintetica.jpg" class="img-fluid rounded-start" alt="...">
+            //             </div>
+            //             <div class="col-md-8">
+            //                 <div class="card-body">
+            //                     <h5 class="card-title font-weight-bold ">Sintetica</h5>
+            //                     <p class="card-text mb-0">Cancha sintética para partivdos 6vs6 de fútbol</p>
+            //                     <p class="card-text mb-1 text-primary"><i class="bi bi-geo-fill"></i> Lado sur</p>
+            //                     <button type="button" class="btn btn-outline-primary">Consultar</button>
+
+            //                 </div>
+            //             </div>
+            //         </div>
+            //     </div>
+            // </div>
+    }
+
+       
+    </div>
+</section>
+
+<section class="container-fluid px-5 py-3">
+    <h3 style="margin-bottom: 2rem;">Reserva</h3>
+    <div class="d-flex gx-3">
+
+        <Schedule class="row">
+            <datepicker class="px-0 mb-2" style="display: flex; justify-content: center; flex-grow: 1;">
+                <div class="w-100">
+                    <div class="col-12">
+                        <div class="input-group date datepicker-container">
+                            <input type="text" class="form-control datepickerInput" id="datepickerQuery" placeholder="Fecha a consultar" />
+                            <span class="input-group-append datepickerIcon">
+                                <span class="input-group-text bg-light d-block">
+                                    <i class="bi bi-calendar-check"></i>
+                                </span>
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </datepicker>
+            <div id="listSchedule" class="list-group w-100 px-0 visible-nd">
+                <button type="button" class="list-group-item list-group-item-action active" aria-current="true">
+                    The current button
+                </button>
+                <button type="button" class="list-group-item list-group-item-action">A second item</button>
+                <button type="button" class="list-group-item list-group-item-action">A third button item</button>
+                <button type="button" class="list-group-item list-group-item-action">A fourth button item</button>
+                <button type="button" class="list-group-item list-group-item-action disable" disabled>A disabled button item</button>
+            </div>
+        </Schedule>
+        <div class="ps-4">
+            <div id="reservationCard" class="card mb-3 visible-nd" style="max-width: 700px;">
+                <div class="card-header bg-gradient">
+                    Resumen de Reserva
+                </div>
+              
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img id="picture" src=".." class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 id="installationName" class="card-title font-weight-bold "></h5>
+                            <p id="description" class="card-text mb-0"></p>
+
+                            <p class="card-text mb-0">
+                                <i class="bi bi-geo-fill"></i>
+                                <span id="location" class="text-primary"></span>
+                            </p>
+                            <p class="card-text mb-1">
+                                <i class="bi bi-calendar-event" aria-hidden="true"></i>
+                                <span id="date" class="text-primary">22 agosto 2023</span>
+                            </p>
+
+                            <p class="card-text mb-1">
+                                <i class="bi bi-alarm-fill" aria-label="Alarm icon"></i>
+                                <span id="time" class="text-primary">20:00 - 22:00</span>
+                            </p>
+                            <form method="post">
+                                <input type="hidden" id="emailRequester" asp-for="request.IdInstallation" name="emailRequester" value="@HttpContext.Session.GetString("email")" />
+                                <input type="hidden" id="installationId" asp-for="request.IdInstallation" name="installationId" value="0" />
+                                <input type="hidden" id="dateReservation" asp-for="request.DateRequest" name="dateReservation" value="0" />
+                                <input type="hidden" id="startTimeReservation" asp-for="request.StartTime" name="startTimeReservation" value="0" />
+                                <input type="hidden" id="endTimeReservation" asp-for="request.EndTime" name="endTimeReservation" value="0" />
+                                <button type="submit" class="btn btn-primary button-gradient">Reservar</button>
+                            </form>
+                            
+                        </div>
+                    </div>
+                </div>               
+            </div>
+        </div>
+
+    </div>
+</section>

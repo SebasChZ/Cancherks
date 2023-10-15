@@ -1,0 +1,168 @@
+﻿@page
+@model CancherksWebApp.Pages.Admin.AgregarInstalacionModel
+@{
+    var userRole = @Model.role;
+    Layout = userRole == "2569" ? "_AdminLayout" : "_ErrorLayout";
+
+    if (userRole != "2569") Response.Redirect("/ErrorPage");
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="@Url.Content("~/js/Admin/AgregarInstalacion.js")"></script>
+}                            
+
+<section class="container px-5 py-3">
+    <h3 style="margin-bottom: 2rem;">Agregar Instalación</h3>
+
+    <div class="row"> 
+        <div class="col-md-6">
+            <div>
+                <form method="post" id="installationForm" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="Installation.Name">Nombre</label>
+                        <input type="text" class="form-control" asp-for="Installation.Name">
+                        <span asp-validation-for="Installation.Name" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="Installation.Location">Ubicación</label>
+                        <input type="text" class="form-control" asp-for="Installation.Location">
+                        <span asp-validation-for="Installation.Location" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="Installation.MaxCantPeople">Cantidad Máxima Personas</label>
+                        <input type="text" class="form-control" asp-for="Installation.MaxCantPeople">
+                        <span asp-validation-for="Installation.MaxCantPeople" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="Installation.TimeSplitReservation">Tiempo máximo por reservación</label>
+                        <input type="text" class="form-control" asp-for="Installation.TimeSplitReservation">
+                        <span asp-validation-for="Installation.TimeSplitReservation" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="Installation.Description">Descripción</label>
+                        <textarea class="form-control" asp-for="Installation.Description" style="height: 100px;"></textarea>
+                        <span asp-validation-for="Installation.Description" class="text-danger"></span>
+                    </div>   
+                    <div class="mb-3">
+                        <label class="form-label">Acceso</label>
+                        <div class="checkbox-container full-width">
+                            <div class="form-check form-check-inline radio-item">
+                                <input type="radio" name="radioPub" id="public" value="1">
+                                <label for="public">Público</label>
+                            </div>
+                            <div class="form-check form-check-inline radio-item">
+                                <input type="radio"  name="radioPub" id="private" value="0">
+                                <label for="private">Privado</label>
+                            </div>
+                            <span asp-validation-for="Installation.isPublic" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Deportes</label>
+                        <div class="checkbox-container full-width">
+                            @foreach (var sport in Model.Sports)
+                            {
+     
+
+                                <div class="form-check form-check-inline radio-item">
+                                    <input type="radio" name="radio" id="@("radio-" + sport.Id)" value="@sport.Id">
+                                    <label for="@("radio-" + sport.Id)">@sport.Name</label>
+                                </div>
+                            }
+                        </div>
+
+                    </div>
+
+                    <label class="form-label">Foto</label>
+                    <div class="file-upload mb-3">
+                        
+                        <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Agregue una imagen</button>
+
+                        <div class="image-upload-wrap">
+                            <input class="file-upload-input" type='file' onchange="readURL(this);" asp-for="Photo" accept="image/*" aria-label="Agregue una imagen " />
+                            <div class="drag-text">
+                                <h3>Presione click o arraste la imagen que desea subir.</h3>
+                            </div>
+                        </div>
+                        <div class="file-upload-content">
+                            <img class="file-upload-image" src="#" alt="your image" />
+                            <div class="image-title-wrap">
+                                <button type="button" onclick="removeUpload()" class="remove-image">Remover <span class="image-title">Uploaded Image</span></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" asp-page-handler="AddInstallation" id="acept" class="btn btn-primary button-gradient full-width">Agregar Instalacion</button>
+                   
+                </form>
+
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label class="mb-3">Disponibilidad</label>
+            
+            
+                <div class="accordion" id="daysAccordion">
+                    @{
+                        int index = 0;
+                    }
+                    @foreach (var day in Model.Days)
+                    
+                    {
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="@($"heading-{day.NameDay}-{index}")">
+                                <button class="accordion-button @(index == 0 ? "" : "collapsed")" type="button" data-bs-toggle="collapse" data-bs-target="@($"#collapse-{day.NameDay}-{index}")" aria-expanded="@(index == 0 ? "true" : "false")" aria-controls="@($"collapse-{day.NameDay}-{index}")">
+                                    @day.NameDay
+                                </button>
+                            </h2>
+                            <div id="@($"collapse-{day.NameDay}-{index}")" class="accordion-collapse collapse @(index == 0 ? "show" : "")" aria-labelledby="@($"heading-{day.NameDay}-{index}")" data-bs-parent="#daysAccordion">
+                                <div class="accordion-body">
+                                <form method="post">
+
+                                    <input type="hidden" asp-for="ScheduleAvailability.IdDay" value="@day.Id">
+
+                                    <label class="form-check-label label-bold">Hora Inicio</label>
+                                    <div class="form-check form-check-inline">
+                                        <input type="time" asp-for="ScheduleAvailability.StartTime" id="startTime-@day.NameDay" class="custom-time-picker">
+                                    </div>
+                                
+                                    <label class="form-check-label label-bold">Hora Final</label>
+                                    <div class="form-check form-check-inline">
+                                        <input type="time" asp-for="ScheduleAvailability.EndTime" id="endTime-@day.NameDay"  class="custom-time-picker">
+                                    </div>
+                                    
+                                    <div class="d-flex justify-content-center mt-2">
+                                        <button type="submit" asp-page-handler="AddSchedule" id="schedule" class="btn btn-primary button-gradient">Agregar</button>
+                                    </div>
+                                </form>
+                                </div>
+                            </div>
+                        </div>
+                        index++;
+                    }
+                </div>
+            
+
+        </div>
+
+    </div>
+
+</section>
+
+<modalAdd class="modal" tabindex="-1" id="addInstallation">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">ATENCIÓN!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Se agregó la instalación correctamente.</p>
+            </div>
+
+        </div>
+    </div>
+</modalAdd>

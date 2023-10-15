@@ -27,6 +27,7 @@ namespace CancherksWebApp.Pages
 
         public async Task OnGetAsync(string email)
         {   
+
             string id = HttpContext.Session.GetString("email");
 
             if (string.IsNullOrEmpty(email))
@@ -36,7 +37,7 @@ namespace CancherksWebApp.Pages
                 {
                     Email = "Default or Anonymous User";
                     Response.Redirect("/ErrorPage");
-                }   
+                }
                 // Now make the asynchronous call to the external API
                 else if (HttpContext.Session.GetString("role") == "7415")
                 {
@@ -103,7 +104,7 @@ namespace CancherksWebApp.Pages
                     // Log or output the unsuccessful status code
                     RawJsonData = $"Error: {response.StatusCode}";
                 }
-                
+
             }
 
             // Now make the asynchronous call to the external API
