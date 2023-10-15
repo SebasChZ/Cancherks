@@ -7,7 +7,7 @@ using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Hosting;
 
-namespace CancherksWebApp.Areas.Admin.Pages
+namespace CancherksWebApp.Pages.Admin
 {
     public class AgregarInstalacionModel : PageModel
     {

@@ -15,6 +15,7 @@
     <None Include="wwwroot\img\sintetica2.jpg" />
     <None Include="wwwroot\js\Admin\AgregarInstalacion.js" />
     <None Include="wwwroot\js\Requester\Reservation.js" />
+    <PackageReference Include="ClosedXML" Version="0.102.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.11" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.11">
       <PrivateAssets>all</PrivateAssets>
@@ -26,6 +27,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Pages\Admin\Pages\" />
   </ItemGroup>
 
 </Project>

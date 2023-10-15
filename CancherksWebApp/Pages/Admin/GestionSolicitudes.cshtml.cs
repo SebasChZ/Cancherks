@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Security.Cryptography;
 using System.Text.Json;
 
-namespace CancherksWebApp.Areas.Admin.Pages
+namespace CancherksWebApp.Pages.Admin
 {
     public class GestionSolcitudesModel : PageModel
     {

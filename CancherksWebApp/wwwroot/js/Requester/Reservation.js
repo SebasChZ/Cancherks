@@ -267,14 +267,7 @@ $(document).ready(function () {
             if (day == 0) {
                 day = 7
             }
-            console.log("esta en la primera vez que entra almenos lo llam[o")
-            console.log("id installation: " + insllationSelected)
-            console.log("day: " + day)
-            console.log("date: " + dateValueDB);
-
             loadDataScheduleAviable(insllationSelected, day, dateValueDB);
-        } else {
-            console.log("segun el if no esta selectedid installatio asdfn: " + insllationSelected)
         }
     });
 });

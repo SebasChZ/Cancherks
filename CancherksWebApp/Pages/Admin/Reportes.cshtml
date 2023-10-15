@@ -1,5 +1,5 @@
 ﻿@page
-@model  CancherksWebApp.Areas.Admin.Pages.ReportesModel
+@model  ReportesModel
 @{
     var userRole = @Model.role;
     Layout = userRole == "2569" ? "_AdminLayout" : "_ErrorLayout";
@@ -13,7 +13,7 @@
 
 <section class="container px-5 py-3">
     <h3 style="margin-bottom: 2rem;">Reportes</h3>
-    <filters class="d-flex align-items-center py-3">
+    <form method="post" class="d-flex align-items-center py-3">
        
         <dropdown class="dropdown">
 
@@ -28,14 +28,13 @@
                 }
             </ul>
         </dropdown>
-
-
+        <input type="hidden" id="installationSelected" name="installationSelected" value="">
         <div class="d-flex" style="justify-content: center; flex-grow: 1;">
-            <form class="row me-3">
+            <div class="row me-3">
                 <div class="col-12">
                     <div class="input-group date datepicker-container" id="datepickerInicio-container">
 
-                        <input type="text" class="form-control datepickerInput" id="datepickerInicio-input" placeholder="Fecha Inicio" />
+                        <input type="text" class="form-control datepickerInput" name="startDate" id="datepickerInicio-input" placeholder="Fecha Inicio" />
                         <span class="input-group-append datepickerIcon" id="datepickerInicio-icon">
                             <span class="input-group-text bg-light d-block">
                                 <i class="bi bi-calendar-check"></i>
@@ -43,12 +42,12 @@
                         </span>
                     </div>
                 </div>
-            </form>
+            </div>
 
-            <form class="row">
+            <div class="row">
                 <div class="col-12">
                     <div class="input-group date" id="datepickerFinal-container">
-                        <input type="text" class="form-control datepickerInput" id="datepickerFinal-input" placeholder="Fecha Final" />
+                        <input type="text" class="form-control datepickerInput" name="endDate" id="datepickerFinal-input" placeholder="Fecha Final" />
                         <span class="input-group-append datepickerIcon" id="datepickerFinal-icon">
                             <span class="input-group-text bg-light d-block">
                                 <i class="bi bi-calendar-check"></i>
@@ -56,14 +55,20 @@
                         </span>
                     </div>
                 </div>
-            </form>
+            </div>
+               
         </div>
 
 
-        <button type="button" class="btn btn-primary button-gradient" data-bs-toggle="modal" data-bs-target="#report">Generar</button>
 
 
-    </filters>
+
+            <button type="submit" asp-page-handler="DownloadReport" class="btn btn-primary button-gradient" data-bs-toggle="modal" data-bs-target="#report">Generar</button>
+        
+        
+
+
+    </form>
 
 
     <table class="table" style="margin-top: 1rem;">
