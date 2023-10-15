@@ -336,6 +336,9 @@ img {
     color: #DC3545; 
 }
 
+.custom-edit{
+    color: var(--colorMain)
+}
 /* upload format */
 
 .file-upload {

@@ -38,7 +38,7 @@
                         var request1Active = Context.Request.Path.Value.Contains("/Admin/GestionSolicitudes");
                         var report1Active = Context.Request.Path.Value.Contains("/Admin/Reportes");
                         var admin1Active = Context.Request.Path.Value.Contains("/Admin/AgregarInstalacion");
-                        var admin2Active = Context.Request.Path.Value.Contains("/Admin/ModificarInstalacion");
+                        var admin2Active = Context.Request.Path.Value.Contains("/Admin/BuscarInstalacion");
 
                         if (request1Active)
                         {
@@ -112,7 +112,7 @@
                         </a>
                     </li>
                     <li class="py-2 @(admin2Active ? "inline-active" : "inline-nav-item") ">
-                        <a class="aside-link" asp-area="Admin" asp-page="ModificarInstalacion">
+                        <a class="aside-link" asp-area="Admin" asp-page="BuscarInstalacion">
                             <i class="bi bi-brush-fill"></i>
                             Modificar Instalación
                         </a>
