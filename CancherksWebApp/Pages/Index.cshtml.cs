@@ -15,21 +15,12 @@ namespace CancherksWebApp.Pages
         public UserAPIModel User { get; set; }
 
 
-        public UserLogged userLoggeed { get; set; }
-
         public string RawJsonData { get; set; }
-        public string ErrorMessage { get; set; }
-
-        public string SessionValue { get; set; }
-
-        public string par { get; set; }
 
 		[BindProperty(SupportsGet = true)]
-		public string Id { get; set; }
-        // Define a property to hold the email parameter
         public string Email { get; set; }
 
-        public IndexModel(ApplicationDbContext db, IHttpClientFactory clientFactory)
+        public IndexModel(IHttpClientFactory clientFactory)
         {
             _clientFactory = clientFactory;
         }
