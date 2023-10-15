@@ -35,5 +35,11 @@ namespace CancherksWebApp.Pages.Solicitante
             var data = _context.InstallationSportViewModels.FromSqlRaw("EXEC spGetInstallationsbySport @idSport={0}", idSport).ToList();
             return new JsonResult(data);
         }
-    }
+
+		public JsonResult OnGetLoadSchudeuleAviableInfo(int idInstallation)
+		{
+			var data = _context.ScheduleAvailability.FromSqlRaw("EXEC spGetInstallationAvailabilityFromInstallation @idInstallation={0}", idInstallation).ToList();
+			return new JsonResult(data);
+		}
+	}
 }

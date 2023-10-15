@@ -21,18 +21,13 @@ function combinedFilter() {
         // If both dates are established, filter by dates too
         var matchDate = true;
         if (selectedStartDate && selectedEndDate) {
-            console.log('dates');
             var rowDate = new Date(rowDateText);
             var starDate = new Date(selectedStartDate);
             var endDate = new Date(selectedEndDate);
-            console.log(rowDate);
-            console.log(starDate);
-            console.log(endDate);
             matchDate = (rowDate >= starDate && rowDate <= endDate);
         }
 
         if (matchInstallation && matchDate) {
-            console.log('match');
             row.style.display = '';
         } else {
             row.style.display = 'none';
