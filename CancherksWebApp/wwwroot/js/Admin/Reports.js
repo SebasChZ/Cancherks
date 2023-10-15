@@ -21,7 +21,10 @@ function combinedFilter() {
         // If both dates are established, filter by dates too
         var matchDate = true;
         if (selectedStartDate && selectedEndDate) {
-            matchDate = (rowDateText >= selectedStartDate && rowDateText <= selectedEndDate);
+            var rowDate = new Date(rowDateText);
+            var starDate = new Date(selectedStartDate);
+            var endDate = new Date(selectedEndDate);
+            matchDate = (rowDate >= starDate && rowDate <= endDate);
         }
 
         if (matchInstallation && matchDate) {
@@ -34,7 +37,7 @@ function combinedFilter() {
 
 function convertToDbDateFormat(dateString) {
     var parts = dateString.split('/');
-    return `${parts[1]}/${parts[0]}/${parts[2]}`;
+    return `${parts[2]}/${parts[1]}/${parts[0]}`;
 }
 
 

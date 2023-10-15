@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace CancherksWebApp.Pages.Solicitante
+namespace CancherksWebApp.Areas.Solicitante.Pages
 {
     public class PublicasModel : PageModel
     {
@@ -33,6 +33,12 @@ namespace CancherksWebApp.Pages.Solicitante
         public JsonResult OnGetLoadInstallationbySport(int idSport)
         {
             var data = _context.InstallationSportViewModels.FromSqlRaw("EXEC spGetInstallationsbySport @idSport={0}", idSport).ToList();
+            return new JsonResult(data);
+        }
+
+        public JsonResult OnGetLoadSchudeuleAviableInfo(int idInstallation)
+        {
+            var data = _context.ScheduleAvailability.FromSqlRaw("EXEC spGetInstallationAvailabilityFromInstallation @idInstallation={0}", idInstallation).ToList();
             return new JsonResult(data);
         }
     }

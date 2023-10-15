@@ -1,5 +1,5 @@
 ﻿@page
-@model CancherksWebApp.Pages.Admin.ReportesModel
+@model  CancherksWebApp.Areas.Admin.Pages.ReportesModel
 @{
     var userRole = @Model.role;
     Layout = userRole == "2569" ? "_AdminLayout" : "_ErrorLayout";
@@ -69,6 +69,9 @@
     <table class="table" style="margin-top: 1rem;">
         <thead>
             <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido 1</th>
+                <th scope="col">Carne</th>
                 <th scope="col">Correo</th>
                 <th scope="col">Instalación</th>
                 <th scope="col">Fecha</th>
@@ -82,6 +85,9 @@
             @foreach (var request in Model.Requests)
             {
                 <tr data-installation-id="@request.IdInstallation">
+                    <td>@request.Person.PersonName</td>
+                    <td>@request.Person.FirstLastName</td>
+                    <td>@request.Person.Student.Id</td>
                     <td>@request.EmailRequester</td>
                     <td>@Model.Installations.FirstOrDefault(i => i.Id == request.IdInstallation)?.Name</td>
                     <td>@request.DateRequest.ToShortDateString()</td>

@@ -1,16 +1,16 @@
 ﻿@page
-@model CancherksWebApp.Pages.Solicitante.PublicasModel
+@model CancherksWebApp.Areas.Solicitante.Pages.ReservationModel
 @{
     var userRole = @Model.role;
-    Layout = userRole == "7415" ? "_RequesterLayout" : "_ErrorLayout";
+    Layout = userRole == "2569" || userRole == "7415" ? "_RequesterLayout" : "_ErrorLayout";
 
-    if (userRole != "7415") Response.Redirect("/ErrorPage");
-
+    if ((userRole != "7415" && userRole != "2569")) Response.Redirect("/ErrorPage");
+    
 }
 
 @section Scripts
-    {
-    <script src="@Url.Content("~/js/Requester/Public.js")"></script>
+{
+    <script src="@Url.Content("~/js/Requester/Reservation.js")"></script>
 }
 <section class="container-fluid px-5 py-3">
 
@@ -31,7 +31,7 @@
     </dropdown>
 
     <div id="gridDiv" class="py-5 d-flex flex-wrap gap-3">
-        @{
+    @{
             // <div class="col-6" style="max-width: 640px;">
             //     <div class="card mb-3">
             //         <div class="row g-0">
@@ -50,9 +50,9 @@
             //         </div>
             //     </div>
             // </div>
-        }
+    }
 
-
+       
     </div>
 </section>
 
@@ -93,7 +93,7 @@
                 <div class="card-header bg-gradient">
                     Resumen de Reserva
                 </div>
-
+              
                 <div class="row g-0">
                     <div class="col-md-4">
                         <img id="picture" src=".." class="img-fluid rounded-start" alt="...">
@@ -124,10 +124,10 @@
                                 <input type="hidden" id="endTimeReservation" asp-for="request.EndTime" name="endTimeReservation" value="0" />
                                 <button type="submit" class="btn btn-primary button-gradient">Reservar</button>
                             </form>
-
+                            
                         </div>
                     </div>
-                </div>
+                </div>               
             </div>
         </ReservationSumary>
 

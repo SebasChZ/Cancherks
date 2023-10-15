@@ -10,7 +10,7 @@
     <link href="~/lib/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/CancherksWebApp.styles.css" asp-append-version="true" />
-
+    <link href="~/css/schedulestyle.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> <!-- For the datepicker -->
 
 </head>
@@ -53,11 +53,21 @@
 
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link @(reservationArea ? "activeNav" : "")" asp-area="Solicitante" asp-page="Reservacion">Reservar y Horarios</a>
+                            <a class="nav-link @(reservationArea ? "activeNav" : "")" asp-area="Solicitante" asp-page="/Reservacion">Reservar y Horarios</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @(myArea ? "activeNav" : "")" asp-area="Solicitante" asp-page="MisReservaciones">Mis Reservaciones</a>
+                            <a class="nav-link @(myArea ? "activeNav" : "")" asp-area="Solicitante" asp-page="/MisReservaciones">Mis Reservaciones</a>
                         </li>
+                        @{
+                            var userRole = @Model.role;
+                            if (userRole == "2569")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="Admin" asp-page="/GestionSolicitudes">Modo Administrador</a>
+                                </li>
+
+                            }
+                        }
                     </ul>
                 </div>
                 <div class="icon-Profile bg-footer text-center align-middle fs-3 text-white">
@@ -133,6 +143,7 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> <!-- For the datepicker -->
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> <!-- For the datepicker -->
+    <script src="~/js/schedulescript.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

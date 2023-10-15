@@ -7,7 +7,7 @@ using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Hosting;
 
-namespace CancherksWebApp.Pages.Admin
+namespace CancherksWebApp.Areas.Admin.Pages
 {
     public class AgregarInstalacionModel : PageModel
     {
@@ -40,7 +40,7 @@ namespace CancherksWebApp.Pages.Admin
         public ScheduleAvailability ScheduleAvailability { get; set; }
         [BindProperty]
         public string Message { get; set; }
-        
+
         public void OnGet()
         {
             role = HttpContext.Session.GetString("role");
@@ -94,17 +94,17 @@ namespace CancherksWebApp.Pages.Admin
             try
             {
                 int newInstallationId = (int)TempData["NewInstallationId"]; // Recuperamos el id de TempData
-                
-                    var scheduleParameters = new SqlParameter[]
-                    {
+
+                var scheduleParameters = new SqlParameter[]
+                {
                         new SqlParameter("@startTime", ScheduleAvailability.StartTime),
                         new SqlParameter("@endTime", ScheduleAvailability.EndTime),
                         new SqlParameter("@idDay", ScheduleAvailability.IdDay),
                         new SqlParameter("@idInstallation", newInstallationId) // Aquí usamos el nuevo idInstallation
-                    };
+                };
 
-                    await _context.Database.ExecuteSqlRawAsync("EXEC dbo.spAddSchedule @startTime, @endTime, @idDay, @idInstallation", scheduleParameters);
-                
+                await _context.Database.ExecuteSqlRawAsync("EXEC dbo.spAddSchedule @startTime, @endTime, @idDay, @idInstallation", scheduleParameters);
+
 
                 Message = "Horarios agregados con éxito!";
             }
@@ -114,7 +114,7 @@ namespace CancherksWebApp.Pages.Admin
             }
             return RedirectToPage("/Admin/AgregarInstalacion");
         }
-        
+
         private async Task<string> ProcessUploadedFile()
         {
             string uniqueFileName = null;
@@ -138,5 +138,5 @@ namespace CancherksWebApp.Pages.Admin
         }
     }
 
-    
+
 }

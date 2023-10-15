@@ -25,5 +25,9 @@ namespace CancherksWebApp.Model
         [Required]
         [Column(TypeName = "Time")]
         public TimeSpan EndTime { get; set; }
+
+        [NotMapped]
+        public UserAPIModel Person { get; set; }
+
     }
 }
