@@ -17,3 +17,11 @@ function updateTimes() {
 }
 
 // No necesitas el evento 'click' en este caso, porque ya estamos usando el evento 'change' en los inputs.
+
+$(document).ready(function () {
+    $('input[type="radio"][name="radio"]').on('change', function () {
+        $('input[type="radio"][name="radio"]').not(this).prop('disabled', true);
+    });
+});
+
+

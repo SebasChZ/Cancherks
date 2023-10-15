@@ -43,8 +43,9 @@ namespace CancherksWebApp.Pages.Admin
         [BindProperty]
         public string Message { get; set; }
         public List<ScheduleAvailability> ScheduleAvailabilities { get; set; }
-        
 
+        public List<InstallationxSport> InstallationxSports { get; set; }
+                                                           
 
         public void OnGet(int id)
         {
@@ -70,7 +71,7 @@ namespace CancherksWebApp.Pages.Admin
         {
             return _context.ScheduleAvailability.FirstOrDefault(sa => sa.IdInstallation == installationId && sa.IdDay == dayId);
         }
-
+        
 
         public async Task<IActionResult> OnPostModifyInstallation(Installation installation, int radio, int radioPub)
         {
@@ -99,62 +100,48 @@ namespace CancherksWebApp.Pages.Admin
                 await _context.Database.ExecuteSqlRawAsync("EXEC dbo.spUpdateInstallation @idInstallation, @name, @description, @maxCantPeople, @timeSplitReservation, @isPublic,@idInstallationxSport, @idSport", parameters);
 
                
-                Message = "Instalación agregada con éxito!";
+                Message = "Instalación modificada con éxito!";
             }
             catch (Exception ex)
             {
-                Message = "Error al agregar: " + ex.Message;
+                Message = "Error al modificar: " + ex.Message;
             }
-            return RedirectToPage("/Admin/AgregarInstalacion");
+            return RedirectToPage("/Admin/ModificarInstalacion");
         }
 
-        public async Task<IActionResult> OnPostAddSchedule(ScheduleAvailability scheduleAvailabilities)
+        public async Task<IActionResult> OnPostModifySchedule(ScheduleAvailability scheduleAvailabilities)
         {
+            
             try
             {
-                int newInstallationId = (int)TempData["NewInstallationId"]; // Recuperamos el id de TempData
+                var installationSchedule = _context.ScheduleAvailability.FirstOrDefault(ixs => ixs.IdInstallation == Installation.Id);
+                if (installationSchedule != null)
+                {
+                    int idSchedule = installationSchedule.Id;
+                }
 
                 var scheduleParameters = new SqlParameter[]
                 {
+                        new SqlParameter("@idInstallation", installationSchedule.IdInstallation),
+                        new SqlParameter("@idScheduleAvailability", installationSchedule.Id),
                         new SqlParameter("@startTime", ScheduleAvailability.StartTime),
                         new SqlParameter("@endTime", ScheduleAvailability.EndTime),
-                        new SqlParameter("@idDay", ScheduleAvailability.IdDay),
-                        new SqlParameter("@idInstallation", newInstallationId) // Aquí usamos el nuevo idInstallation
+                        new SqlParameter("@idDay", ScheduleAvailability.IdDay)
                 };
 
-                await _context.Database.ExecuteSqlRawAsync("EXEC dbo.spAddSchedule @startTime, @endTime, @idDay, @idInstallation", scheduleParameters);
+                await _context.Database.ExecuteSqlRawAsync("EXEC dbo.spUpdateScheduleAvailability @idInstallation, @idScheduleAvailability, @startTime, @endTime, @idDay", scheduleParameters);
 
 
-                Message = "Horarios agregados con éxito!";
+                Message = "Horarios modificados con éxito!";
             }
             catch (Exception ex)
             {
-                Message = "Error al agregar: " + ex.Message;
+                Message = "Error al modificar: " + ex.Message;
             }
-            return RedirectToPage("/Admin/AgregarInstalacion");
+            return RedirectToPage("/Admin/ModificarInstalacion");
         }
 
-        private async Task<string> ProcessUploadedFile()
-        {
-            string uniqueFileName = null;
-            if (Photo != null)
-            {
-                string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "img");
-                uniqueFileName = Path.GetRandomFileName() + Path.GetExtension(Photo.FileName); // Generate a unique file name
-                var filePath = Path.Combine(webHostEnvironment.WebRootPath, "img", uniqueFileName); // Assuming you want to save it in an 'uploads' directory
-
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    await Photo.CopyToAsync(fileStream);
-                }
-
-                // Now filePath contains the complete route of the saved file on the server
-                return uniqueFileName;
-            }
-
-
-            return null;
-        }
+        
     }
 }
 

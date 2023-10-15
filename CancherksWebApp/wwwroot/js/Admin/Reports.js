@@ -46,7 +46,6 @@ $(document).ready(function () {
     });
 
 
-
     $('#datepickerFinal-input').datepicker().on('change', function () {
         var originalDate = $(this).val();
         selectedEndDate = convertToDbDateFormat(originalDate);
