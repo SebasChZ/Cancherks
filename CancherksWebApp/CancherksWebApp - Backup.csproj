@@ -30,7 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\" />
+    <Folder Include="Pages\Admin\Pages\" />
   </ItemGroup>
 
 </Project>

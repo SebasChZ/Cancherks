@@ -1,5 +1,5 @@
 ﻿@page
-@model CancherksWebApp.Areas.Solicitante.Pages.ReservationModel
+@model CancherksWebApp.Pages.Solicitante.ReservationModel
 @{
     var userRole = @Model.role;
     Layout = userRole == "2569" || userRole == "7415" ? "_RequesterLayout" : "_ErrorLayout";
@@ -88,7 +88,7 @@
                 <button type="button" class="list-group-item list-group-item-action disable" disabled>A disabled button item</button>
             </div>
         </Schedule>
-        <ReservationSumary class="ps-4">
+        <div class="ps-4">
             <div id="reservationCard" class="card mb-3 visible-nd" style="max-width: 700px;">
                 <div class="card-header bg-gradient">
                     Resumen de Reserva
@@ -129,7 +129,7 @@
                     </div>
                 </div>               
             </div>
-        </ReservationSumary>
+        </div>
 
     </div>
 </section>

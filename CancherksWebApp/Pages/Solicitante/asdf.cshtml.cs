@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace CancherksWebApp.Areas.asdfasdf.Pages
+namespace CancherksWebApp.Pages.Solicitante
 {
-    public class asdffsdaModel : PageModel
+    public class asdfModel : PageModel
     {
         public void OnGet()
         {

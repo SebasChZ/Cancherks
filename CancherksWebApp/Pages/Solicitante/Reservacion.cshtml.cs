@@ -6,7 +6,7 @@ using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
-namespace CancherksWebApp.Areas.Solicitante.Pages
+namespace CancherksWebApp.Pages.Solicitante
 {
     public class ReservationModel : PageModel
     {

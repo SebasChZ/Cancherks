@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace CancherksWebApp.Areas.Solicitante.Pages
+namespace CancherksWebApp.Pages.Solicitante
 {
     public class PublicasModel : PageModel
     {

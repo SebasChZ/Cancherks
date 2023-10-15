@@ -1,5 +1,5 @@
 ﻿@page
-@model CancherksWebApp.Areas.Solicitante.Pages.PublicasModel
+@model CancherksWebApp.Pages.Solicitante.PublicasModel
 @{
     var userRole = @Model.role;
 	Layout = userRole == "2569" || userRole == "7415" ? "_RequesterLayout" : "_ErrorLayout";

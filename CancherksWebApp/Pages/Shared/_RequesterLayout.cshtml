@@ -53,17 +53,17 @@
 
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link @(reservationArea ? "activeNav" : "")" asp-area="Solicitante" asp-page="/Reservacion">Reservar y Horarios</a>
+                            <a class="nav-link @(reservationArea ? "activeNav" : "")" asp-area="Solicitante" asp-page="Reservacion">Reservar y Horarios</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @(myArea ? "activeNav" : "")" asp-area="Solicitante" asp-page="/MisReservaciones">Mis Reservaciones</a>
+                            <a class="nav-link @(myArea ? "activeNav" : "")" asp-area="Solicitante" asp-page="MisReservaciones">Mis Reservaciones</a>
                         </li>
                         @{
                             var userRole = @Model.role;
                             if (userRole == "2569")
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-area="Admin" asp-page="/GestionSolicitudes">Modo Administrador</a>
+                                    <a class="nav-link" asp-area="" asp-page="../Admin/GestionSolicitudes">Modo Administrador</a>
                                 </li>
 
                             }

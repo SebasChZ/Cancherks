@@ -1,5 +1,5 @@
 ﻿@page
-@model CancherksWebApp.Areas.Solicitante.Pages.MisReservacionesModel
+@model CancherksWebApp.Pages.Solicitante.MisReservacionesModel
 @{
     var userRole = @Model.role;
     Layout = userRole == "2569" || userRole == "7415" ? "_RequesterLayout" : "_ErrorLayout";
