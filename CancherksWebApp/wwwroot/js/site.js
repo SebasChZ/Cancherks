@@ -61,3 +61,48 @@ $('.image-upload-wrap').bind('dragleave', function () {
     $('.image-upload-wrap').removeClass('image-dropping');
 });
 
+
+var tamaniosOriginales = {};
+var value = sessionStorage.getItem('value') ? parseFloat(sessionStorage.getItem('value')) : 1;
+window.addEventListener('DOMContentLoaded', function () {
+    guardarTamaniosOriginales();
+    aplicarZoomActual();
+});
+
+// Get icon zoom by class
+var zoomIcon = document.getElementById('zoom-icon');
+
+// Add event to zoom in icon
+zoomIcon.addEventListener('click', function () {
+    value *= 1.05;
+    sessionStorage.setItem('value', value);
+    aplicarZoomActual();
+});
+
+// Get icon zoom out by class
+var zoomOutIcon = document.querySelector('.bi-zoom-out');
+
+// Add event to zoom out in icon
+zoomOutIcon.addEventListener('click', function () {
+    value *= 0.95;
+    sessionStorage.setItem('value', value);
+    aplicarZoomActual();
+});
+function guardarTamaniosOriginales() {
+    var elementos = document.getElementsByTagName('*');
+    for (var i = 0; i < elementos.length; i++) {
+        var elemento = elementos[i];
+        var estilo = window.getComputedStyle(elemento, null);
+        var fontSize = parseFloat(estilo.getPropertyValue('font-size'));
+        tamaniosOriginales[elemento] = fontSize;
+    }
+}
+function aplicarZoomActual() {
+    var elementos = document.getElementsByTagName('*');
+    for (var i = 0; i < elementos.length; i++) {
+        var elemento = elementos[i];
+        var fontSizeOriginal = tamaniosOriginales[elemento];
+        var nuevoFontSize = fontSizeOriginal * value;
+        elemento.style.fontSize = nuevoFontSize + 'px';
+    }
+}
