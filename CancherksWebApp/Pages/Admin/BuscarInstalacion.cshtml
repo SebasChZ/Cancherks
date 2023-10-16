@@ -18,13 +18,13 @@
         <dropdown class="dropdown">
 
             <button class="btn btn-secondary dropdown-toggle custom-dropdown-button" type="button" id="dropdownInstallations" data-bs-toggle="dropdown" aria-expanded="false">
-                Sport
+                Deporte
             </button>
             <ul class="dropdown-menu custom-dropdown-options" aria-labelledby="dropdownInstallations">
-                <li><a class="dropdown-item custom-dropdown-item" data-id="0" href="#">Todas</a></li>
+                <li><a class="dropdown-item custom-dropdown-item" data-id="0" href="#" onclick="loadInstallation(0)">Todas</a></li>
                 @foreach (var sport in Model.Sports)
                 {
-                    <li><a class="dropdown-item custom-dropdown-item" data-id="@sport.Id" href="#">@sport.Name</a></li>
+                    <li><a class="dropdown-item custom-dropdown-item" data-id="@sport.Id" href="#" onclick="loadInstallation(@sport.Id)">@sport.Name</a></li>
                 }
             </ul>
         </dropdown>
@@ -46,6 +46,7 @@
             </tr>
         </thead>
         <tbody>
+        
             @foreach (var installation in Model.Installations)
             {
                 <tr data-installation-id="@installation.Id">

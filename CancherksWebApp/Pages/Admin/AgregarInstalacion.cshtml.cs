@@ -75,7 +75,7 @@ namespace CancherksWebApp.Pages.Admin
 
                 await _context.Database.ExecuteSqlRawAsync("EXEC dbo.spAddInstallationSchedule @name, @location, @description, @picture, @maxCantPeople, @timeSplitReservation, @idSport, @isPublic, @newId OUTPUT", parameters);
 
-                int newInstallationId = Convert.ToInt32(parameters[7].Value);
+                int newInstallationId = Convert.ToInt32(parameters[8].Value);
                 TempData["NewInstallationId"] = newInstallationId;
 
 

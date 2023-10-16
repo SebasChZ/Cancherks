@@ -100,13 +100,13 @@ namespace CancherksWebApp.Pages.Admin
                 await _context.Database.ExecuteSqlRawAsync("EXEC dbo.spUpdateInstallation @idInstallation, @name, @description, @maxCantPeople, @timeSplitReservation, @isPublic,@idInstallationxSport, @idSport", parameters);
 
                
-                Message = "Instalación modificada con éxito!";
+                Message = "Instalaciï¿½n modificada con ï¿½xito!";
             }
             catch (Exception ex)
             {
                 Message = "Error al modificar: " + ex.Message;
             }
-            return RedirectToPage("/Admin/ModificarInstalacion");
+            return RedirectToPage("/Admin/BuscarInstalacion");
         }
 
         public async Task<IActionResult> OnPostModifySchedule(ScheduleAvailability scheduleAvailabilities)
@@ -132,13 +132,13 @@ namespace CancherksWebApp.Pages.Admin
                 await _context.Database.ExecuteSqlRawAsync("EXEC dbo.spUpdateScheduleAvailability @idInstallation, @idScheduleAvailability, @startTime, @endTime, @idDay", scheduleParameters);
 
 
-                Message = "Horarios modificados con éxito!";
+                Message = "Horarios modificados con ï¿½xito!";
             }
             catch (Exception ex)
             {
                 Message = "Error al modificar: " + ex.Message;
             }
-            return RedirectToPage("/Admin/ModificarInstalacion");
+            return RedirectToPage("/Admin/BuscarInstalacion");
         }
 
         

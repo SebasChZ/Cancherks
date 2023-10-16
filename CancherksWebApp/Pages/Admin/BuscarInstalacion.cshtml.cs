@@ -16,6 +16,7 @@ namespace CancherksWebApp.Pages.Admin
             _context = context;
         }
 
+        public List<InstallationSportViewModel> InstallationSportViewModels { get; set; }
         public List<Installation> Installations { get; set; }
         
         public List<Sport> Sports { get; set; }
@@ -29,6 +30,14 @@ namespace CancherksWebApp.Pages.Admin
             Installations = _context.Installation.ToList();
 
         }
+
+
+        public JsonResult OnGetLoadInstallationbySport(int idSport)
+        {
+            var data = _context.InstallationSportViewModels.FromSqlRaw("EXEC spGetInstallationsbySport @idSport={0}", idSport).ToList();
+            return new JsonResult(data);
+        }
+
 
     }
 }

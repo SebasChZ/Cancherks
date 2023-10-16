@@ -34,6 +34,15 @@ function clearInstallationList() {
     }
 }
 
+function convertToParagraphs(inputStr) {
+    let parts = inputStr.split('\n');  // Split the string at each newline character
+    let result = '';
+    for (let part of parts) {
+        result += '<p>' + part + '</p>';
+    }
+    return result;
+}
+
 function loadPublicInstallation(idSport) {
     $.ajax({
         url: '/Solicitante/Reservacion?handler=LoadInstallationbySport',
@@ -48,6 +57,9 @@ function loadPublicInstallation(idSport) {
             // Loop through the returned data and create cards
             data.forEach(function (item) {
                 if (item.isPublic == 1) {
+                    let outputHtml = convertToParagraphs(item.description);
+                    console.log(outputHtml);
+                    console.log(item.description);
                     var card = $('<div></div>')
                         .addClass('col-6 p-0 consult installation-view')
                         .css('max-width', '640px')
@@ -68,7 +80,7 @@ function loadPublicInstallation(idSport) {
                                                 .text(item.installationName),
                                             $('<p></p>')
                                                 .addClass('card-text mb-0')
-                                                .text(item.description),
+                                                .html(outputHtml),
                                             $('<p></p>')
                                                 .addClass('card-text mb-1 text-primary')
                                                 .html('<i class="bi bi-geo-fill"></i> ' + item.location)

@@ -35,8 +35,19 @@ function clearInstallationList() {
         installations[i].classList.remove("installationSelected")
     }
 }
+function convertToParagraphs(inputStr) {
+    let parts = inputStr.split('\n');  // Split the string at each newline character
+    let result = '';
+    for (let part of parts) {
+        result += '<p>' + part + '</p>';
+    }
+    return result;
+}
+
 
 function loadInstallation(idSport) {
+
+    
     $.ajax({
         url: '/Solicitante/Reservacion?handler=LoadInstallationbySport',
         type: 'GET',
@@ -45,11 +56,14 @@ function loadInstallation(idSport) {
 
             // Clear existing cards
             $('#gridDiv').empty();
-
             listInstallations = data
             // Loop through the returned data and create cards
             data.forEach(function (item) {
                 if (item.isPublic == 0) {
+
+                    let outputHtml = convertToParagraphs(item.description);
+                    console.log(outputHtml);
+
                     var card = $('<div></div>')
                         .addClass('col-6 p-0 consult installation-view')
                         .css('max-width', '640px')
