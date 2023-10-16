@@ -61,3 +61,54 @@ $('.image-upload-wrap').bind('dragleave', function () {
     $('.image-upload-wrap').removeClass('image-dropping');
 });
 
+// Guarda los tamaños de fuente originales
+var tamaniosOriginales = {};
+
+// Obtén el factor acumulado de sessionStorage, si no existe usa 1 como valor predeterminado.
+var factorAcumulado = sessionStorage.getItem('factorAcumulado') ? parseFloat(sessionStorage.getItem('factorAcumulado')) : 1;
+
+// Al cargar la página, guarda los tamaños de fuente originales
+window.addEventListener('DOMContentLoaded', function () {
+    guardarTamaniosOriginales();
+    aplicarZoomActual();
+});
+
+// Obtén el ícono de zoom por su ID
+var zoomIcon = document.getElementById('zoom-icon');
+
+// Agrega un evento click al ícono de zoom
+zoomIcon.addEventListener('click', function () {
+    factorAcumulado *= 1.05;
+    sessionStorage.setItem('factorAcumulado', factorAcumulado);
+    aplicarZoomActual();
+});
+
+// Obtén el ícono de alejar por su clase
+var zoomOutIcon = document.querySelector('.bi-zoom-out');
+
+// Agrega un evento click al ícono de alejar
+zoomOutIcon.addEventListener('click', function () {
+    factorAcumulado *= 0.95;
+    sessionStorage.setItem('factorAcumulado', factorAcumulado);
+    aplicarZoomActual();
+});
+
+function guardarTamaniosOriginales() {
+    var elementos = document.getElementsByTagName('*');
+    for (var i = 0; i < elementos.length; i++) {
+        var elemento = elementos[i];
+        var estilo = window.getComputedStyle(elemento, null);
+        var fontSize = parseFloat(estilo.getPropertyValue('font-size'));
+        tamaniosOriginales[elemento] = fontSize;
+    }
+}
+
+function aplicarZoomActual() {
+    var elementos = document.getElementsByTagName('*');
+    for (var i = 0; i < elementos.length; i++) {
+        var elemento = elementos[i];
+        var fontSizeOriginal = tamaniosOriginales[elemento];
+        var nuevoFontSize = fontSizeOriginal * factorAcumulado;
+        elemento.style.fontSize = nuevoFontSize + 'px';
+    }
+}
