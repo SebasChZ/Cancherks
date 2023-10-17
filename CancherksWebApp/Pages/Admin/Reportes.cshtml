@@ -91,7 +91,14 @@
                 <tr data-installation-id="@request.IdInstallation">
                     <td>@request.Person.PersonName</td>
                     <td>@request.Person.FirstLastName</td>
-                    <td>@request.Person.Student.Id</td>
+                    @if (request.Person.Student == null)
+                    {
+                        <td>@request.Person.Id</td>
+                    }
+                    else
+                    {
+                        <td>@request.Person.Student.Id</td>
+                    }
                     <td>@request.EmailRequester</td>
                     <td>@Model.Installations.FirstOrDefault(i => i.Id == request.IdInstallation)?.Name</td>
                     <td>@request.DateRequest.ToShortDateString()</td>

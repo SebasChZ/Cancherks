@@ -60,7 +60,7 @@ img {
 }
 
 .bg-gradient {
-    background: var(--gradientMaincolor) !important;
+    background: var(--gradientMaincolor) ;
     color:white;
 }
 
@@ -226,6 +226,14 @@ img {
 
 
 /* Header text format */
+.header-Page {
+    box-sizing: border-box;
+    border-bottom: 1px solid var(--colorMainTrans);
+}
+.navbar{
+    border: 1px;
+    border-color: white;
+}
 .nav-link {
     color: var(--textGrey) !important; /* This important would be unnecessary, but if we remove doesn't work, Why ? I don't know but I don't care*/
     font-weight: lighter;
@@ -539,12 +547,12 @@ input[type="time"]:hover::-webkit-calendar-picker-indicator {
     border-color: var(--colorMain);  
 }
 
-/* Estilos para el botón deshabilitado */
+/* Estilos para el botï¿½n deshabilitado */
 button[disabled].file-upload-btn {
     background-color: #D3D3D3;
     color: #aaaaaa;
     cursor: not-allowed;
-    /* Aquí puedes añadir más estilos si lo deseas */
+    /* Aquï¿½ puedes aï¿½adir mï¿½s estilos si lo deseas */
 }
 
 /* Estilos para el input deshabilitado */
@@ -576,3 +584,93 @@ button[disabled].file-upload-btn {
     color: var(--colorMain);
     padding: 60px 0;
 }
+
+/*Accesibility CSS*/
+.inverted-colors {
+    filter: invert(1);
+    background-color: black; /* This ensures the background is inverted as well */
+}
+
+.higher-contrast {
+    filter: contrast(150%); /* Adjust the percentage value as needed */
+}
+
+
+.yellow-black {
+    color: yellow !important; /* Important might be necessary to override other styles */
+    background-color: black !important;
+}
+
+
+    .yellow-black,
+    .yellow-black p,
+    .yellow-black span,
+    .yellow-black h1,
+    .yellow-black h2,
+    .yellow-black h3,
+    .yellow-black h4,
+    .yellow-black h5,
+    .yellow-black h6,
+    .yellow-black a,
+    .yellow-black li,
+    .yellow-black td,
+    .yellow-black th {
+        color: yellow !important;
+        background-color: black !important;
+    }
+
+        .yellow-black,
+        .yellow-black *,
+        .yellow-black *:before,
+        .yellow-black *:after {
+            color: yellow !important;
+            background-color: black !important;
+            border-color: yellow !important;
+        }
+
+            .yellow-black input,
+            .yellow-black textarea,
+            .yellow-black select,
+            .yellow-black button {
+                color: yellow !important;
+                background-color: black !important;
+                border: 1px solid yellow !important;
+            }
+            .yellow-black .bg-gradient {
+                background-color: black !important;
+                color: yellow !important;
+            }
+.gray-black,
+.gray-black *,
+.gray-black *:before,
+.gray-black *:after {
+    color: #d3d3d3 !important; /* This is light gray, but you can use white (#ffffff) if preferred */
+    background-color: black !important;
+    border-color: #d3d3d3 !important; /* Same light gray for borders */
+}
+
+    .gray-black input,
+    .gray-black textarea,
+    .gray-black select,
+    .gray-black button {
+        color: #d3d3d3 !important;
+        background-color: black !important;
+        border: 1px solid #d3d3d3 !important;
+    }
+
+.icon-button {
+    background: none; /* Removes default background */
+    border: none; /* Removes border */
+    padding: 5px; /* Removes padding */
+    margin: 0; /* Removes margin */
+    cursor: pointer; /* Indicates clickability */
+    outline: none; /* Removes the default focus outline (replace with a custom one if needed) */
+    -webkit-appearance: none; /* Removes styling in WebKit-based browsers */
+    -moz-appearance: none; /* Removes styling in Firefox */
+    font-size: 20px;
+
+}
+
+    .icon-button:focus {
+        box-shadow: 0 0 3px 2px rgba(0, 123, 255, .5); /* Adds a custom focus outline (in this case, a blue glow) */
+    }

@@ -32,7 +32,7 @@ namespace CancherksWebApp.Model
         public List<string> Departments { get; set; } // Assuming Department is a list of string
 
         [JsonPropertyName("schools")]
-        public List<string> Schools { get; set; }     // Assuming School is a list of string
+        public List<Object> Schools { get; set; }     // Assuming School is a list of string
 
         [JsonPropertyName("applicationRoles")]
         public List<ApplicationRole> ApplicationRoles { get; set; }

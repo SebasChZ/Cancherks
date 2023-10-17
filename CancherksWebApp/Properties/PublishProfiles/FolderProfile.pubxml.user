@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\Users\picherks\Desktop\WebAPP</_PublishTargetUrl>
-    <History>True|2023-10-12T01:49:43.9874562Z;True|2023-10-11T19:29:10.7229480-06:00;True|2023-10-02T10:45:39.5676802-06:00;</History>
+    <History>True|2023-10-17T07:47:36.4290748Z;True|2023-10-16T20:31:30.9272364-06:00;False|2023-10-16T20:28:42.3753427-06:00;False|2023-10-16T20:27:59.3190276-06:00;False|2023-10-16T20:25:48.9025488-06:00;False|2023-10-16T20:25:25.8990833-06:00;False|2023-10-16T20:25:11.0027257-06:00;False|2023-10-16T20:24:30.4965969-06:00;False|2023-10-16T20:24:15.2994072-06:00;True|2023-10-11T19:49:43.9874562-06:00;True|2023-10-11T19:29:10.7229480-06:00;True|2023-10-02T10:45:39.5676802-06:00;</History>
     <LastFailureDetails />
     <TimeStampOfAssociatedLegacyPublishXmlFile />
   </PropertyGroup>
@@ -13,10 +13,5 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <DestinationConnectionStrings Include="ConnectionFernanda">
       <Value>Server=cancherks.mssql.somee.com%3bDatabase=cancherks%3bUser Id=AdminCancherks%3bPassword=q44vQ74LPFAkvW%3bTrustServerCertificate=true</Value>
     </DestinationConnectionStrings>
-  </ItemGroup>
-  <ItemGroup>
-    <EFMigrations Include="CancherksWebApp.Data.ApplicationDbContext">
-      <Value>Server=cancherks.mssql.somee.com%3bDatabase=cancherks%3bUser Id=AdminCancherks%3bPassword=q44vQ74LPFAkvW%3bTrustServerCertificate=true</Value>
-    </EFMigrations>
   </ItemGroup>
 </Project>
