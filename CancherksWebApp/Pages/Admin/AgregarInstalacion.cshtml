@@ -76,18 +76,18 @@
                     <label class="form-label">Foto</label>
                     <div class="file-upload mb-3">
                         
-                        <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Agregue una imagen</button>
+                        <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )" aria-controls="fileInput" aria-label="Agregue una imagen">Agregue una imagen</button>
 
                         <div class="image-upload-wrap">
-                            <input class="file-upload-input" type='file' onchange="readURL(this);" asp-for="Photo" accept="image/*" aria-label="Agregue una imagen " />
+                            <input class="file-upload-input" type='file' onchange="readURL(this);" asp-for="Photo" accept="image/*" aria-live = "polite"  />
                             <div class="drag-text">
                                 <h3>Presione click o arraste la imagen que desea subir.</h3>
                             </div>
                         </div>
                         <div class="file-upload-content">
-                            <img class="file-upload-image" src="#" alt="your image" />
+                            <img class="file-upload-image" src="#" alt="Imagen cargada" />
                             <div class="image-title-wrap">
-                                <button type="button" onclick="removeUpload()" class="remove-image">Remover <span class="image-title">Uploaded Image</span></button>
+                                <button type="button" onclick="removeUpload()" class="remove-image" aria-label="Eliminar imagen cargada">Remover <span class="image-title">Imagen Cargada</span></button>
                             </div>
                         </div>
                     </div>
