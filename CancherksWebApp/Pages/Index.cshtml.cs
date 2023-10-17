@@ -62,33 +62,49 @@ namespace CancherksWebApp.Pages
                     // Attempt to deserialize the data
                     try
                     {
+                        bool flagrole = false;
                         var data = await response.Content.ReadAsStringAsync();
                         RawJsonData = data; // Use a logging framework or another method to inspect 'data'
                         User = JsonSerializer.Deserialize<UserAPIModel>(data);
-
+                        
                         HttpContext.Session.SetString("SessionKey", Guid.NewGuid().ToString());
                         HttpContext.Session.SetString("id", User.Id.ToString());
                         HttpContext.Session.SetString("email", User.Email.ToString());
-                        HttpContext.Session.SetString("name", User.FirstLastName.ToString());
+                        HttpContext.Session.SetString("name", User.PersonName.ToString());
                         HttpContext.Session.SetString("lastName", User.FirstLastName.ToString());
                         HttpContext.Session.SetString("lastName2", User.SecondLastName.ToString());
 
-
-                        for (int i = 0; i < User.ApplicationRoles.Count; i++)
+                        if (User.ApplicationRoles.Count != 0)
                         {
-                            if (User.ApplicationRoles[i].ApplicationId == 2) //this is the id of the application Cancherks in the database
+                            for (int i = 0; i < User.ApplicationRoles.Count; i++)
                             {
-                                if (User.ApplicationRoles[i].Id == 2)
+                                if (User.ApplicationRoles[i].ApplicationId == 2) //this is the id of the application Cancherks in the database
                                 {
-                                    HttpContext.Session.SetString("role", "2569"); //admin
-                                    break;
-                                }
-                                else if (User.ApplicationRoles[i].Id == 12) //Estoy waiting for the value of the role
-                                {
-                                    HttpContext.Session.SetString("role", "7415"); //Normal requester user
+                                    if (User.ApplicationRoles[i].Id == 2)
+                                    {
+                                        HttpContext.Session.SetString("role", "2569"); //admin
+                                        flagrole = true;
+                                        break;
+                                    }
+                                    else if (User.ApplicationRoles[i].Id == 12) //Estoy waiting for the value of the role
+                                    {
+                                        HttpContext.Session.SetString("role", "7415"); //Normal requester user
+                                        flagrole = true;
+                                    }
                                 }
                             }
+                            if (flagrole)
+                            {
+                                HttpContext.Session.SetString("role", "7415"); //Normal requester user
+                            }
                         }
+                        //Requester rol
+                        else
+                        {
+                            HttpContext.Session.SetString("role", "7415"); //Normal requester user
+                        }
+
+                        
 
 
                     }

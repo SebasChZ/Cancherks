@@ -226,6 +226,14 @@ img {
 
 
 /* Header text format */
+.header-Page {
+    box-sizing: border-box;
+    border-bottom: 1px solid var(--colorMainTrans);
+}
+.navbar{
+    border: 1px;
+    border-color: white;
+}
 .nav-link {
     color: var(--textGrey) !important; /* This important would be unnecessary, but if we remove doesn't work, Why ? I don't know but I don't care*/
     font-weight: lighter;
@@ -577,10 +585,16 @@ button[disabled].file-upload-btn {
     padding: 60px 0;
 }
 
+/*Accesibility CSS*/
 .inverted-colors {
     filter: invert(1);
     background-color: black; /* This ensures the background is inverted as well */
 }
+
+.higher-contrast {
+    filter: contrast(150%); /* Adjust the percentage value as needed */
+}
+
 
 .yellow-black {
     color: yellow !important; /* Important might be necessary to override other styles */
@@ -642,4 +656,21 @@ button[disabled].file-upload-btn {
         color: #d3d3d3 !important;
         background-color: black !important;
         border: 1px solid #d3d3d3 !important;
+    }
+
+.icon-button {
+    background: none; /* Removes default background */
+    border: none; /* Removes border */
+    padding: 5px; /* Removes padding */
+    margin: 0; /* Removes margin */
+    cursor: pointer; /* Indicates clickability */
+    outline: none; /* Removes the default focus outline (replace with a custom one if needed) */
+    -webkit-appearance: none; /* Removes styling in WebKit-based browsers */
+    -moz-appearance: none; /* Removes styling in Firefox */
+    font-size: 20px;
+
+}
+
+    .icon-button:focus {
+        box-shadow: 0 0 3px 2px rgba(0, 123, 255, .5); /* Adds a custom focus outline (in this case, a blue glow) */
     }

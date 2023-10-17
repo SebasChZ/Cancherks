@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <header>
+    <header class="header-Page">
         <nav class="navbar navbar-expand-lg navbar-light bg-colorMainTrans">
             <div class="container-fluid align-middle">
                 <div class="align-middle">
@@ -48,6 +48,16 @@
                             <a class="nav-link @(option3IsActive ? "activeNav" : "")" asp-area="" asp-page="/">Vacío</a>
                         </li>
                     </ul>
+                </div>
+                <div class="text-center align-middle text-black mx-1">
+                    <!-- Interactive icons represented as buttons -->
+                    <button id="highContras" class="icon-button bi bi-brightness-high-fill" aria-label="Alto constraste" style="cursor: pointer;" onclick="applyHighContrast()">
+                    </button>
+                    <button id="zoom-icon" class="icon-button bi bi-zoom-in" aria-label="Aumentar Tamaño de letra" style="cursor: pointer;" onclick="zoomIn()">
+                    </button>
+                    <button id="zoom-icon" class="icon-button bi bi-zoom-out" aria-label="Disminuir Tamaño de letra" style="cursor: pointer;" onclick="zoomOut()">
+                    </button>
+
                 </div>
                 <div class="icon-Profile bg-footer text-center align-middle fs-3 text-white">
                     <i class="bi bi-person"></i>

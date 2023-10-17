@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <header>
+    <header class="header-Page">
         <nav class="navbar navbar-expand-lg navbar-light bg-colorMainTrans">
             <div class="container-fluid align-middle">
                 <div class="align-middle">
@@ -70,10 +70,15 @@
                         }
                     </ul>
                 </div>
-                <div class="icon-HighContrast text-center align-middle text-black mx-1">
-                    <i class="bi bi-eye-fill" alt="Ícono alto contraste" style="font-size: 24px;"></i>
-                    <i id="zoom-icon" class="bi bi-zoom-in" alt="Ícono acercar" style="font-size: 24px; cursor: pointer;"></i>
-                    <i id="zoomOut-icon" class="bi bi-zoom-out" alt="Ícono alejar" style="font-size: 24px;"></i>
+                <div class="text-center align-middle text-black mx-1">
+                    <!-- Interactive icons represented as buttons -->
+                    <button id="highContras" class="icon-button bi bi-brightness-high-fill" aria-label="Alto constraste" style="cursor: pointer;" onclick="applyHighContrast()">
+                    </button>
+                    <button id="zoom-icon" class="icon-button bi bi-zoom-in" aria-label="Aumentar Tamaño de letra" style="cursor: pointer;" onclick="zoomIn()">
+                    </button>
+                    <button id="zoom-icon" class="icon-button bi bi-zoom-out" aria-label="Disminuir Tamaño de letra" style="cursor: pointer;" onclick="zoomOut()">
+                    </button>
+
                 </div>
                 <div class="icon-Profile bg-footer text-center align-middle fs-3 text-white" style="margin-left: 24px;">
                     <i class="bi bi-person" alt="Ícono ver perfil"></i>
