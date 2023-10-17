@@ -93,7 +93,7 @@ namespace CancherksWebApp.Pages
                                     }
                                 }
                             }
-                            if (flagrole)
+                            if (!flagrole)
                             {
                                 HttpContext.Session.SetString("role", "7415"); //Normal requester user
                             }
