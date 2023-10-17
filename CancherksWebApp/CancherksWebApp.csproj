@@ -8,12 +8,14 @@
 
   <ItemGroup>
     <Content Remove="wwwroot\js\Admin\BuscarInstalacion.js" />
+    <Content Remove="wwwroot\js\Admin\GestionSolicitudes.js" />
     <Content Remove="wwwroot\js\Requester\AgregarInstalacion.js" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="wwwroot\img\sintetica.jpg" />
     <None Include="wwwroot\img\sintetica2.jpg" />
+    <None Include="wwwroot\js\Admin\GestionSolicitudes.js" />
     <None Include="wwwroot\js\Admin\BuscarInstalacion.js" />
     <None Include="wwwroot\js\Admin\AgregarInstalacion.js" />
     <None Include="wwwroot\js\Requester\Reservation.js" />

@@ -5,44 +5,35 @@ var selectedEndDate = null;
 document.querySelectorAll('.custom-dropdown-item').forEach(item => {
     item.addEventListener('click', function (event) {
         event.preventDefault();
-        const selectedText = this.textContent || this.innerText; // get the text of the selected item
+        const selectedText = this.textContent || this.innerText;
         selectedInstallationId = this.getAttribute('data-id');
-        document.getElementById('dropdownInstallations').textContent = selectedText; // change the text of the dropdown button
-        var inputHidden = document.querySelector('#installationSelected');
-        console.log(inputHidden)
-        console.log("selectedInstallationId", selectedInstallationId);
-        inputHidden.value = selectedInstallationId;
+        document.getElementById('dropdownInstallations').textContent = selectedText;
+        document.querySelector('#installationSelected').value = selectedInstallationId;
         combinedFilter();
     });
 });
+
+
+function normalizeDate(date) {
+    date.setHours(0, 0, 0, 0);
+    return date;
+}
+
 function combinedFilter() {
     var tableRows = document.querySelectorAll('.table tbody tr');
     tableRows.forEach(row => {
         var rowInstallationId = row.getAttribute('data-installation-id');
         var rowDateText = row.querySelector('td:nth-child(6)').innerText;
-
         // Filter by installation ID
         var matchInstallation = (selectedInstallationId === "0" || rowInstallationId === selectedInstallationId);
-        var rowDate = new Date(rowDateText);
-
-
-        // If both dates are established, filter by dates too
+        // Filter by dates
         var matchDate = true;
-        if (selectedStartDate && selectedEndDate) {
-            var starDate = new Date(selectedStartDate);
-            var endDate = new Date(selectedEndDate);
-            matchDate = (rowDate >= starDate && rowDate <= endDate);
+        if (selectedStartDate) {
+            matchDate = (rowDateText >= selectedStartDate);
         }
-        else if (selectedStartDate && selectedEndDate == null) {
-            var starDate = new Date(selectedStartDate);
-            matchDate = (rowDate >= starDate);
-            console.log("Solo fecha inicio", matchDate);
+        if (selectedEndDate) {
+            matchDate = matchDate && (rowDateText <= selectedEndDate);
         }
-        else if (selectedStartDate == null && selectedEndDate) {
-            var starDate = new Date(selectedStartDate);
-            matchDate = (rowDate <= endDate);
-        }
-
         if (matchInstallation && matchDate) {
             row.style.display = '';
         } else {
@@ -51,23 +42,15 @@ function combinedFilter() {
     });
 }
 
-function convertToDbDateFormat(dateString) {
-    var parts = dateString.split('/');
-    return `${parts[2]}/${parts[1]}/${parts[0]}`;
-}
-
-
 $(document).ready(function () {
     $('#datepickerInicio-input').datepicker().on('change', function () {
-        var originalDate = $(this).val();
-        selectedStartDate = convertToDbDateFormat(originalDate);
+        selectedStartDate = $(this).val();
         combinedFilter();
     });
 
-
     $('#datepickerFinal-input').datepicker().on('change', function () {
-        var originalDate = $(this).val();
-        selectedEndDate = convertToDbDateFormat(originalDate);
+        selectedEndDate = $(this).val();
+        console.log(selectedEndDate)
         combinedFilter();
     });
 });

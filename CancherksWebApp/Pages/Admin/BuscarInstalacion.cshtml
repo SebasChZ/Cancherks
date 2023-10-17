@@ -17,7 +17,7 @@
 
         <dropdown class="dropdown">
 
-            <button class="btn btn-secondary dropdown-toggle custom-dropdown-button" type="button" id="dropdownInstallations" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn btn-secondary dropdown-toggle custom-dropdown-button" type="button" id="dropdownInstallations" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" aria-label="Filtrar instalacciones por deporte">
                 Deporte
             </button>
             <ul class="dropdown-menu custom-dropdown-options" aria-labelledby="dropdownInstallations">
@@ -32,7 +32,7 @@
     </filters>
 
 
-    <table class="table" style="margin-top: 1rem;">
+    <table class="table" style="margin-top: 1rem;" aria-label="Tabla Instalaciones según el deporte">
         <thead>
             <tr>
                 <th scope="col">Nombre</th>
@@ -61,7 +61,7 @@
                     <td>@(installation.isPublic ? "Sí" : "No")</td>
                     <td style="text-align: center;">
                         <a asp-page="/Admin/ModificarInstalacion" asp-route-id="@installation.Id">
-                            <i class="bi bi-pencil-square custom-edit" style="cursor:pointer;"></i>
+                            <i class="icon-button bi bi-pencil-square custom-edit" style="cursor:pointer;"></i>
                         </a>
                     </td>
                 </tr>

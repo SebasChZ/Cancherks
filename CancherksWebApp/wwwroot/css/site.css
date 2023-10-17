@@ -552,7 +552,6 @@ button[disabled].file-upload-btn {
     background-color: #D3D3D3;
     color: #aaaaaa;
     cursor: not-allowed;
-    /* Aqu� puedes a�adir m�s estilos si lo deseas */
 }
 
 /* Estilos para el input deshabilitado */
@@ -568,7 +567,6 @@ button[disabled].file-upload-btn {
 .file-upload .file-upload-input:disabled {
     background-color: #e5e5e5;
     color: #aaaaaa;
-    cursor: not-allowed;
     pointer-events: none; 
 }
  .file-upload .file-upload-input:disabled:hover {
@@ -576,7 +574,6 @@ button[disabled].file-upload-btn {
         color: #aaaaaa;
         cursor: not-allowed;
   }
-
 
 .drag-text h3 {
     font-weight: 100;

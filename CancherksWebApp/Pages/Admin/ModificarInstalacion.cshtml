@@ -18,32 +18,33 @@
                     <input hidden asp-for="Installation.Id"/>
                     <div class="mb-3">
                         <label class="form-label" asp-for="Installation.Name">Nombre</label>
-                        <input type="text" class="form-control" asp-for="Installation.Name">
+                        <input type="text" class="form-control" asp-for="Installation.Name" aria-label="Nombre de la instalacion">
                         <span asp-validation-for="Installation.Name" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
                         <label class="form-label" asp-for="Installation.Location">Ubicación</label>
-                        <input type="text" class="form-control" asp-for="Installation.Location">
+                        <input type="text" class="form-control" asp-for="Installation.Location" aria-label="Ubicacion de la instalacion">
                         <span asp-validation-for="Installation.Location" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
                         <label class="form-label" asp-for="Installation.MaxCantPeople">Cantidad Máxima Personas</label>
-                        <input type="text" class="form-control" asp-for="Installation.MaxCantPeople">
+                        <input type="text" class="form-control" asp-for="Installation.MaxCantPeople" aria-label="Máxima cantidad de personas por instalacion">
                         <span asp-validation-for="Installation.MaxCantPeople" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
                         <label class="form-label" asp-for="Installation.TimeSplitReservation">Tiempo máximo por reservación</label>
-                        <input type="text" class="form-control" asp-for="Installation.TimeSplitReservation">
+                        <input type="text" class="form-control" asp-for="Installation.TimeSplitReservation" aria-label="Tiempo más por reservación e la instalacion">
                         <span asp-validation-for="Installation.TimeSplitReservation" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
                         <label class="form-label" asp-for="Installation.Description">Descripción</label>
-                        <textarea class="form-control" asp-for="Installation.Description" style="height: 100px;"></textarea>
+                        <textarea class="form-control" asp-for="Installation.Description" style="height: 100px;" aria-label="Descripción de la instalacion"></textarea>
                         <span asp-validation-for="Installation.Description" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Acceso</label>
-                        <div class="checkbox-container full-width">
+                        <label id="AccesoLabel" class="form-label">Acceso</label>
+                        <div class="checkbox-container full-width" role="radiogroup" aria-labelledby="AccesoLabel">
                             @{
                                 if (Model.Installation.isPublic)
                                 {
@@ -69,11 +70,11 @@
                                         <label for="public">Público</label>
                                     </div>
                                 }
-
                             }
 
                             <span asp-validation-for="Installation.isPublic" class="text-danger"></span>
                         </div>
+
 
                     </div>
 

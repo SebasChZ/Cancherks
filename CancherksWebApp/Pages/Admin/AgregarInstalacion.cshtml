@@ -21,38 +21,38 @@
                 <form method="post" id="installationForm" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label class="form-label" asp-for="Installation.Name">Nombre</label>
-                        <input type="text" class="form-control" asp-for="Installation.Name">
-                        <span asp-validation-for="Installation.Name" class="text-danger"></span>
+                        <input type="text" class="form-control" asp-for="Installation.Name" aria-label="Nombre de la instalación">
+                        <span asp-validation-for="Installation.Name" class="text-danger"> </span>
                     </div>
                     <div class="mb-3">
                         <label class="form-label" asp-for="Installation.Location">Ubicación</label>
-                        <input type="text" class="form-control" asp-for="Installation.Location">
+                        <input type="text" class="form-control" asp-for="Installation.Location" aria-label="Ubicación de la instalación">
                         <span asp-validation-for="Installation.Location" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
                         <label class="form-label" asp-for="Installation.MaxCantPeople">Cantidad Máxima Personas</label>
-                        <input type="text" class="form-control" asp-for="Installation.MaxCantPeople">
+                        <input type="text" class="form-control" asp-for="Installation.MaxCantPeople" aria-label="Cantidad máxima de personas de la instalación">
                         <span asp-validation-for="Installation.MaxCantPeople" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
                         <label class="form-label" asp-for="Installation.TimeSplitReservation">Tiempo máximo por reservación</label>
-                        <input type="text" class="form-control" asp-for="Installation.TimeSplitReservation">
+                        <input type="text" class="form-control" asp-for="Installation.TimeSplitReservation" aria-label="Tiempo máximo por reservación de la instalación">
                         <span asp-validation-for="Installation.TimeSplitReservation" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
                         <label class="form-label" asp-for="Installation.Description">Descripción</label>
-                        <textarea class="form-control" asp-for="Installation.Description" style="height: 100px;"></textarea>
+                        <textarea class="form-control" asp-for="Installation.Description" style="height: 100px;" aria-label="Descripción de la instalación"></textarea>
                         <span asp-validation-for="Installation.Description" class="text-danger"></span>
                     </div>   
                     <div class="mb-3">
                         <label class="form-label">Acceso</label>
-                        <div class="checkbox-container full-width">
+                        <div class="checkbox-container full-width" role="radiogroup" aria-labelledby="AccesoLabel">
                             <div class="form-check form-check-inline radio-item">
-                                <input type="radio" name="radioPub" id="public" value="1">
+                                <input type="radio" name="radioPub" id="public" value="1" role="radio" aria-label="Opción público">
                                 <label for="public">Público</label>
                             </div>
                             <div class="form-check form-check-inline radio-item">
-                                <input type="radio"  name="radioPub" id="private" value="0">
+                                <input type="radio" name="radioPub" id="private" value="0" role="radio" aria-label="Opción privado">
                                 <label for="private">Privado</label>
                             </div>
                             <span asp-validation-for="Installation.isPublic" class="text-danger"></span>
@@ -60,36 +60,34 @@
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Deportes</label>
-                        <div class="checkbox-container full-width">
+                        <label class="form-label" id="AccesoLabel">Deportes</label>
+                        <div class="checkbox-container full-width" role="radiogroup" aria-labelledby="DeportesLabel">
                             @foreach (var sport in Model.Sports)
                             {
-     
-
                                 <div class="form-check form-check-inline radio-item">
-                                    <input type="radio" name="radio" id="@("radio-" + sport.Id)" value="@sport.Id">
+                                    <input type="radio" name="radio" id="@("radio-" + sport.Id)" value="@sport.Id" role="radio" aria-label="@sport.Name">
                                     <label for="@("radio-" + sport.Id)">@sport.Name</label>
                                 </div>
                             }
                         </div>
-
                     </div>
+
 
                     <label class="form-label">Foto</label>
                     <div class="file-upload mb-3">
                         
-                        <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Agregue una imagen</button>
+                        <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )" aria-controls="fileInput" aria-label="Agregue una imagen">Agregue una imagen</button>
 
                         <div class="image-upload-wrap">
-                            <input class="file-upload-input" type='file' onchange="readURL(this);" asp-for="Photo" accept="image/*" aria-label="Agregue una imagen " />
+                            <input class="file-upload-input" type='file' onchange="readURL(this);" asp-for="Photo" accept="image/*" aria-live = "polite"  />
                             <div class="drag-text">
                                 <h3>Presione click o arraste la imagen que desea subir.</h3>
                             </div>
                         </div>
                         <div class="file-upload-content">
-                            <img class="file-upload-image" src="#" alt="your image" />
+                            <img class="file-upload-image" src="#" alt="Imagen cargada" />
                             <div class="image-title-wrap">
-                                <button type="button" onclick="removeUpload()" class="remove-image">Remover <span class="image-title">Uploaded Image</span></button>
+                                <button type="button" onclick="removeUpload()" class="remove-image" aria-label="Eliminar imagen cargada">Remover <span class="image-title">Imagen Cargada</span></button>
                             </div>
                         </div>
                     </div>
