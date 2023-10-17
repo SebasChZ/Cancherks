@@ -7,7 +7,6 @@ document.querySelectorAll('.custom-dropdown-item').forEach(item => {
         event.preventDefault();
         const selectedText = this.textContent || this.innerText;
         selectedInstallationId = this.getAttribute('data-id');
-        console.log("Installation ID updated to:", selectedInstallationId); // Agrega esta línea
         document.getElementById('dropdownInstallations').textContent = selectedText;
         document.querySelector('#installationSelected').value = selectedInstallationId;
         combinedFilter();
