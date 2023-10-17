@@ -58,10 +58,8 @@ function loadPublicInstallation(idSport) {
             data.forEach(function (item) {
                 if (item.isPublic == 1) {
                     let outputHtml = convertToParagraphs(item.description);
-                    console.log(outputHtml);
-                    console.log(item.description);
-                    var card = $('<div></div>')
-                        .addClass('col-6 p-0 consult installation-view')
+                    var card = $('<button></button>')
+                        .addClass('col-6 p-0 consult installation-view div-button align-items-center')
                         .css('max-width', '640px')
                         .data('installation-id', item.idInstallation) // Store the idInstallation in the element's data
                         .append(
@@ -83,7 +81,8 @@ function loadPublicInstallation(idSport) {
                                                 .html(outputHtml),
                                             $('<p></p>')
                                                 .addClass('card-text mb-1 text-primary')
-                                                .html('<i class="bi bi-geo-fill"></i> ' + item.location)
+                                                .html('<i class="bi bi-geo-fill" aria-hidden="true"></i> ' + item.location)
+
                                         )
                                     )
                                 )

@@ -64,8 +64,8 @@ function loadInstallation(idSport) {
                     let outputHtml = convertToParagraphs(item.description);
                     console.log(outputHtml);
 
-                    var card = $('<div></div>')
-                        .addClass('col-6 p-0 consult installation-view')
+                    var card = $('<button></button>')
+                        .addClass('col-6 p-0 consult installation-view div-button align-items-center')
                         .css('max-width', '640px')
                         .data('installation-id', item.idInstallation) // Store the idInstallation in the element's data
                         .append(

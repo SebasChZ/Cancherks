@@ -674,3 +674,18 @@ button[disabled].file-upload-btn {
     .icon-button:focus {
         box-shadow: 0 0 3px 2px rgba(0, 123, 255, .5); /* Adds a custom focus outline (in this case, a blue glow) */
     }
+
+.div-button {
+    padding: 0 !important; /* Removes padding */
+    margin: 0; /* Removes margin */
+    cursor: pointer; /* Indicates clickability */
+    outline: none; /* Removes the default focus outline (replace with a custom one if needed) */
+    -webkit-appearance: none; /* Removes styling in WebKit-based browsers */
+    -moz-appearance: none; /* Removes styling in Firefox */
+    text-align: left;
+    <--------- Here
+}
+
+    .div-button:focus {
+        box-shadow: 0 0 3px 2px rgba(0, 123, 255, .5); /* Adds a custom focus outline (in this case, a blue glow) */
+    }
