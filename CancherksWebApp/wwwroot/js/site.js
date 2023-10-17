@@ -106,3 +106,39 @@ function aplicarZoomActual() {
         elemento.style.fontSize = nuevoFontSize + 'px';
     }
 }
+
+function toggleYellowBlack() {
+    var body = document.body;
+
+    if (body.classList.contains('yellow-black')) {
+        body.classList.remove('yellow-black');
+    } else {
+        body.classList.add('yellow-black');
+    }
+}
+
+function toggleInvertedColors() {
+    var body = document.body;
+
+    if (body.classList.contains('inverted-colors')) {
+        body.classList.remove('inverted-colors');
+    } else {
+        body.classList.add('inverted-colors');
+    }
+}
+function toggleGrayBlack() {
+    var body = document.body;
+
+    if (body.classList.contains('gray-black')) {
+        body.classList.remove('gray-black');
+    } else {
+        body.classList.add('gray-black');
+    }
+}
+
+
+function applyHighContrast() {
+    toggleInvertedColors()
+}
+
+
