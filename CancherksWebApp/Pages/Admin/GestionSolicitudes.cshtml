@@ -6,6 +6,10 @@
 
     if (userRole != "2569") Response.Redirect("/ErrorPage");
 }
+@section Scripts
+    {
+    <script src="@Url.Content("~/js/Admin/GestionSolicitudes.js")"></script>
+}
 
 <section class="container px-5 py-3" >
 
@@ -22,17 +26,16 @@
             @foreach (var installation in Model.Installations)
             {
                 <li><a class="dropdown-item custom-dropdown-item" data-id="@installation.Id" href="#">@installation.Name</a></li>
-            }       
-
+            } 
         </ul>
     </div>
 
-    <table class="table" style="margin-top: 1rem;">
+    <table class="table" style="margin-top: 1rem;" aria-label="Tabla de solicitudes de los usuarios">
         <thead>
             <tr>
                 <th scope="col">Nombre</th>
                 <th scope="col">Apellido 1</th>
-                <th scope="col">Carne</th>
+                <th scope="col">Carné</th>
                 <th scope="col">Correo</th>
                 <th scope="col">Instalación</th>
                 <th scope="col">Fecha</th>
@@ -42,7 +45,6 @@
             </tr>
         </thead>
         <tbody>
-
             @foreach (var request in Model.Requests)
             {
                 <tr data-installation-id="@request.IdInstallation">
@@ -56,26 +58,21 @@
                     {
                         <td>@request.Person.Student.Id</td>
                     }
-                    
+
                     <td>@request.EmailRequester</td>
                     <td>@Model.Installations.FirstOrDefault(i => i.Id == request.IdInstallation)?.Name</td>
                     <td>@request.DateRequest.ToShortDateString()</td>
                     <td>@request.StartTime.ToString()</td>
                     <td>@request.EndTime.ToString()</td>
                     <td>
-                        <!-- Interactive icons represented as buttons -->
-                        <button id="highContras" class="icon-button bi bi-check-circle-fill custom-success" aria-label="Aceptar Solicitud" data-id="@request.Id" style="cursor: pointer;" onclick="applyHighContrast()">
+                        <button class="icon-button bi bi-check-circle-fill custom-success" aria-label="Aceptar Solicitud con ID @request.Id" data-id="@request.Id" style="cursor: pointer;">
                         </button>
-                        <button id="zoom-icon" class="icon-button bi bi-trash-fill custom-danger" aria-label="Rechar Solicitud" data-id="@request.Id" style="cursor: pointer;" onclick="zoomIn()">
+                        <button class="icon-button bi bi-trash-fill custom-danger" aria-label="Rechazar Solicitud con ID @request.Id" data-id="@request.Id" style="cursor: pointer;">
                         </button>
-
-                        <i class="bi bi-check-circle-fill custom-success" data-id="@request.Id" style="cursor:pointer;"></i>
-                        <i class="bi bi-trash-fill custom-danger" data-id="@request.Id" style="cursor:pointer;"></i>
                     </td>
                 </tr>
             }
         </tbody>
-
     </table>
 
 </section>
@@ -85,7 +82,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">ATENCIÓN!</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
             </div>
             <div class="modal-body">
                 <p>¿Confirma que desea aprobar esta solicitud?</p>
@@ -102,27 +99,12 @@
     </div>
 </modalAcept>
 
-<modalNotify class="modal" tabindex="-1" id="notify">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">ATENCIÓN!</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>Se ha notificado al estudiante.</p>
-            </div>
-        </div>
-    </div>
-</modalNotify>
-
-
 <modalReject class="modal" tabindex="-1" id="reject">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">ATENCIÓN!</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
             </div>
             <div class="modal-body">
                 <p>¿Confirma que desea rechazar esta solicitud?</p>
@@ -137,151 +119,3 @@
         </div>
     </div>
 </modalReject>
-
-<modalJustify class="modal" tabindex="-1" id="justify">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">ATENCIÓN!</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>Ingrese el mensaje de justificación.</p>
-                <input type="text" class="form-control" id="justificacionInput" placeholder="Escriba la justificación">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary button-color" data-bs-dismiss="modal" id="btnEnviar">Enviar</button>
-            </div>
-        </div>
-    </div>
-</modalJustify>
-
-
-<!-- Alert before acepting request -->
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var successIcons = document.querySelectorAll('.custom-success');
-        successIcons.forEach(function (icon) {
-            icon.addEventListener('click', function () {
-                var requestId = this.getAttribute('data-id');
-                document.getElementById('idSolicitud').value = requestId;
-                var aceptarModal = new bootstrap.Modal(document.getElementById('acept'));
-                aceptarModal.show();
-            });
-        });
-    });
-</script>
-
-<!-- Alert before rejecting  request -->
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var rejectIcons = document.querySelectorAll('.custom-danger');
-        rejectIcons.forEach(function (icon) {
-            icon.addEventListener('click', function () {
-                var requestId = this.getAttribute('data-id');
-                document.getElementById('idSolicitudReject').value = requestId;
-                var rejectModal = new bootstrap.Modal(document.getElementById('reject'));
-                rejectModal.show();
-            });
-        });
-    });
-
-</script>
-
-<!-- Notify after acepting the request -->
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var btnAceptar = document.getElementById('btnAceptar');
-       
-        btnAceptar.addEventListener('click', function () {
-            var idRequest = document.getElementById('idSolicitud').value;
-            var aceptarModal = new bootstrap.Modal(document.getElementById('acept'));
-            
-            aceptarModal.hide();
-            setTimeout(function () {
-                var notificarModal = new bootstrap.Modal(document.getElementById('notify'));
-                notificarModal.show();
-            }, 200); 
-        });
-    });
-</script>
-
-<!-- Justify after rejecting the request -->
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var btnRechazarAceptar = document.getElementById('btnRechazarAceptar');
-
-        btnRechazarAceptar.addEventListener('click', function () {
-           
-            var rechazarModal = new bootstrap.Modal(document.getElementById('reject'));
-            
-            rechazarModal.hide();
-
-            setTimeout(function () {
-                var justificarModal = new bootstrap.Modal(document.getElementById('justify'));
-                justificarModal.show();
-            }, 200); 
-        });
-    });
-</script>
-
-<!-- Notify after sending justification message -->
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var btnEnviar = document.getElementById('btnEnviar');
-
-        btnEnviar.addEventListener('click', function () {
-            
-            var justificarModal = new bootstrap.Modal(document.getElementById('justify'));
-          
-            justificarModal.hide();
-
-            setTimeout(function () {
-                var notificarModal = new bootstrap.Modal(document.getElementById('notify'));
-                notificarModal.show();
-            }, 200); 
-        });
-    });
-</script>
-
-<!-- Filter Data -->
-<script>
-    document.querySelectorAll('.custom-dropdown-item').forEach(item => {
-        item.addEventListener('click', function () {
-            var installationId = this.getAttribute('data-id');
-            filterTable(installationId);
-        });
-    });
-
-    function filterTable(installationId) {
-        var tableRows = document.querySelectorAll('.table tbody tr');
-        tableRows.forEach(row => {
-            var rowInstallationId = row.getAttribute('data-installation-id');
-            if (installationId === "0" || rowInstallationId === installationId) {
-                row.style.display = '';  // Mostrar todas las filas si se selecciona "Todas las instalaciones" o si coincide con la instalación seleccionada
-            } else {
-                row.style.display = 'none';
-            }
-        });
-    }
-</script>
-
-<!-- Change placeholder when user selects option -->
-<script>
-    document.addEventListener('DOMContentLoaded', () => { // Asegura que el DOM está completamente cargado
-        const dropdownItems = document.querySelectorAll('.custom-dropdown-item');
-
-        dropdownItems.forEach(item => {
-            item.addEventListener('click', function () {
-                const selectedText = this.textContent || this.innerText; // Obtiene el texto del item seleccionado
-                document.getElementById('dropdownMenuButton').textContent = selectedText; // Cambia el texto del botón
-                const installationId = this.getAttribute('data-id'); // Obtiene el ID de la instalación
-                filterTable(installationId); // Llama a la función para filtrar la tabla
-            });
-        });
-    });
-</script>
-
-
-
-
