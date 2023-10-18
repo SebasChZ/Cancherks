@@ -47,11 +47,11 @@ namespace CancherksWebApp.Pages.Admin
             Sports = _context.Sport.ToList();
             Days = _context.Day.ToList();
         }
-        public async Task<IActionResult> OnPostAddInstallation(Installation installation, int radio, int radioPub)
+        public async Task<IActionResult> OnPostAddInstallation(Installation installation, int radioSport, int radioPub)
         {
             try
             {
-                Sport selectedSport = _context.Sport.Find(radio);
+                Sport selectedSport = _context.Sport.Find(radioSport);
 
                 var parameters = new SqlParameter[]
                 {

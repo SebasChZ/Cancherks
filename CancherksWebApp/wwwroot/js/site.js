@@ -99,7 +99,7 @@ window.addEventListener('DOMContentLoaded', function () {
     //check for high contrast value
     checkHighContrast();
     guardarTamaniosOriginales();
-    //aplicarZoomActual();
+    aplicarZoomActual();
 });
 
 
@@ -194,3 +194,38 @@ function applyHighContrast() {
     }
 
 }
+
+var email = sessionStorage.getItem('emailUser') ? sessionStorage.getItem('emailUser') : "";
+function redirectToSystem() {
+    //get the element 
+    var mainIcon = document.getElementById('mainIcon');
+    var iconoProfile = document.getElementById('iconoProfile');
+
+    //get the email from the input hidden
+    var elemento = document.getElementById('emailHidden');
+    
+    if (elemento != null) {
+        email = elemento.value;
+        //set the href attribute
+        mainIcon.href = "http://sistema-tec-web-app.somee.com/" + email;
+        iconoProfile.href = "http://sistema-tec-web-app.somee.com/" + email;
+        //set the email in the session storage
+        sessionStorage.setItem('emailUser', email);
+    }
+    else {
+
+        var email = sessionStorage.getItem('emailUser') ? sessionStorage.getItem('emailUser') : "";
+        mainIcon.href = "http://sistema-tec-web-app.somee.com/" + email;
+        iconoProfile.href = "http://sistema-tec-web-app.somee.com/" + email;
+        //set the email in the session storage
+        sessionStorage.setItem('emailUser', email);
+    }
+
+}
+
+
+// DOCUMENT CONTENT LOADED
+window.addEventListener('DOMContentLoaded', function () {
+    redirectToSystem();
+    console.log("ASDFASDFASDFASDF")
+});

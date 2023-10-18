@@ -60,7 +60,7 @@ img {
 }
 
 .bg-gradient {
-    background: var(--gradientMaincolor) ;
+    background: var(--gradientMaincolor) !important ;
     color:white;
 }
 

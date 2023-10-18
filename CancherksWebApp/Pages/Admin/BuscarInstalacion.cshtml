@@ -54,15 +54,17 @@
                     <td>@installation.Location</td>
                     <td>@installation.Description</td>
                     <td>
-                        <img src="/img/@installation.Picture" alt="Imagen" width="50" height="50">
+                        <img src="/img/@installation.Picture" alt="Imagen de instalación @installation.Name" width="50" height="50">
                     </td>
                     <td>@installation.MaxCantPeople</td>
                     <td>@installation.TimeSplitReservation</td>
                     <td>@(installation.isPublic ? "Sí" : "No")</td>
                     <td style="text-align: center;">
-                        <a asp-page="/Admin/ModificarInstalacion" asp-route-id="@installation.Id">
+
+                        <a class="icon-button" aria-label="Redirecionar a modificar instalación @installation.Name" asp-page="/Admin/ModificarInstalacion" asp-route-id="@installation.Id">
                             <i class="icon-button bi bi-pencil-square custom-edit" style="cursor:pointer;"></i>
                         </a>
+
                     </td>
                 </tr>
             }

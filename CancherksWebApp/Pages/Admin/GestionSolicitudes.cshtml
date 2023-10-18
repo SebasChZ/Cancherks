@@ -11,6 +11,8 @@
     <script src="@Url.Content("~/js/Admin/GestionSolicitudes.js")"></script>
 }
 
+<input id="emailHidden" type="hidden" value="@HttpContext.Session.GetString("email")">
+
 <section class="container px-5 py-3" >
 
     <h3 style="margin-bottom: 2rem;">Solicitudes</h3>

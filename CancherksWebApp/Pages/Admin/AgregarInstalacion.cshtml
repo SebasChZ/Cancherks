@@ -61,12 +61,12 @@
 
                     <div class="mb-3">
                         <label class="form-label" id="AccesoLabel">Deportes</label>
-                        <div class="checkbox-container full-width" role="radiogroup" aria-labelledby="DeportesLabel">
+                        <div id="deportesLabel" class="checkbox-container full-width" role="radiogroup" aria-labelledby="DeportesLabel">
                             @foreach (var sport in Model.Sports)
                             {
                                 <div class="form-check form-check-inline radio-item">
-                                    <input type="radio" name="radio" id="@("radio-" + sport.Id)" value="@sport.Id" role="radio" aria-label="@sport.Name">
-                                    <label for="@("radio-" + sport.Id)">@sport.Name</label>
+                                    <input type="radio" name="radioSport" id="@("radio-" + sport.Id)" value="@sport.Id" aria-label="@sport.Name">
+                                    <label  for="@("radio-" + sport.Id)">@sport.Name</label>
                                 </div>
                             }
                         </div>
