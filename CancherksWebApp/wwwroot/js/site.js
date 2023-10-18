@@ -62,6 +62,7 @@ $('.image-upload-wrap').bind('dragleave', function () {
 });
 
 
+
 function getSessionStorageValues() {
     invertedColors = sessionStorage.getItem('invertedColors') ? sessionStorage.getItem('invertedColors') : false;
     yellowBlack = sessionStorage.getItem('yellowBlack') ? sessionStorage.getItem('yellowBlack') : false;
@@ -72,7 +73,8 @@ function getSessionStorageValues() {
 }
 
 
-var tamaniosOriginales = {};
+var tamaniosOriginales = [];
+var tamaniosTipos = [];
 var value = sessionStorage.getItem('value') ? parseFloat(sessionStorage.getItem('value')) : 1;
 var invertedColors;
 var yellowBlack;
@@ -97,7 +99,7 @@ window.addEventListener('DOMContentLoaded', function () {
     //check for high contrast value
     checkHighContrast();
     guardarTamaniosOriginales();
-    aplicarZoomActual();    
+    //aplicarZoomActual();
 });
 
 
@@ -110,7 +112,7 @@ function zoomIn() {
 function zoomOut() {
     value *= 0.95;
     sessionStorage.setItem('value', value);
-    aplicarZoomActual(); 
+    aplicarZoomActual();
 
 }
 
@@ -119,17 +121,23 @@ function guardarTamaniosOriginales() {
     for (var i = 0; i < elementos.length; i++) {
         var elemento = elementos[i];
         var estilo = window.getComputedStyle(elemento, null);
-        var fontSize = parseFloat(estilo.getPropertyValue('font-size'));
-        tamaniosOriginales[elemento] = fontSize;
+        var fontSizeStr = estilo.getPropertyValue('font-size');
+
+        var match = fontSizeStr.match(/^([\d.]+)([a-z]*)$/); // This regex will match the numeric part and the unit part
+        if (match) {
+            tamaniosOriginales.push(parseFloat(match[1]));
+            tamaniosTipos.push(match[2]);
+        }
     }
 }
 function aplicarZoomActual() {
     var elementos = document.getElementsByTagName('*');
     for (var i = 0; i < elementos.length; i++) {
         var elemento = elementos[i];
-        var fontSizeOriginal = tamaniosOriginales[elemento];
+        var fontSizeOriginal = tamaniosOriginales[i];
+        var tipoOriginal = tamaniosTipos[i];
         var nuevoFontSize = fontSizeOriginal * value;
-        elemento.style.fontSize = nuevoFontSize + 'px';
+        elemento.style.fontSize = nuevoFontSize + tipoOriginal;
     }
 }
 
@@ -186,6 +194,3 @@ function applyHighContrast() {
     }
 
 }
-
-
-
