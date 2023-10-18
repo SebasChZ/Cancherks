@@ -17,13 +17,11 @@
 
 <body>
     <header class="header-Page">
-        <nav class="navbar navbar-expand-lg navbar-light bg-colorMainTrans">
+        <nav class="navbar navbar-expand-lg navbar-light bg-colorMainTrans" aria-label="Navegación principal">
             <div class="container-fluid align-middle">
                 <div class="align-middle">
-                    <a class="navbar-brand" asp-area="" asp-page="/Index">
-                        @* //This could be the link to the inicial app page *@
-                        <i class="bi bi-mortarboard-fill"></i>
-
+                    <a class="navbar-brand" asp-area="" asp-page="/Index" aria-label="Inicio - Cancherks">
+                        <i class="bi bi-mortarboard-fill" aria-hidden="true"></i>
                         Cancherks
                     </a>
                 </div>
@@ -53,10 +51,10 @@
 
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link @(reservationArea ? "activeNav" : "")" asp-area="Solicitante" asp-page="Reservacion">Reservar y Horarios</a>
+                            <a class="nav-link @(reservationArea ? "activeNav" : "")" asp-area="Solicitante" asp-page="Reservacion" aria-current="@(reservationArea ? "page" : null)">Reservar y Horarios</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @(myArea ? "activeNav" : "")" asp-area="Solicitante" asp-page="MisReservaciones">Mis Reservaciones</a>
+                            <a class="nav-link @(myArea ? "activeNav" : "")" asp-area="Solicitante" asp-page="MisReservaciones" aria-current="@(myArea ? "page" : null)">Mis Reservaciones</a>
                         </li>
                         @{
                             var userRole = @Model.role;
@@ -90,46 +88,48 @@
     </header>
 
     <div class="page d-flex flex-row bg-grayContrast">
-        <aside class="site-bar bg-white">
-            <ul class="d-flex flex-column gap-3 px-0 py-2">
+        <aside class="site-bar bg-white" role="complementary">
+            <!-- Visually hidden but accessible label for screen readers -->
+            <span class="visually-hidden">Barra lateral de navegación para solicitantes</span>
+
+            <ul class="d-flex flex-column gap-3 px-0 py-2" role="navigation">
                 @* //Aside section for Admin Gestion solicitudes *@
                 @if (reservationArea)
                 {
                     <li class="py-2  @(reservation1Active ? "inline-active" : "inline-nav-item")">
-                        <a class="aside-link" asp-area="Solicitante" asp-page="Reservacion">
+                        <a class="aside-link" asp-area="Solicitante" asp-page="Reservacion" aria-current="@(reservation1Active ? "page" : null)">
                             <i class="bi bi-calendar2-check-fill"></i>
                             Reservar
                         </a>
                     </li>
                     <li class="py-2  @(reservation2Active ? "inline-active" : "inline-nav-item")">
-                        <a class="aside-link" asp-area="Solicitante" asp-page="Publicas">
+                        <a class="aside-link" asp-area="Solicitante" asp-page="Publicas" aria-current="@(reservation2Active ? "page" : null)">
                             <i class="bi bi-people-fill"></i>
                             Públicos
                         </a>
                     </li>
-
                 }
                 else if (myArea)
                 {
                     <li class="py-2 inline-nav-item @(my1Active ? "inline-active" : "inline-nav-item") ">
-                        <a class="aside-link" asp-area="Solicitante" asp-page="MisReservaciones">
+                        <a class="aside-link" asp-area="Solicitante" asp-page="MisReservaciones" aria-current="@(my1Active ? "page" : null)">
                             <i class="bi bi-check2-all"></i>
                             Mis Reservaciones
                         </a>
                     </li>
-                }else
+                }
+                else
                 {
                     <li class="py-2 inline-nav-item @(my1Active ? "inline-active" : "inline-nav-item") ">
-                        <a class="aside-link" asp-area="Solicitante" asp-page="MisReservaciones">
+                        <a class="aside-link" asp-area="Solicitante" asp-page="MisReservaciones" aria-current="@(my1Active ? "page" : null)">
                             <i class="bi bi-check2-all"></i>
                             Mis Reservasdfasdfasdfaciones
                         </a>
                     </li>
                 }
-
             </ul>
-
         </aside>
+
         <div class="content-page w-100">
             <main role="main" class="pb-3">
 

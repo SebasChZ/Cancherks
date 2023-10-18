@@ -38,7 +38,7 @@ function convertToParagraphs(inputStr) {
     let parts = inputStr.split('\n');  // Split the string at each newline character
     let result = '';
     for (let part of parts) {
-        result += '<p>' + part + '</p>';
+        result += '<p class="m-0">' + part + '</p>';
     }
     return result;
 }

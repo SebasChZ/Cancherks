@@ -16,13 +16,11 @@
 
 <body>
     <header class="header-Page">
-        <nav class="navbar navbar-expand-lg navbar-light bg-colorMainTrans">
+        <nav class="navbar navbar-expand-lg navbar-light bg-colorMainTrans" aria-label="Navegación principal">
             <div class="container-fluid align-middle">
                 <div class="align-middle">
-                    <a class="navbar-brand" asp-area="" asp-page="/Index">
-                        @* //This could be the link to the inicial app page *@
-                        <i class="bi bi-mortarboard-fill"></i>
-
+                    <a class="navbar-brand" asp-area="" asp-page="/Index" aria-label="Inicio - Cancherks">
+                        <i class="bi bi-mortarboard-fill" aria-hidden="true"></i>
                         Cancherks
                     </a>
                 </div>
@@ -57,20 +55,21 @@
                         
                     }
 
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0" aria-label="Menú principal">
                         <li class="nav-item">
-                            <a class="nav-link @(requestArea ? "activeNav" : "")" asp-area="Admin" asp-page="GestionSolicitudes">Solicitudes</a>
+                            <a class="nav-link @(requestArea ? "activeNav" : "")" asp-area="Admin" asp-page="GestionSolicitudes" aria-current="@(requestArea ? "page" : null)">Solicitudes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @(reportArea ? "activeNav" : "")" asp-area="Admin" asp-page="Reportes">Reportes</a>
+                            <a class="nav-link @(reportArea ? "activeNav" : "")" asp-area="Admin" asp-page="Reportes" aria-current="@(reportArea ? "page" : null)">Reportes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @(adminArea ? "activeNav" : "")" asp-area="Admin" asp-page="AgregarInstalacion">Administración</a>
+                            <a class="nav-link @(adminArea ? "activeNav" : "")" asp-area="Admin" asp-page="AgregarInstalacion" aria-current="@(adminArea ? "page" : null)">Administración</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @(modoSolicitante ? "activeNav" : "")" asp-area="" asp-page="../Solicitante/Reservacion">Modo Solicitante</a>
+                            <a class="nav-link @(modoSolicitante ? "activeNav" : "")" asp-area="" asp-page="../Solicitante/Reservacion" aria-current="@(modoSolicitante ? "page" : null)">Modo Solicitante</a>
                         </li>
-                    </ul>
+
+                </ul>
                 </div>
                 <!-- Accesibility Icons -->
                 <div class="text-center align-middle text-black mx-1">
@@ -94,47 +93,48 @@
 
     <div class="page d-flex flex-row bg-grayContrast">
 
-        <aside class="site-bar bg-white">
+        <aside class="site-bar bg-white" role="complementary">
+            <!-- Visually hidden but accessible label for screen readers -->
+            <span class="visually-hidden">Barra lateral de navegación</span>
 
-            <ul class="d-flex flex-column gap-3 px-0 py-2">
+            <ul class="d-flex flex-column gap-3 px-0 py-2" role="navigation">
                 @* //Aside section for Admin Gestion solicitudes *@
                 @if (requestArea)
                 {
                     <li class="py-2  @(request1Active ? "inline-active" : "inline-nav-item")">
-                        <a class="aside-link" asp-area="Admin" asp-page="GestionSolicitudes">
-                            <i class="bi bi-card-checklist"></i> 
+                        <a class="aside-link" asp-area="Admin" asp-page="GestionSolicitudes" aria-current="@(request1Active ? "page" : null)">
+                            <i class="bi bi-card-checklist"></i>
                             Gestión Solicitudes
                         </a>
                     </li>
-
                 }
                 else if (reportArea)
                 {
                     <li class="py-2 inline-nav-item @(report1Active ? "inline-active" : "inline-nav-item") ">
-                        <a class="aside-link" asp-area="Admin" asp-page="Reportes">
+                        <a class="aside-link" asp-area="Admin" asp-page="Reportes" aria-current="@(report1Active ? "page" : null)">
                             <i class="bi bi-card-checklist"></i>
                             Crear Reporte
-                        </a>                        
+                        </a>
                     </li>
                 }
                 else if (adminArea)
                 {
                     <li class="py-2 @(admin1Active ? "inline-active" : "inline-nav-item") ">
-                        <a class="aside-link" asp-area="Admin" asp-page="AgregarInstalacion">
+                        <a class="aside-link" asp-area="Admin" asp-page="AgregarInstalacion" aria-current="@(admin1Active ? "page" : null)">
                             <i class="bi bi-card-checklist"></i>
                             Agregar Instalación
                         </a>
                     </li>
                     <li class="py-2 @(admin2Active || admin3Active ? "inline-active" : "inline-nav-item") ">
-                        <a class="aside-link" asp-area="Admin" asp-page="BuscarInstalacion">
+                        <a class="aside-link" asp-area="Admin" asp-page="BuscarInstalacion" aria-current="@(admin2Active || admin3Active ? "page" : null)">
                             <i class="bi bi-brush-fill"></i>
                             Modificar Instalación
                         </a>
                     </li>
                 }
             </ul>
-
         </aside>
+
         <div class="content-page w-100">
             <main role="main" class="pb-3">
 
