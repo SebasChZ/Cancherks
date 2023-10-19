@@ -67,9 +67,9 @@
                     <td>@request.StartTime.ToString()</td>
                     <td>@request.EndTime.ToString()</td>
                     <td>
-                        <button class="icon-button bi bi-check-circle-fill custom-success" aria-label="Aceptar Solicitud con ID @request.Id" data-id="@request.Id" style="cursor: pointer;">
+                        <button class="icon-button bi bi-check-circle-fill custom-success" aria-label="Aceptar Solicitud para @Model.Installations.FirstOrDefault(i => i.Id == request.IdInstallation)?.Name." data-id="@request.Id" style="cursor: pointer;">
                         </button>
-                        <button class="icon-button bi bi-trash-fill custom-danger" aria-label="Rechazar Solicitud con ID @request.Id" data-id="@request.Id" style="cursor: pointer;">
+                        <button class="icon-button bi bi-trash-fill custom-danger" aria-label="Rechazar Solicitud para @Model.Installations.FirstOrDefault(i => i.Id == request.IdInstallation)?.Name" data-id="@request.Id" style="cursor: pointer;">
                         </button>
                     </td>
                 </tr>

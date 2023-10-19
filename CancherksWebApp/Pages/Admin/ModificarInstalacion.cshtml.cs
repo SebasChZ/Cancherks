@@ -111,28 +111,50 @@ namespace CancherksWebApp.Pages.Admin
 
         public async Task<IActionResult> OnPostModifySchedule(ScheduleAvailability scheduleAvailabilities)
         {
-            
+
             try
             {
                 var installationSchedule = _context.ScheduleAvailability.FirstOrDefault(ixs => ixs.IdInstallation == Installation.Id);
                 if (installationSchedule != null)
                 {
                     int idSchedule = installationSchedule.Id;
+                    int idDay = ScheduleAvailability.IdDay;
+                    if (ScheduleAvailability.IdDay == installationSchedule.IdDay)
+                    {
+
+                        var scheduleParameters = new SqlParameter[]
+                        {
+                                new SqlParameter("@idInstallation", installationSchedule.IdInstallation),
+                                new SqlParameter("@idScheduleAvailability", installationSchedule.Id),
+                                new SqlParameter("@startTime", ScheduleAvailability.StartTime),
+                                new SqlParameter("@endTime", ScheduleAvailability.EndTime),
+                                new SqlParameter("@idDay", ScheduleAvailability.IdDay)
+                        };
+
+
+                        await _context.Database.ExecuteSqlRawAsync("EXEC dbo.spUpdateScheduleAvailability @idInstallation, @idScheduleAvailability, @startTime, @endTime, @idDay", scheduleParameters);
+
+
+                        Message = "Horarios modificados con �xito!";
+                    }
+                    else
+                    {
+                        var scheduleParameters = new SqlParameter[]
+                          {
+                                new SqlParameter("@startTime", ScheduleAvailability.StartTime),
+                                new SqlParameter("@endTime", ScheduleAvailability.EndTime),
+                                new SqlParameter("@idDay", ScheduleAvailability.IdDay),
+                                new SqlParameter("@idInstallation", installationSchedule.Id) // Aquí usamos el nuevo idInstallation
+                          };
+
+                        await _context.Database.ExecuteSqlRawAsync("EXEC dbo.spAddSchedule @startTime, @endTime, @idDay, @idInstallation", scheduleParameters);
+
+
+                        Message = "Horarios agregados con éxito!";
+                    }
                 }
 
-                var scheduleParameters = new SqlParameter[]
-                {
-                        new SqlParameter("@idInstallation", installationSchedule.IdInstallation),
-                        new SqlParameter("@idScheduleAvailability", installationSchedule.Id),
-                        new SqlParameter("@startTime", ScheduleAvailability.StartTime),
-                        new SqlParameter("@endTime", ScheduleAvailability.EndTime),
-                        new SqlParameter("@idDay", ScheduleAvailability.IdDay)
-                };
 
-                await _context.Database.ExecuteSqlRawAsync("EXEC dbo.spUpdateScheduleAvailability @idInstallation, @idScheduleAvailability, @startTime, @endTime, @idDay", scheduleParameters);
-
-
-                Message = "Horarios modificados con �xito!";
             }
             catch (Exception ex)
             {
